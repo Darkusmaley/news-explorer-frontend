@@ -1,10 +1,14 @@
 .App {
-  text-align: center;
+  max-width: 1440px;
+  margin: 0 auto;
+  background: url("./Images/georgia-de-lotz--UsJoNxLaNo-unsplash.jpg") center
+    no-repeat;
+  background-size: cover;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app__section {
+  max-width: 1440px;
+  padding: 0 40px;
 }
 
 @media (prefers-reduced-motion: no-preference) {

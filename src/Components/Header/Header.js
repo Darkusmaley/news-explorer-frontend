@@ -1,23 +1,47 @@
 import "./Header.css";
+import React from "react";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+// import { useContext } from "react";
 
-const Header = ({}) => {
-  const currentUser = useContext(CurrentUserContext);
+const Header = ({ isLoggedIn, onCreateModal }) => {
+  // const currentUser = useContext(CurrentUserContext);
 
   return (
     <header className="header app__section">
-      <div className="header__logo">
-        <div>
-          <Link to="/">
-            <img className="header__logo-image" src={logo} alt="Logo" />
-          </Link>
-        </div>
-        <div className="header__date">
-          {currentDate}, {location}
-        </div>
+      <Link to="/">
+        <button type="text" className="header__link-main">
+          NewsExplorer
+        </button>
+      </Link>
+      <div className="header__link-group">
+        {/* {isLoggedIn ? ( */}
+        <>
+          <div>
+            <Link>
+              <button type="text" className="header__link-home" id="link-home">
+                Home
+              </button>
+            </Link>
+          </div>
+          <img className="header__home-underline"></img>
+          <div>
+            <Link>
+              <button
+                type="text"
+                className="header__link-signin"
+                id="link-signin"
+              >
+                Sign in
+              </button>
+            </Link>
+          </div>
+        </>
+        {/* ) : (
+          <></>
+        )} */}
       </div>
-
+      {/* <div className="header__logo">
+        
       <div className="header__avatar">
         <ToggleSwitch />
         {isLoggedIn ? (
@@ -60,14 +84,9 @@ const Header = ({}) => {
             </button>
           </>
         )}
-      </div>
+      </div> */}
     </header>
   );
 };
-
-const currentDate = new Date().toLocaleString("default", {
-  month: "long",
-  day: "numeric",
-});
 
 export default Header;

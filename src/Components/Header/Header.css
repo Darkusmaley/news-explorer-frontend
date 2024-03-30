@@ -1,0 +1,66 @@
+.header {
+  max-width: 1365px;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1px solid;
+  box-shadow: 0px -1px 0px 0px #ffffff33 inset;
+  position: relative;
+}
+
+.header__link-main {
+  font-family: Roboto Slab;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  text-align: left;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+.header__link-group {
+  display: flex;
+  align-items: center;
+  gap: 42px;
+}
+
+.header__link-home {
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: center;
+  max-height: 24px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: #fff;
+}
+
+.header__link-signin {
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: center;
+  width: 176px;
+  height: 48px;
+  border: 1px solid #fff;
+  border-radius: 25px;
+  cursor: pointer;
+  color: #fff;
+  background-color: transparent;
+}
+
+.header__home-underline {
+  background: url("../../Images/Vector\ \(Stroke\).svg") center no-repeat;
+  width: 68px;
+  height: 3px;
+  position: absolute;
+  bottom: -1px;
+  right: 253px;
+}
