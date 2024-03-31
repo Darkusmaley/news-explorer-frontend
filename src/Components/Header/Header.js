@@ -16,14 +16,15 @@ const Header = ({ isLoggedIn, onCreateModal }) => {
       <div className="header__link-group">
         {/* {isLoggedIn ? ( */}
         <>
-          <div>
+          <div className="home__grouping">
             <Link>
               <button type="text" className="header__link-home" id="link-home">
                 Home
               </button>
             </Link>
+            <img className="header__home-underline"></img>
           </div>
-          <img className="header__home-underline"></img>
+
           <div>
             <Link>
               <button
