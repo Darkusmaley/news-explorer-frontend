@@ -2,6 +2,10 @@
   max-width: 1440px;
   height: 576px;
   background-color: #00000080;
+  background-image: url("../../Images/georgia-de-lotz--UsJoNxLaNo-unsplash.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 .main__title {
@@ -28,4 +32,12 @@
   color: #fff;
   width: 608px;
   height: 24px;
+}
+
+.main__overlay {
+  background-color: #00000080;
+  height: 576px;
+  max-width: 1440px;
+  padding: 0;
+  margin: 0;
 }

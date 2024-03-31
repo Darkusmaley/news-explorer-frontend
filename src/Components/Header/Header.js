@@ -7,7 +7,7 @@ const Header = ({ isLoggedIn, onCreateModal }) => {
   // const currentUser = useContext(CurrentUserContext);
 
   return (
-    <header className="header app__section">
+    <header className="header ">
       <Link to="/">
         <button type="text" className="header__link-main">
           NewsExplorer

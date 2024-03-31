@@ -18,12 +18,14 @@
   border: none;
   color: #fff;
   cursor: pointer;
+  padding-left: 104px;
 }
 
 .header__link-group {
   display: flex;
   align-items: center;
   gap: 42px;
+  padding-right: 104px;
 }
 
 .header__link-home {
