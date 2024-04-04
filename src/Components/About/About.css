@@ -5,12 +5,25 @@
   margin: 0;
 }
 
+.about__info {
+  display: flex;
+  margin-top: 131px;
+  gap: 56px;
+}
+
 .about__title {
   font-family: Roboto Slab;
   font-size: 40px;
   font-weight: 400;
   line-height: 46px;
   text-align: left;
+  margin: 0;
+}
+
+.about__text {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .about__subtext {
@@ -19,4 +32,13 @@
   font-weight: 400;
   line-height: 24px;
   text-align: left;
+  width: 600px;
+  height: 120px;
+  margin: 0;
+}
+
+.about__image {
+  width: 464px;
+  height: 464px;
+  margin-left: 104px;
 }
