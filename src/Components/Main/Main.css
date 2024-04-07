@@ -3,7 +3,9 @@
   src: url("../../Fonts/roboto-slab-400-regular.woff") format("woff"),
     url("../../Fonts/roboto-slab-400-regular.woff2") format("woff2"),
     url("../../Fonts/roboto-400-regular.woff") format("woff"),
-    url("../../Fonts/roboto-400-regular.woff2") format("woff2");
+    url("../../Fonts/roboto-400-regular.woff2") format("woff2"),
+    url("../../Fonts/roboto-500.woff") format("woff"),
+    url("../../Fonts/roboto-500.woff2") format("woff2");
 }
 
 .main {
@@ -23,8 +25,8 @@
   line-height: 64px;
   text-align: left;
   color: #fff;
-  padding: 80px 416px 0;
   margin: 0;
+  padding: 80px 416px 0;
   width: 608px;
   height: 128px;
 }
@@ -35,8 +37,8 @@
   font-weight: 400;
   line-height: 24px;
   text-align: left;
-  padding: 32px 416px 0;
   margin: 0;
+  padding: 32px 416px 0;
   color: #fff;
   width: 608px;
   height: 24px;
@@ -46,6 +48,6 @@
   background-color: #00000080;
   height: 576px;
   max-width: 1440px;
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
