@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "Roboto";
+  src: url("../../Fonts/roboto-slab-700.woff") format("woff"),
+    url("../../Fonts/roboto-slab-700.woff2") format("woff2"),
+    url("../../Fonts/roboto-500.woff") format("woff"),
+    url("../../Fonts/roboto-500.woff2") format("woff2");
+}
+
 .about {
   width: 1440px;
   height: 624px;
