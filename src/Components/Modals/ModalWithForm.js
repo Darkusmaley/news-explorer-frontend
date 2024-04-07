@@ -1,4 +1,4 @@
-import "./Modal.css";
+import "./Modals.css";
 import { Modal } from "./Modal";
 const ModalWithForm = ({ children, title, onClose, name, onSubmit }) => {
   return (

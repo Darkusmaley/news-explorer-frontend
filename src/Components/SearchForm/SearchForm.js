@@ -1,6 +1,6 @@
-import "./SearchForm.css"
+import "./SearchForm.css";
 
-function SearchBar() {
+function SearchBar({ onsubmit }) {
   return (
     <div className="searchbar">
       <form className="searchbar__form">

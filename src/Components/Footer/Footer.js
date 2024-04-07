@@ -4,7 +4,7 @@ import GitHubLogo from "../../Images/github.svg";
 import FacebookLogo from "../../Images/fb.svg";
 function Footer() {
   return (
-    <about className="footer app__section">
+    <footer className="footer app__section">
       <div className="footer__info">
         <h2 className="footer__trademark">
           © 2021 Supersite, Powered by News API
@@ -24,7 +24,7 @@ function Footer() {
           </div>
         </div>
       </div>
-    </about>
+    </footer>
   );
 }
 

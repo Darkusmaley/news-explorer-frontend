@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 // import { useContext } from "react";
 
-const Header = ({ isLoggedIn, onCreateModal }) => {
+const Header = ({ isLoggedIn, handleRegisterModal }) => {
   // const currentUser = useContext(CurrentUserContext);
 
   return (
@@ -17,7 +17,7 @@ const Header = ({ isLoggedIn, onCreateModal }) => {
         {/* {isLoggedIn ? ( */}
         <>
           <div className="home__grouping">
-            <Link>
+            <Link to="/">
               <button type="text" className="header__link-home" id="link-home">
                 Home
               </button>
@@ -26,15 +26,14 @@ const Header = ({ isLoggedIn, onCreateModal }) => {
           </div>
 
           <div>
-            <Link>
-              <button
-                type="text"
-                className="header__link-signin"
-                id="link-signin"
-              >
-                Sign in
-              </button>
-            </Link>
+            <button
+              type="text"
+              className="header__link-signin"
+              id="link-signin"
+              onClick={handleRegisterModal}
+            >
+              Sign in
+            </button>
           </div>
         </>
         {/* ) : (
