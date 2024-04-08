@@ -7,10 +7,11 @@ const LoginModal = ({
   isLoading,
   loginUser,
   openRegisterModal,
-  buttontext = isLoading ? "Logging in..." : "Log in",
+  buttontext = isLoading ? "Signing in..." : "Sign in",
 }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -18,6 +19,9 @@ const LoginModal = ({
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
+  };
+  const handleUsernameChange = (e) => {
+    setUsername(e.target.value);
   };
 
   const onLogin = (e) => {
@@ -33,38 +37,51 @@ const LoginModal = ({
       onSubmit={onLogin}
     >
       <div className="form__info">
-        <label className="form__label">
-          Email
+        <div className="form__label-email">
+          <label className="form__label">Email</label>
           <input
             type="text"
             name="email"
             minLength="1"
             maxLength="30"
-            className="input"
-            placeholder="Email"
+            className="form__input"
+            placeholder="Enter email"
             value={email}
             onChange={handleEmailChange}
           />
-        </label>
-        <label className="form__label">
-          Password
+        </div>
+        <div className="form__label-password">
+          <label className="form__label">Password</label>
           <input
             type="text"
             name="password"
             minLength="1"
-            className="input"
-            placeholder="Password"
+            className="form__input"
+            placeholder="Enter password"
             value={password}
             onChange={handlePasswordChange}
           />
-        </label>
+        </div>
+        <div className="form__label-password">
+          <label className="form__label">Username</label>
+          <input
+            type="text"
+            name="username"
+            minLength="1"
+            className="form__input"
+            placeholder="Enter your username"
+            value={username}
+            onChange={handleUsernameChange}
+          />
+        </div>
       </div>
+
       <div className="form__buttons">
         <button type="submit" className="form__submit-button">
           {buttontext}
         </button>
         <button className="form__login-button" onClick={openRegisterModal}>
-          or Register
+          or <span className="form__login-button_text">Sign up</span>
         </button>
       </div>
     </ModalWithForm>
