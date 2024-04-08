@@ -53,6 +53,22 @@
   color: #000;
 }
 
+.header__link-saved-articles {
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: center;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: #b6bcbf;
+}
+
+.header__link-saved-articles:hover{
+  color: #000;
+}
+
 .header__link-signin {
   font-family: Roboto;
   font-size: 18px;
