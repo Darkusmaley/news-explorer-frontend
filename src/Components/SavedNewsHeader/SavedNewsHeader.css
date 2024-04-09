@@ -5,8 +5,7 @@
   justify-content: space-between;
   flex-direction: row;
   align-items: center;
-  box-shadow: 0px -1px 0px 0px #ffffff33 inset;
-  background-color: #fff;
+  box-shadow: 0px -1px 0px 0px #d1d2d6 inset;
 }
 
 .newsHeader__link-main {
@@ -62,13 +61,26 @@
   color: #000;
 }
 
-.newsHeader__link-signin {
+.newsHeader__saved-articles_underline {
+  background: url("../../Images/Black-Vector\ \(Stroke\).svg") center no-repeat;
+  width: 178px;
+  height: 3px;
+  position: absolute;
+  top: 50px;
+  right: -22px;
+  color: #1A1B22;
+}
+
+.newsHeader__button-logout {
+  display: flex;
+  gap: 15px;
+  align-items: center;
   font-family: Roboto;
   font-size: 18px;
   font-weight: 500;
   line-height: 24px;
   text-align: center;
-  width: 176px;
+  max-width: 176px;
   height: 48px;
   border: 1px solid #000;
   border-radius: 25px;
@@ -77,6 +89,10 @@
   background-color: transparent;
 }
 
-.newsHeader__link-signin:hover {
+.newsHeader__link-signout:hover {
   color: #000;
+}
+
+.saved-articles__grouping {
+  position: relative;
 }

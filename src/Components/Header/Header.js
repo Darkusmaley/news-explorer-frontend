@@ -1,10 +1,12 @@
 import "./Header.css";
 import React from "react";
 import { Link } from "react-router-dom";
-// import { useContext } from "react";
+import { CurrentUserContext } from "../Context/CurrentUserContext";
+import { useContext } from "react";
+import logout from "../../Images/logout.svg";
 
 const Header = ({ isLoggedIn, handleRegisterModal }) => {
-  // const currentUser = useContext(CurrentUserContext);
+  const currentUser = useContext(CurrentUserContext);
 
   return (
     <header className="header ">
@@ -40,7 +42,8 @@ const Header = ({ isLoggedIn, handleRegisterModal }) => {
               id="link-signin"
               onClick={handleRegisterModal}
             >
-              Sign in
+              {/* {currentUser.name} */}ss
+              <img src={logout} />
             </button>
           </div>
         </div>

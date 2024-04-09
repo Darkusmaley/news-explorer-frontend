@@ -11,6 +11,7 @@ import { Routes } from "react-router";
 import RegisterModal from "./Components/Modals/RegisterModal";
 import LoginModal from "./Components/Modals/LoginModal";
 import SavedNews from "./Components/SavedNews/SavedNews";
+import { CurrentUserContext } from "./Components/Context/CurrentUserContext";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -47,41 +48,43 @@ function App() {
 
   return (
     <div className="App ">
-      <Routes>
-        <Route
-          exact
-          path="/"
-          element={
-            <Main
-              isLoggedIn={isLoggedIn}
-              handleRegisterModal={handleRegisterModal}
-              onClose={handleCloseModal}
-            />
-          }
-        ></Route>
-        <Route path="/saved-news" element={<SavedNews />}></Route>
-      </Routes>
+      <CurrentUserContext.Provider value={currentUser}>
+        <Routes>
+          <Route
+            exact
+            path="/"
+            element={
+              <Main
+                isLoggedIn={isLoggedIn}
+                handleRegisterModal={handleRegisterModal}
+                onClose={handleCloseModal}
+              />
+            }
+          ></Route>
+          <Route path="/saved-news" element={<SavedNews />}></Route>
+        </Routes>
 
-      <Footer />
+        <Footer />
 
-      {activeModal === "register" && (
-        <RegisterModal
-          handleCloseModal={handleCloseModal}
-          isOpen={activeModal === "register"}
-          // registerUser={registerUser}
-          openLoginModal={handleLoginModal}
-          isLoading={isLoading}
-        />
-      )}
-      {activeModal === "login" && (
-        <LoginModal
-          handleCloseModal={handleCloseModal}
-          isOpen={activeModal === "login"}
-          // loginUser={loginUser}
-          openRegisterModal={handleRegisterModal}
-          isLoading={isLoading}
-        />
-      )}
+        {activeModal === "register" && (
+          <RegisterModal
+            handleCloseModal={handleCloseModal}
+            isOpen={activeModal === "register"}
+            // registerUser={registerUser}
+            openLoginModal={handleLoginModal}
+            isLoading={isLoading}
+          />
+        )}
+        {activeModal === "login" && (
+          <LoginModal
+            handleCloseModal={handleCloseModal}
+            isOpen={activeModal === "login"}
+            // loginUser={loginUser}
+            openRegisterModal={handleRegisterModal}
+            isLoading={isLoading}
+          />
+        )}
+      </CurrentUserContext.Provider>
     </div>
   );
 }
