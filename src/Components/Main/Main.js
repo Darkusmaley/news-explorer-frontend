@@ -1,6 +1,7 @@
 import "./Main.css";
 import Header from "../Header/Header";
 import SearchBar from "../SearchForm/SearchForm";
+import About from "../About/About";
 
 // import { useMemo, useContext } from "react";
 
@@ -19,6 +20,7 @@ function Main({ onSelectCard, isLoggedIn, handleRegisterModal }) {
         </h3>
         <SearchBar />
       </div>
+      <About />
     </main>
   );
 }

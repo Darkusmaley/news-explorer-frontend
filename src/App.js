@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import { Routes } from "react-router";
 import RegisterModal from "./Components/Modals/RegisterModal";
 import LoginModal from "./Components/Modals/LoginModal";
+import SavedNews from "./Components/SavedNews/SavedNews";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -24,7 +25,7 @@ function App() {
 
   const handleRegisterModal = () => {
     setActiveModal("register");
-    console.log("cheese")
+    console.log("cheese");
   };
 
   const handleCloseModal = () => {
@@ -58,9 +59,9 @@ function App() {
             />
           }
         ></Route>
-        {/* <Route path="/bookmarked">"/saved-news"- displays Saved articles page</Route> */}
+        <Route path="/saved-news" element={<SavedNews />}></Route>
       </Routes>
-      <About />
+
       <Footer />
 
       {activeModal === "register" && (

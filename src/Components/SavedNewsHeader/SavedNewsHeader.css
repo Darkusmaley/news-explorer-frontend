@@ -1,0 +1,82 @@
+.newsHeader {
+  max-width: 1440px;
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  box-shadow: 0px -1px 0px 0px #ffffff33 inset;
+  background-color: #fff;
+}
+
+.newsHeader__link-main {
+  font-family: Roboto Slab;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  text-align: left;
+  background: none;
+  border: none;
+  color: #000;
+  cursor: pointer;
+  padding-left: 104px;
+}
+
+.newsHeader__link-group {
+  display: flex;
+  align-items: center;
+  gap: 42px;
+  padding-right: 104px;
+}
+
+.newsHeader__link-home {
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: center;
+  max-height: 24px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: #000;
+}
+
+.newsHeader__link-home:hover {
+  color: #000;
+}
+
+.newsHeader__link-saved-articles {
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: center;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: #000;
+}
+
+.newsHeader__link-saved-articles:hover {
+  color: #000;
+}
+
+.newsHeader__link-signin {
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: center;
+  width: 176px;
+  height: 48px;
+  border: 1px solid #000;
+  border-radius: 25px;
+  cursor: pointer;
+  color: #000;
+  background-color: transparent;
+}
+
+.newsHeader__link-signin:hover {
+  color: #000;
+}
