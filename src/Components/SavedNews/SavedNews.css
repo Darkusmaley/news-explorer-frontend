@@ -8,21 +8,22 @@
     url("../../Fonts/roboto-700.woff2") format("woff2");
 }
 
-.savedNews {
+.saved-news {
   background-color: #fff;
 }
 
-.savedNews__group {
+.saved-news__group {
   display: flex;
   flex-direction: column;
-  margin: 40px 0 56px 189px;
+  padding: 40px 80px 0px 106px;
   max-width: 712px;
   max-height: 198px;
 }
 
-.savedNews__title {
+.saved-news__title {
   max-width: 712px;
   height: 24px;
+  margin: 0;
   font-family: Roboto;
   font-size: 18px;
   font-weight: 400;
@@ -30,9 +31,10 @@
   text-align: left;
 }
 
-.savedNews__subtext {
+.saved-news__subtext {
   max-width: 530px;
   height: 92px;
+  margin: 28px 0 30px;
   font-family: Roboto Slab;
   font-size: 40px;
   font-weight: 400;
@@ -40,12 +42,14 @@
   text-align: left;
 }
 
-.savedNews__search-grouping {
+.saved-news__search-grouping {
   max-width: 712px;
   height: 24px;
+  margin: 0 0 56px;
 }
 
-.savedNews__search-text {
+.saved-news__search-text {
+  margin: ;
   font-family: Roboto;
   font-size: 18px;
   font-weight: 400;
@@ -53,7 +57,7 @@
   text-align: left;
 }
 
-.savedNews__search-text_bold {
+.saved-news__search-text_bold {
   font-family: Roboto;
   font-size: 18px;
   font-weight: 700;

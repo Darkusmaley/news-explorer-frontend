@@ -38,8 +38,8 @@ const Header = ({ isLoggedIn, handleRegisterModal }) => {
           <div>
             <button
               type="text"
-              className="header__link-signin"
-              id="link-signin"
+              className="header__button-logout"
+              id="link-logout"
               onClick={handleRegisterModal}
             >
               {/* {currentUser.name} */}ss

@@ -1,0 +1,9 @@
+.news-card-list {
+  background-color: #f5f6f7;
+  max-width: 1440px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  column-gap:16px;
+  padding: 62px 104px;
+}

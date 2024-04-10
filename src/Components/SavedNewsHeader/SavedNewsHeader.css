@@ -1,4 +1,4 @@
-.newsHeader {
+.news-header {
   max-width: 1440px;
   height: 80px;
   display: flex;
@@ -8,7 +8,7 @@
   box-shadow: 0px -1px 0px 0px #d1d2d6 inset;
 }
 
-.newsHeader__link-main {
+.news-header__link-main {
   font-family: Roboto Slab;
   font-size: 20px;
   font-weight: 700;
@@ -21,14 +21,14 @@
   padding-left: 104px;
 }
 
-.newsHeader__link-group {
+.news-header__link-group {
   display: flex;
   align-items: center;
   gap: 42px;
   padding-right: 104px;
 }
 
-.newsHeader__link-home {
+.news-header__link-home {
   font-family: Roboto;
   font-size: 18px;
   font-weight: 500;
@@ -41,11 +41,11 @@
   color: #000;
 }
 
-.newsHeader__link-home:hover {
+.news-header__link-home:hover {
   color: #000;
 }
 
-.newsHeader__link-saved-articles {
+.news-header__link-saved-articles {
   font-family: Roboto;
   font-size: 18px;
   font-weight: 500;
@@ -57,21 +57,21 @@
   color: #000;
 }
 
-.newsHeader__link-saved-articles:hover {
+.news-header__link-saved-articles:hover {
   color: #000;
 }
 
-.newsHeader__saved-articles_underline {
+.news-header__saved-articles_underline {
   background: url("../../Images/Black-Vector\ \(Stroke\).svg") center no-repeat;
   width: 178px;
   height: 3px;
   position: absolute;
   top: 50px;
   right: -22px;
-  color: #1A1B22;
+  color: #1a1b22;
 }
 
-.newsHeader__button-logout {
+.news-header__button-logout {
   display: flex;
   gap: 15px;
   align-items: center;
@@ -89,7 +89,7 @@
   background-color: transparent;
 }
 
-.newsHeader__link-signout:hover {
+.news-header__link-signout:hover {
   color: #000;
 }
 

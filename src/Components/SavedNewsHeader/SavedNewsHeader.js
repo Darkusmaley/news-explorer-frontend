@@ -9,16 +9,16 @@ const SavedNewsHeader = ({ handleRegisterModal }) => {
   const currentUser = useContext(CurrentUserContext);
 
   return (
-    <newsheader className="newsHeader ">
+    <section className="news-header ">
       <Link to="/">
-        <button type="text" className="newsHeader__link-main">
+        <button type="text" className="news-header__link-main">
           NewsExplorer
         </button>
       </Link>
 
-      <div className="newsHeader__link-group">
+      <div className="news-header__link-group">
         <Link to="/">
-          <button type="text" className="newsHeader__link-home" id="link-home">
+          <button type="text" className="news-header__link-home" id="link-home">
             Home
           </button>
         </Link>
@@ -26,19 +26,19 @@ const SavedNewsHeader = ({ handleRegisterModal }) => {
           <Link to="/saved-articles">
             <button
               type="text"
-              className="newsHeader__link-saved-articles"
+              className="news-header__link-saved-articles"
               id="link-home"
             >
               Saved articles
             </button>
           </Link>
-          <img className="newsHeader__saved-articles_underline" />
+          <img className="news-header__saved-articles_underline" />
         </div>
 
         <div>
           <button
             type="text"
-            className="newsHeader__button-logout"
+            className="news-header__button-logout"
             id="link-signin"
             onClick={handleRegisterModal}
           >
@@ -47,7 +47,7 @@ const SavedNewsHeader = ({ handleRegisterModal }) => {
           </button>
         </div>
       </div>
-    </newsheader>
+    </section>
   );
 };
 

@@ -1,24 +1,24 @@
-import logo from "./logo.svg";
 import "./App.css";
-import Header from "./Components/Header/Header";
 import Main from "./Components/Main/Main";
-import About from "./Components/About/About";
 import Footer from "./Components/Footer/Footer";
 import React from "react";
-import { Switch, Route, useHistory } from "react-router-dom";
+import { Route, useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Routes } from "react-router";
 import RegisterModal from "./Components/Modals/RegisterModal";
 import LoginModal from "./Components/Modals/LoginModal";
 import SavedNews from "./Components/SavedNews/SavedNews";
 import { CurrentUserContext } from "./Components/Context/CurrentUserContext";
+import { SavedArticleContext } from "./Components/Context/SavedArticleCOntect";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
+  const [newsCard, setNewsCard] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
   const [isLoggedIn, setLogin] = useState(false);
+  const [savedArticles, setSavedArticles] = useState([]);
 
   const handleLoginModal = () => {
     setActiveModal("login");
@@ -48,42 +48,47 @@ function App() {
 
   return (
     <div className="App ">
-      <CurrentUserContext.Provider value={currentUser}>
-        <Routes>
-          <Route
-            exact
-            path="/"
-            element={
-              <Main
-                isLoggedIn={isLoggedIn}
-                handleRegisterModal={handleRegisterModal}
-                onClose={handleCloseModal}
-              />
-            }
-          ></Route>
-          <Route path="/saved-news" element={<SavedNews />}></Route>
-        </Routes>
+      <CurrentUserContext.Provider value={{ currentUser }}>
+        <SavedArticleContext.Provider value={savedArticles}>
+          <Routes>
+            <Route
+              exact
+              path="/"
+              element={
+                <Main
+                  isLoggedIn={isLoggedIn}
+                  handleRegisterModal={handleRegisterModal}
+                  onClose={handleCloseModal}
+                />
+              }
+            ></Route>
+            <Route
+              path="/saved-news"
+              element={<SavedNews newsCard={newsCard} />}
+            ></Route>
+          </Routes>
 
-        <Footer />
+          <Footer />
 
-        {activeModal === "register" && (
-          <RegisterModal
-            handleCloseModal={handleCloseModal}
-            isOpen={activeModal === "register"}
-            // registerUser={registerUser}
-            openLoginModal={handleLoginModal}
-            isLoading={isLoading}
-          />
-        )}
-        {activeModal === "login" && (
-          <LoginModal
-            handleCloseModal={handleCloseModal}
-            isOpen={activeModal === "login"}
-            // loginUser={loginUser}
-            openRegisterModal={handleRegisterModal}
-            isLoading={isLoading}
-          />
-        )}
+          {activeModal === "register" && (
+            <RegisterModal
+              handleCloseModal={handleCloseModal}
+              isOpen={activeModal === "register"}
+              // registerUser={registerUser}
+              openLoginModal={handleLoginModal}
+              isLoading={isLoading}
+            />
+          )}
+          {activeModal === "login" && (
+            <LoginModal
+              handleCloseModal={handleCloseModal}
+              isOpen={activeModal === "login"}
+              // loginUser={loginUser}
+              openRegisterModal={handleRegisterModal}
+              isLoading={isLoading}
+            />
+          )}
+        </SavedArticleContext.Provider>
       </CurrentUserContext.Provider>
     </div>
   );

@@ -1,0 +1,135 @@
+@font-face {
+  font-family: "Roboto";
+  src: url("../../Fonts/roboto-500.woff") format("woff"),
+    url("../../Fonts/roboto-500.woff2") format("woff2"),
+    url("../../Fonts/roboto-400-regular.woff") format("woff"),
+    url("../../Fonts/roboto-400-regular.woff2") format("woff2"),
+    url("../../Fonts/roboto-slab-400-regular.woff") format("woff"),
+    url("../../Fonts/roboto-slab-400-regular.woff2") format("woff2"),
+    url("../../Fonts/roboto-slab-700.woff") format("woff"),
+    url("../../Fonts/roboto-slab-700.woff2") format("woff2");
+}
+
+.card__container {
+  width: 400px;
+  height: 576px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border-radius: 10px;
+  gap: 16px;
+}
+
+.card__top-display {
+  max-width: 400px;
+  max-height: 272px;
+  padding: 24px;
+  display: flex;
+  gap: 225px;
+  position: absolute;
+}
+
+.card__tag-container {
+  width: 80px;
+  height: 40px;
+  text-align: center;
+}
+
+.card__tag {
+  max-width: 43px;
+  max-height: 24px;
+  margin: 0;
+  padding: 8px 22px;
+  border-radius: 10px;
+  background-color: #fff;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: center;
+}
+
+.card__delete-button {
+  padding: 0;
+  width: 40px;
+  height: 40px;
+  background-image: url("../../Images/trash.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #fff;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.card__delete-button:hover {
+  background-image: url("../../Images/trash-hover.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #fff;
+}
+
+.card__image {
+  max-width: 400px;
+  max-height: 272px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.card__bookmark_date {
+  max-width: 160px;
+  height: 24px;
+  margin: auto 0 auto 0;
+  padding-left: 24px;
+  font-family: Roboto slab;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
+  color: #b6bcbf;
+  text-transform: capitalize;
+}
+
+.card__title {
+  max-width: 352px;
+  height: 60px;
+  margin: auto 0 auto 0;
+  padding-left: 24px;
+  font-family: Roboto Slab;
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 30px;
+  text-align: left;
+  color: #1a1b22;
+  text-transform: capitalize;
+}
+
+.card__description {
+  max-width: 352px;
+  max-height: 110px;
+  margin: auto 0 auto 0;
+  padding-left: 24px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  text-align: left;
+  color: #1a1b22;
+  text-transform: capitalize;
+}
+
+.card__article_source {
+  max-width: 352px;
+  height: 20px;
+  margin: auto 0 auto 0;
+  padding-left: 24px;
+  font-family: Roboto Slab;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0.4000000059604645px;
+  text-align: left;
+  color: #b6bcbf;
+  text-transform: uppercase;
+}
