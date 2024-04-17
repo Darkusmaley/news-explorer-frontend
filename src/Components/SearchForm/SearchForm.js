@@ -9,7 +9,9 @@ function SearchBar({ onsubmit }) {
           className="searchbar__input"
           placeholder="Enter topic"
         ></input>
-        <button className="searchbar__button"> Search</button>
+        <button className="searchbar__button" type="submit">
+          Search
+        </button>
       </form>
     </div>
   );

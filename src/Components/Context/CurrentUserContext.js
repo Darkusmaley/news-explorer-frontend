@@ -1,7 +1,3 @@
-import React from "react";
+import { createContext } from "react";
 
-const CurrentUserContext = React.createContext({
-  name: "",
-});
-
-export { CurrentUserContext };
+export const CurrentUserContext = createContext();

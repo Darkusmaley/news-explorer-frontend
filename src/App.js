@@ -9,7 +9,7 @@ import RegisterModal from "./Components/Modals/RegisterModal";
 import LoginModal from "./Components/Modals/LoginModal";
 import SavedNews from "./Components/SavedNews/SavedNews";
 import { CurrentUserContext } from "./Components/Context/CurrentUserContext";
-import { SavedArticleContext } from "./Components/Context/SavedArticleCOntect";
+import { SavedArticleContext } from "./Components/Context/SavedArticleContext";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -48,7 +48,7 @@ function App() {
 
   return (
     <div className="App ">
-      <CurrentUserContext.Provider value={{ currentUser }}>
+      <CurrentUserContext.Provider value={{ isLoading, currentUser }}>
         <SavedArticleContext.Provider value={savedArticles}>
           <Routes>
             <Route

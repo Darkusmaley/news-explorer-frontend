@@ -1,6 +1,9 @@
 import "./SavedNews.css";
 import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader";
 import NewsCardList from "../NewsCardList/NewsCardList";
+import { CurrentUserContext } from "../Context/CurrentUserContext";
+import { SavedArticleContext } from "../Context/SavedArticleContext";
+import { useContext } from "react";
 
 function SavedNews({
   onSelectCard,
@@ -8,6 +11,8 @@ function SavedNews({
   handleRegisterModal,
   newsCard,
 }) {
+  const currentUser = useContext({ CurrentUserContext });
+  const savedArticles = useContext({ SavedArticleContext });
   return (
     <section className="saved-news ">
       <div>
@@ -19,7 +24,7 @@ function SavedNews({
         <div className="saved-news__group">
           <h3 className="saved-news__title">Saved articles </h3>
           <h3 className="saved-news__subtext">
-            Elise, you have 5 saved articles
+            {currentUser.name}, you have 5 saved articles
           </h3>
           <div className="saved-news__search-grouping">
             <h3 className="saved-news__search-text">
