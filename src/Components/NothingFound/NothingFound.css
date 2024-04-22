@@ -1,0 +1,36 @@
+@font-face {
+  font-family: "Roboto";
+  src: url("../../Fonts/roboto-slab-400-regular.woff") format("woff"),
+    url("../../Fonts/roboto-slab-400-regular.woff2") format("woff2"),
+    url("../../Fonts/roboto-400-regular.woff") format("woff"),
+    url("../../Fonts/roboto-400-regular.woff2") format("woff2");
+}
+
+.nothing-found {
+  width: 1440px;
+  height: 600px;
+  background-color: #e8e8e8;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  margin: 0;
+  font-family: Roboto Slab;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 46px;
+  text-align: left;
+}
+
+.description {
+  margin: 0;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
+}

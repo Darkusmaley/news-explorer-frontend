@@ -4,6 +4,7 @@ import NewsCardList from "../NewsCardList/NewsCardList";
 import { CurrentUserContext } from "../Context/CurrentUserContext";
 import { SavedArticleContext } from "../Context/SavedArticleContext";
 import { useContext } from "react";
+import Footer from "../Footer/Footer";
 
 function SavedNews({
   onSelectCard,
@@ -30,7 +31,6 @@ function SavedNews({
             <h3 className="saved-news__search-text">
               By keywords:
               <span className="saved-news__search-text_bold">
-                {" "}
                 Nature, Yellowstone, and 2 other
               </span>
             </h3>
@@ -38,6 +38,7 @@ function SavedNews({
         </div>
       </div>
       <NewsCardList newsCard={newsCard} />
+      <Footer />
     </section>
   );
 }

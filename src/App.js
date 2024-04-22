@@ -1,4 +1,5 @@
 import "./App.css";
+import Header from "./Components/Header/Header";
 import Main from "./Components/Main/Main";
 import Footer from "./Components/Footer/Footer";
 import React from "react";
@@ -10,6 +11,7 @@ import LoginModal from "./Components/Modals/LoginModal";
 import SavedNews from "./Components/SavedNews/SavedNews";
 import { CurrentUserContext } from "./Components/Context/CurrentUserContext";
 import { SavedArticleContext } from "./Components/Context/SavedArticleContext";
+import NothingFound from "./Components/NothingFound/NothingFound";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
@@ -50,6 +52,10 @@ function App() {
     <div className="App ">
       <CurrentUserContext.Provider value={{ isLoading, currentUser }}>
         <SavedArticleContext.Provider value={savedArticles}>
+          <Header
+          handleRegisterModal={handleRegisterModal}
+          isLoggedIn={isLoggedIn}
+        />
           <Routes>
             <Route
               exact
@@ -67,7 +73,6 @@ function App() {
               element={<SavedNews newsCard={newsCard} />}
             ></Route>
           </Routes>
-
           <Footer />
 
           {activeModal === "register" && (

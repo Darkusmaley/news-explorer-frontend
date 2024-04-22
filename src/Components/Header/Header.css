@@ -9,11 +9,17 @@
 .header {
   max-width: 1440px;
   height: 80px;
+  box-shadow: 0px -1px 0px 0px #ffffff33 inset;
+}
+
+.header__overlay {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
   align-items: center;
-  box-shadow: 0px -1px 0px 0px #ffffff33 inset;
+  background-color: #00000080;
+  height: 80px;
+  width: 1440px;
 }
 
 .header__link-main {

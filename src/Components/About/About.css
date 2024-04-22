@@ -15,7 +15,7 @@
 
 .about__info {
   display: flex;
-  margin-top: 131px;
+  padding-top: 131px;
   gap: 56px;
 }
 

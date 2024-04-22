@@ -2,6 +2,10 @@
   min-height: 1280px;
   max-width: 1440px;
   margin: 0 auto;
+  background-image: url("./Images/georgia-de-lotz--UsJoNxLaNo-unsplash.jpg");
+  background-repeat: no-repeat;
+  background-position: 0 -191px;
+  background-size: contain;
 }
 
 @media (prefers-reduced-motion: no-preference) {

@@ -10,12 +10,6 @@
 
 .main {
   max-width: 1440px;
-  height: 576px;
-  background-color: #00000080;
-  background-image: url("../../Images/georgia-de-lotz--UsJoNxLaNo-unsplash.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
 }
 
 .main__title {
