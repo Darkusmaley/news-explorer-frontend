@@ -23,17 +23,17 @@ function SavedNews({
         />
 
         <div className="saved-news__group">
-          <h3 className="saved-news__title">Saved articles </h3>
-          <h3 className="saved-news__subtext">
+          <h1 className="saved-news__title">Saved articles </h1>
+          <h2 className="saved-news__subtext">
             {currentUser.name}, you have 5 saved articles
-          </h3>
+          </h2>
           <div className="saved-news__search-grouping">
-            <h3 className="saved-news__search-text">
+            <p className="saved-news__search-text">
               By keywords:
               <span className="saved-news__search-text_bold">
                 Nature, Yellowstone, and 2 other
               </span>
-            </h3>
+            </p>
           </div>
         </div>
       </div>

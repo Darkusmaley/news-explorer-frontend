@@ -52,10 +52,10 @@ function App() {
     <div className="App ">
       <CurrentUserContext.Provider value={{ isLoading, currentUser }}>
         <SavedArticleContext.Provider value={savedArticles}>
-          <Header
-          handleRegisterModal={handleRegisterModal}
-          isLoggedIn={isLoggedIn}
-        />
+          {/* <Header
+            handleRegisterModal={handleRegisterModal}
+            isLoggedIn={isLoggedIn}
+          /> */}
           <Routes>
             <Route
               exact
@@ -65,6 +65,7 @@ function App() {
                   isLoggedIn={isLoggedIn}
                   handleRegisterModal={handleRegisterModal}
                   onClose={handleCloseModal}
+                  isLoading={isLoading}
                 />
               }
             ></Route>
