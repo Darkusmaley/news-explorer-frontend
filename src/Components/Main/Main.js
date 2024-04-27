@@ -25,7 +25,15 @@ function Main({ isLoggedIn, isLoading }) {
     <main className="main ">
       <div className="main__overlay">
         {isMobile ? (
-          <MobileView currentRoute={"main"} onClick={togglePopupMenu} />
+          <>
+            <MobileView currentRoute={"main"} onClick={togglePopupMenu} />
+            <h1 className="main__title">What's going on in the world? </h1>
+            <p className="main__subtext">
+              Find the latest news on any topic and save them in your personal
+              account.
+            </p>
+            <SearchBar isLoading={isLoading} />
+          </>
         ) : (
           <>
             <h1 className="main__title">What's going on in the world? </h1>
