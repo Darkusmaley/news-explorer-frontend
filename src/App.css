@@ -14,26 +14,22 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+/* @media screen and (min-width: 768px) and (max-width: 1279px) {
+  .App {
+    max-width: 1279px;
+    background-image: url("./Images/georgia-de-lotz--UsJoNxLaNo-unsplash.jpg");
+    background-repeat: no-repeat;
+    background-position: 0 -191px;
+    background-size: contain;
   }
 }
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .App {
+    max-width: 767px;
+    background-image: url("./Images/georgia-de-lotz--UsJoNxLaNo-unsplash.jpg");
+    background-repeat: no-repeat;
+    background-position: 0 -191px;
+    background-size: contain;
+  }
+} */

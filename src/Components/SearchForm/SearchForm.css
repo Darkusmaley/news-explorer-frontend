@@ -67,3 +67,52 @@ input::-webkit-search-cancel-button {
   -webkit-appearance: none;
   cursor: pointer;
 }
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .searchbar {
+    padding: 48px 160px;
+  }
+
+  .searchbar__form {
+    width: 462px;
+    height: 56px;
+  }
+
+  .searchbar__button {
+    width: 160px;
+    height: 58px;
+    right: -3px;
+    top: -1px;
+    cursor: pointer;
+  }
+  .searchbar__button:active {
+    background-color: #2a65cc;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .searchbar {
+    padding: 122px 16px 32px;
+    max-width: 288px;
+    height: 128px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .searchbar__form {
+    width: 288px;
+    height: 56px;
+  }
+
+  .searchbar__button {
+    width: 288px;
+    height: 58px;
+    right: 1px;
+    top: 72px;
+    cursor: pointer;
+  }
+  .searchbar__button:active {
+    background-color: #2a65cc;
+  }
+}
