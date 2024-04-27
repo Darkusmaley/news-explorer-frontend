@@ -40,6 +40,10 @@ function App() {
     setSelectedCard(card);
   };
 
+  const handleOpenPoupMenu = () => {
+    setActiveModal("mobile");
+  };
+
   const handleSubmit = (request) => {
     setIsLoading(true);
     request()
@@ -86,6 +90,15 @@ function App() {
             />
           )}
           {activeModal === "login" && (
+            <LoginModal
+              handleCloseModal={handleCloseModal}
+              isOpen={activeModal === "login"}
+              // loginUser={loginUser}
+              openRegisterModal={handleRegisterModal}
+              isLoading={isLoading}
+            />
+          )}
+          {activeModal === "mobile" && (
             <LoginModal
               handleCloseModal={handleCloseModal}
               isOpen={activeModal === "login"}

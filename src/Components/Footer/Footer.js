@@ -10,17 +10,25 @@ function Footer() {
           © 2021 Supersite, Powered by News API
         </h2>
         <div className="footer__links">
-          <Link className="footer__link" to="/">
-            Home
-          </Link>
-          <Link className="footer__link">TripleTen</Link>
-          <div className="footer__link-social">
-            <Link to="">
+          <div className="footer__links-left">
+            <Link className="footer__link" to="/">
+              Home
+            </Link>
+            <a
+              href="https://tripleten.com/"
+              target="_blank"
+              className="footer__link"
+            >
+              TripleTen
+            </a>
+          </div>
+          <div className="footer__links-social">
+            <a href="https://github.com/" target="_blank">
               <img src={GitHubLogo} className="footer__link-github" />
-            </Link>
-            <Link to="">
+            </a>
+            <a href="https://www.facebook.com/" target="_blank">
               <img src={FacebookLogo} className="footer__link-facebook" />
-            </Link>
+            </a>
           </div>
         </div>
       </div>
