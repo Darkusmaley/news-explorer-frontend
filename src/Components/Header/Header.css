@@ -17,9 +17,7 @@
   justify-content: space-between;
   flex-direction: row;
   align-items: center;
-  background-color: #00000080;
   height: 80px;
-  width: 1440px;
 }
 
 .header__link-main {
@@ -123,4 +121,48 @@
 
 .home__grouping {
   position: relative;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .header {
+    max-width: 1279px;
+  }
+
+  .header__overlay {
+    max-width: 1279px;
+  }
+
+  .header__link-group {
+    padding-right: 40px;
+  }
+
+  .header__link-main {
+    padding-left: 40px;
+    font-family: Roboto Slab;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    text-align: left;
+  }
+
+  .header__link-home {
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    text-align: center;
+  }
+
+  .header__link-signin {
+    width: 152px;
+    height: 40px;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
 }

@@ -11,11 +11,10 @@ import LoginModal from "./Components/Modals/LoginModal";
 import SavedNews from "./Components/SavedNews/SavedNews";
 import { CurrentUserContext } from "./Components/Context/CurrentUserContext";
 import { SavedArticleContext } from "./Components/Context/SavedArticleContext";
-import NothingFound from "./Components/NothingFound/NothingFound";
+import MobileModal from "./Components/MobileModal/MobileModal";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
-  const [selectedCard, setSelectedCard] = useState({});
   const [newsCard, setNewsCard] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
@@ -28,20 +27,15 @@ function App() {
 
   const handleRegisterModal = () => {
     setActiveModal("register");
+  };
+
+  const handleMobileModal = () => {
+    setActiveModal("mobile");
     console.log("cheese");
   };
 
   const handleCloseModal = () => {
     setActiveModal("");
-  };
-
-  const handleSelectedCard = (card) => {
-    setActiveModal("preview");
-    setSelectedCard(card);
-  };
-
-  const handleOpenPoupMenu = () => {
-    setActiveModal("mobile");
   };
 
   const handleSubmit = (request) => {
@@ -56,10 +50,6 @@ function App() {
     <div className="App ">
       <CurrentUserContext.Provider value={{ isLoading, currentUser }}>
         <SavedArticleContext.Provider value={savedArticles}>
-          {/* <Header
-            handleRegisterModal={handleRegisterModal}
-            isLoggedIn={isLoggedIn}
-          /> */}
           <Routes>
             <Route
               exact
@@ -68,6 +58,7 @@ function App() {
                 <Main
                   isLoggedIn={isLoggedIn}
                   handleRegisterModal={handleRegisterModal}
+                  handleMobileModal={handleMobileModal}
                   onClose={handleCloseModal}
                   isLoading={isLoading}
                 />
@@ -99,12 +90,12 @@ function App() {
             />
           )}
           {activeModal === "mobile" && (
-            <LoginModal
+            <MobileModal
               handleCloseModal={handleCloseModal}
-              isOpen={activeModal === "login"}
+              isOpen={activeModal === "mobile"}
               // loginUser={loginUser}
-              openRegisterModal={handleRegisterModal}
-              isLoading={isLoading}
+              openMobileModal={handleMobileModal}
+              handleRegisterModal={handleRegisterModal}
             />
           )}
         </SavedArticleContext.Provider>

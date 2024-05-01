@@ -4,7 +4,7 @@ import menu from "../../Images/menu.svg";
 import menuDark from "../../Images/menu-dark.svg";
 import "./MobileView.css";
 
-const MobileView = ({ currentRoute, onMenuClick }) => {
+const MobileView = ({ currentRoute, handleMobileModal }) => {
   const { navigateToHome } = useNavigation();
   const isSavedNews = currentRoute === "saved-news";
   const menuIcon = isSavedNews ? menuDark : menu;
@@ -27,7 +27,10 @@ const MobileView = ({ currentRoute, onMenuClick }) => {
         >
           NewsExplorer
         </button>
-        <button className="mobile-header__menu-button" onClick={onMenuClick}>
+        <button
+          className="mobile-header__menu-button"
+          onClick={handleMobileModal}
+        >
           <img
             className="mobile-header__menu-icon"
             alt="Menu Icon"
@@ -35,6 +38,7 @@ const MobileView = ({ currentRoute, onMenuClick }) => {
           />
         </button>
       </div>
+      <div></div>
     </header>
   );
 };

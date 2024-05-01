@@ -70,7 +70,7 @@ input::-webkit-search-cancel-button {
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
   .searchbar {
-    padding: 48px 160px;
+    padding: 48px 160px 48px 160px;
   }
 
   .searchbar__form {

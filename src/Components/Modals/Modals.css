@@ -5,7 +5,9 @@
     url("../../Fonts/roboto-500.woff") format("woff"),
     url("../../Fonts/roboto-500.woff2") format("woff2"),
     url("../../Fonts/roboto-900.woff") format("woff"),
-    url("../../Fonts/roboto-900.woff2") format("woff2");
+    url("../../Fonts/roboto-900.woff2") format("woff2"),
+    url("../../Fonts/inter-400-regular.woff") format("woff"),
+    url("../../Fonts/inter-400-regular.woff2") format("woff2");
 }
 
 .modal {
@@ -15,7 +17,7 @@
   right: 0;
   position: fixed;
   display: flex;
-  justify-content: center;
+
   align-items: center;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.5);
@@ -174,4 +176,63 @@
   line-height: 20px;
   letter-spacing: 0em;
   text-align: left;
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .modal__container {
+    max-width: 320px;
+    max-height: 560px;
+  }
+
+  .modal__content {
+    padding: 16px 0 16px 16px;
+  }
+
+  .modal__title {
+    font-family: Roboto;
+    font-size: 24px;
+    font-weight: 900;
+    line-height: 28.13px;
+    text-align: left;
+  }
+
+  .form__info {
+    max-width: 288px;
+  }
+
+  .form__label {
+    font-family: Inter;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14.52px;
+    text-align: left;
+  }
+
+  .form__label-email {
+    width: 288px;
+    height: 46px;
+  }
+
+  .form__label-password {
+    width: 288px;
+    height: 46px;
+  }
+
+  .form__buttons {
+    width: 290px;
+  }
+
+  .form__submit-button {
+    max-width: 288px;
+    max-height: 64px;
+    padding: 0;
+  }
+
+  .form__input {
+    font-family: Inter;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16.94px;
+    text-align: left;
+  }
 }

@@ -47,7 +47,7 @@ const Header = ({ isLoggedIn, handleRegisterModal }) => {
                 id="link-logout"
                 onClick={handleRegisterModal}
               >
-                {/* {currentUser.name} */}ss
+                {currentUser.name}
                 <img src={logout} />
               </button>
             </div>

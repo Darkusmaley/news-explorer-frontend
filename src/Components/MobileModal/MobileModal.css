@@ -1,0 +1,90 @@
+@font-face {
+  font-family: "Inter", "Roboto";
+  src: url("../../Fonts/roboto-slab-700.woff") format("woff"),
+    url("../../Fonts/roboto-slab-700.woff2") format("woff2"),
+    url("../../Fonts/roboto-500.woff") format("woff"),
+    url("../../Fonts/roboto-500.woff2") format("woff2");
+}
+
+.mobile-modal {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.mobile-modal__container {
+  max-width: 767px;
+  height: 230px;
+  background-color: #1a1b22;
+  width: 100%;
+}
+
+.mobile-modal__header {
+  max-width: 767px;
+  height: 56px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0px -1px 0px 0px #ffffff33 inset;
+}
+
+.mobile-modal__news-explorer {
+  background-color: transparent;
+  border: none;
+  color: #ffffff;
+  font-family: Roboto Slab;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  text-align: left;
+}
+
+.mobile-modal__close-button {
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+  background-image: url("../../Images/CloseButton.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: none;
+}
+
+.mobile-modal__redirects {
+  max-width: 735px;
+  height: 146px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.mobile-modal__home-button {
+  background-color: transparent;
+  border: none;
+  color: #ffffff;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 56px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.mobile-modal__signIn-button {
+  width: 288px;
+  height: 56px;
+  border: 1px solid #fff;
+  border-radius: 25px;
+  cursor: pointer;
+  color: #fff;
+  background-color: transparent;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: center;
+}

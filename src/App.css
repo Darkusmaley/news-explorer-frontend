@@ -1,24 +1,10 @@
 .App {
   max-width: 1440px;
   margin: 0 auto;
-  background-image: url("./Images/georgia-de-lotz--UsJoNxLaNo-unsplash.jpg");
-  background-repeat: no-repeat;
-  background-position: 0 -191px;
-  background-size: contain;
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-@media screen and (min-width: 320px) and (max-width: 767px) {
-  .App {
-    max-width: 767px;
-    background-image: url("./Images/georgia-de-lotz--UsJoNxLaNo-unsplash.jpg");
-    background-repeat: no-repeat;
-    background-position: 0 0;
-    background-size: contain;
   }
 }
