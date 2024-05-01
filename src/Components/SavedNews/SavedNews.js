@@ -2,25 +2,61 @@ import "./SavedNews.css";
 import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader";
 import NewsCardList from "../NewsCardList/NewsCardList";
 import { CurrentUserContext } from "../Context/CurrentUserContext";
-import { SavedArticleContext } from "../Context/SavedArticleContext";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import Footer from "../Footer/Footer";
+import { getSearchResults } from "../../Utils/NewsApi";
+import { deleteArticle } from "../../Utils/Constants";
+import MobileView from "../MobileView/MobileView";
 
-function SavedNews({
-  onSelectCard,
-  isLoggedIn,
-  handleRegisterModal,
-  newsCard,
-}) {
-  const currentUser = useContext({ CurrentUserContext });
-  const savedArticles = useContext({ SavedArticleContext });
+function SavedNews({ isLoggedIn, handleRegisterModal, newsCard }) {
+  const [savedArticles, setSavedArticles] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  const currentUser = useContext(CurrentUserContext);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    const articles = getSearchResults();
+    setSavedArticles(articles);
+    setIsLoading(false);
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const handleUnsavedArticle = (articleToDelete) => {
+    deleteArticle(articleToDelete);
+    setSavedArticles((currentArticles) => {
+      currentArticles.filter((article) => {
+        return article.title !== articleToDelete.title;
+      });
+    });
+  };
+
+  const extractKeywords = (article) => {
+    const Keywords = article.flatMap((article) => {
+      return article.searchKeyword ? [article.searchKeyword] : [];
+    });
+    return Array.from(new Set(Keywords));
+  };
+
+  const keyWords = extractKeywords(savedArticles);
+
   return (
     <section className="saved-news ">
       <div>
-        <SavedNewsHeader
-          handleRegisterModal={handleRegisterModal}
-          isLoggedIn={isLoggedIn}
-        />
+        {isMobile ? (
+          <MobileView currentRoute="saved-news" />
+        ) : (
+          <SavedNewsHeader
+            handleRegisterModal={handleRegisterModal}
+            isLoggedIn={isLoggedIn}
+          />
+        )}
 
         <div className="saved-news__group">
           <h1 className="saved-news__title">Saved articles </h1>
