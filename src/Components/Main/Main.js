@@ -11,7 +11,6 @@ function Main({
   handleRegisterModal,
   handleMobileModal,
 }) {
-  const [isPopupMenuOpen, setIsPopupMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   useEffect(() => {
@@ -23,16 +22,15 @@ function Main({
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const togglePopupMenu = () => {
-    setIsPopupMenuOpen(!isPopupMenuOpen);
-  };
-
   return (
     <main className="main ">
       <div className="main__overlay">
         {isMobile ? (
           <>
-            <MobileView currentRoute={"main"} handleMobileModal={handleMobileModal} />
+            <MobileView
+              currentRoute={"main"}
+              handleMobileModal={handleMobileModal}
+            />
             <h1 className="main__title">What's going on in the world? </h1>
             <p className="main__subtext">
               Find the latest news on any topic and save them in your personal

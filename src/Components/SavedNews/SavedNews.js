@@ -3,12 +3,16 @@ import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader";
 import NewsCardList from "../NewsCardList/NewsCardList";
 import { CurrentUserContext } from "../Context/CurrentUserContext";
 import { useContext, useEffect, useState } from "react";
-import Footer from "../Footer/Footer";
-import { getSearchResults } from "../../Utils/NewsApi";
-import { deleteArticle } from "../../Utils/Constants";
+
+import { deleteArticle, getSavedArticles } from "../../Utils/Constants";
 import MobileView from "../MobileView/MobileView";
 
-function SavedNews({ isLoggedIn, handleRegisterModal, newsCard }) {
+function SavedNews({
+  isLoggedIn,
+  handleRegisterModal,
+  newsCard,
+  handleMobileModal,
+}) {
   const [savedArticles, setSavedArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -20,7 +24,7 @@ function SavedNews({ isLoggedIn, handleRegisterModal, newsCard }) {
       setIsMobile(window.innerWidth <= 768);
     };
 
-    const articles = getSearchResults();
+    const articles = getSavedArticles();
     setSavedArticles(articles);
     setIsLoading(false);
 
@@ -46,11 +50,17 @@ function SavedNews({ isLoggedIn, handleRegisterModal, newsCard }) {
 
   const keyWords = extractKeywords(savedArticles);
 
+  const firstKeywords = keyWords.slice(0, 2).join(",");
+  const otherKeyWords = keyWords.length > 2 ? keyWords.length - 2 : 0;
+
   return (
     <section className="saved-news ">
       <div>
         {isMobile ? (
-          <MobileView currentRoute="saved-news" />
+          <MobileView
+            currentRoute="saved-news"
+            handleMobileModal={handleMobileModal}
+          />
         ) : (
           <SavedNewsHeader
             handleRegisterModal={handleRegisterModal}
@@ -61,20 +71,22 @@ function SavedNews({ isLoggedIn, handleRegisterModal, newsCard }) {
         <div className="saved-news__group">
           <h1 className="saved-news__title">Saved articles </h1>
           <h2 className="saved-news__subtext">
-            {currentUser.name}, you have 5 saved articles
+            {currentUser.name}, you have {savedArticles.length} saved articles
           </h2>
           <div className="saved-news__search-grouping">
             <p className="saved-news__search-text">
-              By keywords:
-              <span className="saved-news__search-text_bold">
-                Nature, Yellowstone, and 2 other
+              By keywords:{" "}
+              <span className="saved-news__search-text_keywords-primary">
+                {firstKeywords}
+              </span>
+              <span className="saved-news__search-text_keywords-secondary">
+                , and {otherKeyWords} other
               </span>
             </p>
           </div>
         </div>
       </div>
       <NewsCardList newsCard={newsCard} />
-      <Footer />
     </section>
   );
 }

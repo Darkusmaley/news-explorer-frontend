@@ -87,6 +87,15 @@
   cursor: pointer;
   color: #000;
   background-color: transparent;
+  text-overflow: ellipsis;
+}
+
+.news-header__button-logout_text {
+  margin: 0;
+  padding: 0;
+  max-width: 83px;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .news-header__link-signout:hover {
@@ -95,4 +104,44 @@
 
 .saved-articles__grouping {
   position: relative;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .news-header {
+    max-width: 1279px;
+    max-height: 68px;
+  }
+
+  .news-header__link-main {
+    padding-left: 40px;
+  }
+
+  .news-header__link-group {
+    padding-right: 40px;
+    gap: 16px;
+  }
+
+  .news-header__link-home {
+    max-width: 64px;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    text-align: center;
+  }
+
+  .news-header__link-saved-articles {
+    max-width: 160px;
+  }
+
+  .news-header__saved-articles_underline {
+    max-width: 160px;
+    height: 3px;
+    top: 44px;
+    right: 1px;
+  }
+
+  .news-header__button-logout {
+    max-width: 190px;
+  }
 }

@@ -16,12 +16,12 @@ const MobileView = ({ currentRoute, handleMobileModal }) => {
     >
       <div
         className={`mobile__header_container ${
-          isSavedNews ? "mobile__header_container--saved-news" : ""
+          isSavedNews ? "mobile__header_container-saved-news" : ""
         }`}
       >
         <button
           className={` mobile__header_button-news-explorer ${
-            isSavedNews ? "mobile-header__button--news-explorer-saved-news" : ""
+            isSavedNews ? "mobile-header__button_news-explorer-saved-news" : ""
           }`}
           onClick={navigateToHome}
         >

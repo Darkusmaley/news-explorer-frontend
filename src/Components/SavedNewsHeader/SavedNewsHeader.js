@@ -42,7 +42,9 @@ const SavedNewsHeader = ({ handleRegisterModal }) => {
             id="link-signin"
             onClick={handleRegisterModal}
           >
-            {/* {currentUser.name} */}ss
+            <p className="news-header__button-logout_text">
+              {currentUser.name}
+            </p>
             <img src={logout} />
           </button>
         </div>

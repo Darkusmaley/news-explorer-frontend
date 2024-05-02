@@ -57,7 +57,15 @@
   text-align: left;
 }
 
-.saved-news__search-text_bold {
+.saved-news__search-text_keywords-primary {
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+  text-align: left;
+}
+
+.saved-news__search-text_keywords-secondary {
   font-family: Roboto;
   font-size: 18px;
   font-weight: 700;

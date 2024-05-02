@@ -48,7 +48,7 @@ function App() {
 
   return (
     <div className="App ">
-      <CurrentUserContext.Provider value={{ isLoading, currentUser }}>
+      <CurrentUserContext.Provider value={currentUser}>
         <SavedArticleContext.Provider value={savedArticles}>
           <Routes>
             <Route
@@ -66,7 +66,12 @@ function App() {
             ></Route>
             <Route
               path="/saved-news"
-              element={<SavedNews newsCard={newsCard} />}
+              element={
+                <SavedNews
+                  newsCard={newsCard}
+                  handleMobileModal={handleMobileModal}
+                />
+              }
             ></Route>
           </Routes>
           <Footer />

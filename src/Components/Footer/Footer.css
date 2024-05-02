@@ -1,6 +1,7 @@
 .footer {
   max-width: 1440px;
   max-height: 80px;
+  padding: 24px 40px 18px;
 }
 
 .footer__info {
@@ -84,7 +85,7 @@
 
   .footer__trademark {
     margin-top: 38px;
-    margin-bottom:22px ;
+    margin-bottom: 22px;
   }
 
   .footer__links {
