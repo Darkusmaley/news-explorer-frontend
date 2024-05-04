@@ -135,10 +135,10 @@
   }
 
   .news-header__saved-articles_underline {
-    max-width: 160px;
+    max-width: 140px;
     height: 3px;
     top: 44px;
-    right: 1px;
+    right: -8px;
   }
 
   .news-header__button-logout {

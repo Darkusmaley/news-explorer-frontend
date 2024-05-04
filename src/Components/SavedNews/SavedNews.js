@@ -21,7 +21,7 @@ function SavedNews({
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
+      setIsMobile(window.innerWidth <= 767);
     };
 
     const articles = getSavedArticles();
@@ -68,7 +68,7 @@ function SavedNews({
           />
         )}
 
-        <div className="saved-news__group">
+        <div className="saved-news__text_group">
           <h1 className="saved-news__title">Saved articles </h1>
           <h2 className="saved-news__subtext">
             {currentUser.name}, you have {savedArticles.length} saved articles
