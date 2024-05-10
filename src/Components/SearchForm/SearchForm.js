@@ -44,7 +44,7 @@ function SearchBar({ isLoggedIn }) {
           onChange={handleInputChange}
           onKeyDown={handleKeyPress}
         />
-        <button className="searchbar__button" type="submit">
+        <button className="searchbar__button" onClick={handleSearch}>
           Search
         </button>
       </form>

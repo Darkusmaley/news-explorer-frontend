@@ -4,7 +4,7 @@ import { CurrentUserContext } from "../Context/CurrentUserContext";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import logout from "../../Images/logout.svg";
-
+import underline from "../../Images/Black-Vector (Stroke).svg";
 const SavedNewsHeader = ({ handleRegisterModal }) => {
   const currentUser = useContext(CurrentUserContext);
 
@@ -32,7 +32,11 @@ const SavedNewsHeader = ({ handleRegisterModal }) => {
               Saved articles
             </button>
           </Link>
-          <img className="news-header__saved-articles_underline" />
+          <img
+            src={underline}
+            className="news-header__saved-articles_underline"
+            alt="underline"
+          />
         </div>
 
         <div>
@@ -45,7 +49,7 @@ const SavedNewsHeader = ({ handleRegisterModal }) => {
             <p className="news-header__button-logout_text">
               {currentUser.name}
             </p>
-            <img src={logout} />
+            <img src={logout} alt="logout button" />
           </button>
         </div>
       </div>

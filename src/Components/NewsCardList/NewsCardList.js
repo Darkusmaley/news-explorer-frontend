@@ -1,21 +1,53 @@
-import { useContext } from "react";
-import { CurrentUserContext } from "../Context/CurrentUserContext";
 import NewsCard from "../NewsCard/NewsCard";
+import { useState } from "react";
+import { saveArticle, isArticleSaved } from "../../Utils/Constants";
 import "./NewsCardList.css";
 
-const NewsCardList = ({ newsCard }) => {
-  const currentUser = useContext({ CurrentUserContext });
-  // const filterCards = savedArticles.filter((card) => {
-  //   return card.tag === savedArticles.tag;
-  // });
+const NewsCardList = ({ isLoggedIn }) => {
+  const [visibleArticles, setVisibleArticles] = useState(3);
+  const [articles] = useState([]);
+
+  const onSave = (article) => {
+    if (!isArticleSaved(article)) {
+      saveArticle(article);
+    }
+  };
+
+  const loadAdditionalArticles = () => {
+    setVisibleArticles((visible) => visible + 3);
+  };
+
   return (
-    <section className="news-card-list">
-      {newsCard
-        .filter((article) => article.owner === currentUser._id)
-        .map((article) => {
-          return <NewsCard newsData={article} key={article.link} />;
-        })}
-    </section>
+    <div className="news-card__list">
+      <h2 className="news-card__list-title">Search results</h2>
+      <div className="news-card__list-grid">
+        <NewsCard />
+        <NewsCard />
+        <NewsCard />
+        <NewsCard />
+        <NewsCard />
+        <NewsCard />
+        <NewsCard />
+        <NewsCard />
+        <NewsCard />
+        {/* {articles.slice(0, visibleArticles).map((article) => (
+          <NewsCard
+            key={article.url}
+            article={article}
+            onSave={onSave}
+            isLoggedIn={isLoggedIn}
+          />
+        ))} */}
+      </div>
+      {visibleArticles < articles.length && (
+        <button
+          onClick={loadAdditionalArticles}
+          className="news-card-list__load-articles"
+        >
+          Load more
+        </button>
+      )}
+    </div>
   );
 };
 

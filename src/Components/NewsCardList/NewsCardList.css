@@ -1,9 +1,42 @@
-.news-card-list {
-  background-color: #f5f6f7;
+@font-face {
+  font-family: "Roboto";
+  src: url("../../Fonts/roboto-500.woff") format("woff"),
+    url("../../Fonts/roboto-500.woff2") format("woff2"),
+    url("../../Fonts/roboto-400-regular.woff") format("woff"),
+    url("../../Fonts/roboto-400-regular.woff2") format("woff2"),
+    url("../../Fonts/roboto-slab-400-regular.woff") format("woff"),
+    url("../../Fonts/roboto-slab-400-regular.woff2") format("woff2"),
+    url("../../Fonts/roboto-slab-700.woff") format("woff"),
+    url("../../Fonts/roboto-slab-700.woff2") format("woff2");
+}
+
+.news-card__list {
   max-width: 1440px;
+  width: 100%;
+  background-color: #f5f6f7;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  column-gap:16px;
-  padding: 62px 104px;
+  flex-direction: column;
+  column-gap: 16px;
+  padding: 80px 104px;
+  overflow: hidden;
+}
+
+.news-card__list-title {
+  max-width: 712px;
+  height: 46px;
+  margin-top: 0;
+  margin-bottom: 64px;
+  font-family: Roboto Slab;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 46px;
+  text-align: left;
+}
+
+.news-card__list-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 64px;
 }

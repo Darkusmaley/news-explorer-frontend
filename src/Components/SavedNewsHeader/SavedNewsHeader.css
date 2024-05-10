@@ -5,7 +5,7 @@
   justify-content: space-between;
   flex-direction: row;
   align-items: center;
-  box-shadow: 0px -1px 0px 0px #d1d2d6 inset;
+  border-bottom: 1px solid #d1d2d6;
 }
 
 .news-header__link-main {
@@ -62,7 +62,6 @@
 }
 
 .news-header__saved-articles_underline {
-  background: url("../../Images/Black-Vector\ \(Stroke\).svg") center no-repeat;
   width: 178px;
   height: 3px;
   position: absolute;

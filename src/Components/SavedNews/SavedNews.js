@@ -1,18 +1,15 @@
 import "./SavedNews.css";
 import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader";
-import NewsCardList from "../NewsCardList/NewsCardList";
 import { CurrentUserContext } from "../Context/CurrentUserContext";
 import { useContext, useEffect, useState } from "react";
-
 import { deleteArticle, getSavedArticles } from "../../Utils/Constants";
 import MobileView from "../MobileView/MobileView";
+import Preloader from "../Preloader/Preloader";
+import NewsCard from "../NewsCard/NewsCard";
+import NothingFound from "../NothingFound/NothingFound";
+import NewsCardList from "../NewsCardList/NewsCardList";
 
-function SavedNews({
-  isLoggedIn,
-  handleRegisterModal,
-  newsCard,
-  handleMobileModal,
-}) {
+function SavedNews({ isLoggedIn, handleRegisterModal, handleMobileModal }) {
   const [savedArticles, setSavedArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -48,10 +45,10 @@ function SavedNews({
     return Array.from(new Set(Keywords));
   };
 
-  const keyWords = extractKeywords(savedArticles);
+  const keywords = extractKeywords(savedArticles);
 
-  const firstKeywords = keyWords.slice(0, 2).join(",");
-  const otherKeyWords = keyWords.length > 2 ? keyWords.length - 2 : 0;
+  const firstKeywords = keywords.slice(0, 2).join(",");
+  const otherKeywords = keywords.length > 2 ? keywords.length - 2 : 0;
 
   return (
     <section className="saved-news ">
@@ -80,13 +77,33 @@ function SavedNews({
                 {firstKeywords}
               </span>
               <span className="saved-news__search-text_keywords-secondary">
-                , and {otherKeyWords} other
+                , and {otherKeywords} other
               </span>
             </p>
           </div>
         </div>
       </div>
-      <NewsCardList newsCard={newsCard} />
+      {isLoading ? (
+        <Preloader />
+      ) : savedArticles.length > 0 ? (
+        <div className="saved-news__cards">
+          <div className="saved-news__card_container">
+            {savedArticles.map((article) => (
+              <NewsCard
+                key={article.title}
+                article={article}
+                onArticleDelete={handleUnsavedArticle}
+                keywords={keywords}
+                isInSavedNewsRoute={true}
+              />
+            ))}
+          </div>
+        </div>
+      ) : (
+        // <NothingFound />
+        // <NewsCard/>
+        <NewsCardList/>
+      )}
     </section>
   );
 }

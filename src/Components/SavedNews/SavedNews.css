@@ -49,7 +49,6 @@
 }
 
 .saved-news__search-text {
-  margin: ;
   font-family: Roboto;
   font-size: 18px;
   font-weight: 400;
@@ -79,7 +78,7 @@
   }
 
   .saved-news__text_group {
-    padding: 24px 40px 32px;
+    padding: 24px 40px 0 32px;
   }
 
   .saved-news__title {

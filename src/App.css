@@ -1,6 +1,7 @@
 .App {
-  max-width: 1440px;
+  /* width: 100%; */
   margin: 0 auto;
+  max-width: 1440px;
 }
 
 @media (prefers-reduced-motion: no-preference) {
