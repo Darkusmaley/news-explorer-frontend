@@ -2,7 +2,7 @@ import "./SearchForm.css";
 import NewsCardList from "../NewsCardList/NewsCardList";
 import NothingFound from "../NothingFound/NothingFound";
 import Preloader from "../Preloader/Preloader";
-import { useState } from "react";
+import React, { useState } from "react";
 import { getSearchResults } from "../../Utils/NewsApi";
 
 function SearchBar({ isLoggedIn }) {

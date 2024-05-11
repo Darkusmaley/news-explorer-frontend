@@ -1,5 +1,5 @@
 import NewsCard from "../NewsCard/NewsCard";
-import { useState } from "react";
+import React, { useState } from "react";
 import { saveArticle, isArticleSaved } from "../../Utils/Constants";
 import "./NewsCardList.css";
 
@@ -21,30 +21,21 @@ const NewsCardList = ({ isLoggedIn }) => {
     <div className="news-card__list">
       <h2 className="news-card__list-title">Search results</h2>
       <div className="news-card__list-grid">
-        <NewsCard />
-        <NewsCard />
-        <NewsCard />
-        <NewsCard />
-        <NewsCard />
-        <NewsCard />
-        <NewsCard />
-        <NewsCard />
-        <NewsCard />
-        {/* {articles.slice(0, visibleArticles).map((article) => (
+        {articles.slice(0, visibleArticles).map((article) => (
           <NewsCard
             key={article.url}
             article={article}
             onSave={onSave}
             isLoggedIn={isLoggedIn}
           />
-        ))} */}
+        ))}
       </div>
       {visibleArticles < articles.length && (
         <button
           onClick={loadAdditionalArticles}
           className="news-card-list__load-articles"
         >
-          Load more
+          Show more
         </button>
       )}
     </div>

@@ -2,7 +2,7 @@ import "./NewsCard.css";
 // import { CurrentUserContext } from "../Context/CurrentUserContext";
 // import { useContext } from "react";
 import marcus from "../../Images/MarcusAley.png";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {
   isArticleSaved,
   deleteArticle,
@@ -66,7 +66,7 @@ const NewsCard = ({
       <div className="card__image">
         <div className="card__container">
           <img
-            src={article.urlToImage}
+            src={marcus}
             alt={article.title}
             className="card__image"
           />
@@ -116,7 +116,7 @@ const NewsCard = ({
         </h3>
         <h3 className="card__title">{article.title}</h3>
         <p className="card__description">{article.description}</p>
-        <p className="card__article_source">{article.source}</p>
+        <p className="card__publisher">{article.source}</p>
       </div>
     </div>
   );

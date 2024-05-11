@@ -21,15 +21,6 @@
   gap: 16px;
 }
 
-.card__top-display {
-  max-width: 400px;
-  max-height: 272px;
-  padding: 24px;
-  display: flex;
-  gap: 225px;
-  position: absolute;
-}
-
 .card__tag-container {
   max-width: 182px;
   padding: 0 20px;
@@ -60,20 +51,10 @@
   padding: 0;
   width: 40px;
   height: 40px;
-  background-image: url("../../Images/trash.svg");
-  background-position: center;
-  background-repeat: no-repeat;
   background-color: #ffffff;
   border: 0;
   border-radius: 8px;
   cursor: pointer;
-}
-
-.card__delete-button:hover {
-  background-image: url("../../Images/trash-hover.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-color: #fff;
 }
 
 .card__save-button {
@@ -141,7 +122,7 @@
   text-transform: capitalize;
 }
 
-.card__article_source {
+.card__publisher {
   max-width: 352px;
   height: 20px;
   margin: 0;
@@ -182,7 +163,108 @@
 }
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
+  .card {
+    max-width: 224px;
+    height: 420px;
+  }
+
+  .card__image {
+    max-width: 224px;
+    height: 150px;
+  }
+
+  .card__save-button {
+    top: 8px;
+    right: 8px;
+  }
+
+  .card__delete-button {
+    top: 8px;
+    right: 8px;
+  }
+
+  .card__publish_date {
+    max-width: 147px;
+    height: 24px;
+    font-family: Roboto slab;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+  }
+
+  .card__title {
+    max-width: 192px;
+    height: 72px;
+    font-family: Roboto Slab;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+  }
+
+  .card__description {
+    max-width: 192px;
+    height: 88px;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    text-align: left;
+  }
+
+  .card__publisher {
+    max-width: 192px;
+    height: 20px;
+    font-family: Roboto Slab;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: 0.4000000059604645px;
+    text-align: left;
+  }
 }
 
 @media screen and (min-width: 320px) and (max-width: 767px) {
+  .card {
+    max-width: 288px;
+    height: 440px;
+  }
+
+  .card__image {
+    max-width: 288px;
+    height: 196px;
+  }
+
+  .card__save-button {
+    top: 16px;
+    right: 16px;
+  }
+
+  .card__delete-button {
+    top: 16px;
+    right: 16px;
+  }
+
+  .card__publish_date {
+    max-width: 256px;
+    height: 24px;
+  }
+
+  .card__title {
+    max-width: 256px;
+    height: 48px;
+    margin-bottom: 14px;
+  }
+
+  .card__description {
+    max-width: 256px;
+    height: 88px;
+    margin-bottom: 8px;
+  }
+
+  .card__publisher {
+    max-width: 256px;
+    height: 20px;
+  }
 }

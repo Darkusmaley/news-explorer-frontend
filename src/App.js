@@ -17,9 +17,9 @@ import NewsCard from "./Components/NewsCard/NewsCard";
 function App() {
   const [activeModal, setActiveModal] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [currentUser] = useState({});
-  const [isLoggedIn] = useState(false);
-  const [savedArticles] = useState([]);
+  const [currentUser, setCurretnUser] = useState({});
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [savedArticle, setSavedArticles] = useState([]);
 
   const handleLoginModal = () => {
     setActiveModal("login");
@@ -68,10 +68,7 @@ function App() {
             path="/saved-news"
             element={
               // <ProtectedRoute>
-              <SavedNews
-                savedArticles={savedArticles}
-                handleMobileModal={handleMobileModal}
-              />
+              <SavedNews handleMobileModal={handleMobileModal} />
             }
           ></Route>
         </Routes>

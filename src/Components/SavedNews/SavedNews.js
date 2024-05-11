@@ -1,18 +1,21 @@
 import "./SavedNews.css";
 import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader";
 import { CurrentUserContext } from "../Context/CurrentUserContext";
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { deleteArticle, getSavedArticles } from "../../Utils/Constants";
 import MobileView from "../MobileView/MobileView";
 import Preloader from "../Preloader/Preloader";
 import NewsCard from "../NewsCard/NewsCard";
 import NothingFound from "../NothingFound/NothingFound";
-import NewsCardList from "../NewsCardList/NewsCardList";
 
 function SavedNews({ isLoggedIn, handleRegisterModal, handleMobileModal }) {
-  const [savedArticles, setSavedArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  
+
+  const savedArticles = savedArticle.filter((articles) => {
+    return articles.owner === currentUser._id;
+  });
 
   const currentUser = useContext(CurrentUserContext);
 
@@ -31,11 +34,11 @@ function SavedNews({ isLoggedIn, handleRegisterModal, handleMobileModal }) {
 
   const handleUnsavedArticle = (articleToDelete) => {
     deleteArticle(articleToDelete);
-    setSavedArticles((currentArticles) => {
-      currentArticles.filter((article) => {
-        return article.title !== articleToDelete.title;
-      });
-    });
+    // setSavedArticles((currentArticles) => {
+    //   currentArticles.filter((article) => {
+    //     return article.title !== articleToDelete.title;
+    //   });
+    // });
   };
 
   const extractKeywords = (article) => {
@@ -91,7 +94,7 @@ function SavedNews({ isLoggedIn, handleRegisterModal, handleMobileModal }) {
             {savedArticles.map((article) => (
               <NewsCard
                 key={article.title}
-                article={article}
+                // article={article}
                 onArticleDelete={handleUnsavedArticle}
                 keywords={keywords}
                 isInSavedNewsRoute={true}
@@ -100,9 +103,7 @@ function SavedNews({ isLoggedIn, handleRegisterModal, handleMobileModal }) {
           </div>
         </div>
       ) : (
-        // <NothingFound />
-        // <NewsCard/>
-        <NewsCardList/>
+        <NothingFound />
       )}
     </section>
   );
