@@ -5,7 +5,7 @@ import Preloader from "../Preloader/Preloader";
 import React, { useState } from "react";
 import { getSearchResults } from "../../Utils/NewsApi";
 
-function SearchBar({ isLoggedIn }) {
+const SearchBar = ({ isLoggedIn }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchPerformed, setSearchPerformed] = useState(false);
   const [articles, setArticles] = useState([]);
@@ -48,18 +48,8 @@ function SearchBar({ isLoggedIn }) {
           Search
         </button>
       </form>
-      {isLoading ? (
-        <Preloader />
-      ) : (
-        searchPerformed &&
-        (articles.length > 0 ? (
-          <NewsCardList articles={articles} isLoggedIn={isLoggedIn} />
-        ) : (
-          <NothingFound />
-        ))
-      )}
     </div>
   );
-}
+};
 
 export default SearchBar;

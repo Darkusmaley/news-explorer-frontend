@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 
 const MobileModal = ({
-  isOpen,
+  isLoggedIn,
   onClose,
   handleRegisterModal,
   handleCloseModal,
@@ -41,12 +41,22 @@ const MobileModal = ({
           <Link to={"/"}>
             <button className="mobile-modal__home-button">Home</button>
           </Link>
-          <button
-            className="mobile-modal__signIn-button"
-            onClick={handleRegisterModal}
-          >
-            Sign in
-          </button>
+
+          {!isLoggedIn ? (
+            <button
+              className="mobile-modal__signIn-button"
+              onClick={handleRegisterModal}
+            >
+              Sign in
+            </button>
+          ) : (
+            <button
+              className="mobile-modal__logout-button"
+              onClick={handleRegisterModal}
+            >
+              Log out
+            </button>
+          )}
         </div>
       </div>
     </div>

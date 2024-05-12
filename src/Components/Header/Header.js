@@ -3,9 +3,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { CurrentUserContext } from "../Context/CurrentUserContext";
 import { useContext } from "react";
-import logout from "../../Images/logout.svg";
+import logout from "../../Images/logout-white.svg";
 
-const Header = ({ isLoggedIn, handleRegisterModal }) => {
+const Header = ({ isLoggedIn, handleRegisterModal,logoutUser }) => {
   const currentUser = useContext(CurrentUserContext);
 
   return (
@@ -31,7 +31,7 @@ const Header = ({ isLoggedIn, handleRegisterModal }) => {
               </Link>
               <img className="header__home-underline"></img>
             </div>
-            <Link to="/saved-articles">
+            <Link to="/saved-news">
               <button
                 type="text"
                 className="header__link-saved-articles"
@@ -45,7 +45,7 @@ const Header = ({ isLoggedIn, handleRegisterModal }) => {
                 type="text"
                 className="header__button-logout"
                 id="link-logout"
-                onClick={handleRegisterModal}
+                onClick={logoutUser}
               >
                 {currentUser.name}
                 <img src={logout} />

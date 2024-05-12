@@ -11,12 +11,7 @@ import NothingFound from "../NothingFound/NothingFound";
 function SavedNews({ isLoggedIn, handleRegisterModal, handleMobileModal }) {
   const [isLoading, setIsLoading] = useState(true);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-  
-
-  const savedArticles = savedArticle.filter((articles) => {
-    return articles.owner === currentUser._id;
-  });
-
+  const [savedArticles, setSavedArticles] = useState([]);
   const currentUser = useContext(CurrentUserContext);
 
   useEffect(() => {
@@ -34,11 +29,11 @@ function SavedNews({ isLoggedIn, handleRegisterModal, handleMobileModal }) {
 
   const handleUnsavedArticle = (articleToDelete) => {
     deleteArticle(articleToDelete);
-    // setSavedArticles((currentArticles) => {
-    //   currentArticles.filter((article) => {
-    //     return article.title !== articleToDelete.title;
-    //   });
-    // });
+    setSavedArticles((currentArticles) => {
+      currentArticles.filter((article) => {
+        return article.title !== articleToDelete.title;
+      });
+    });
   };
 
   const extractKeywords = (article) => {
