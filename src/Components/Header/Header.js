@@ -5,7 +5,7 @@ import { CurrentUserContext } from "../Context/CurrentUserContext";
 import { useContext } from "react";
 import logout from "../../Images/logout-white.svg";
 
-const Header = ({ isLoggedIn, handleRegisterModal,logoutUser }) => {
+const Header = ({ isLoggedIn, handleRegisterModal, logoutUser }) => {
   const currentUser = useContext(CurrentUserContext);
 
   return (
@@ -29,7 +29,7 @@ const Header = ({ isLoggedIn, handleRegisterModal,logoutUser }) => {
                   Home
                 </button>
               </Link>
-              <img className="header__home-underline"></img>
+              <img className="header__home-underline" alt="underline"></img>
             </div>
             <Link to="/saved-news">
               <button
@@ -48,7 +48,7 @@ const Header = ({ isLoggedIn, handleRegisterModal,logoutUser }) => {
                 onClick={logoutUser}
               >
                 {currentUser.name}
-                <img src={logout} />
+                <img src={logout} alt="logout button" />
               </button>
             </div>
           </div>
@@ -64,7 +64,7 @@ const Header = ({ isLoggedIn, handleRegisterModal,logoutUser }) => {
                   Home
                 </button>
               </Link>
-              <img className="header__home-underline"></img>
+              <img className="header__home-underline" alt="underline"></img>
             </div>
 
             <div>

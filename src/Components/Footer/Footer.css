@@ -26,6 +26,11 @@
   gap: 40px;
 }
 
+.footer__links-left {
+  display: flex;
+  gap: 40px;
+}
+
 .footer__link {
   font-family: Roboto;
   font-size: 18px;
@@ -101,6 +106,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
+    gap: 0;
   }
 
   .footer__link-social {

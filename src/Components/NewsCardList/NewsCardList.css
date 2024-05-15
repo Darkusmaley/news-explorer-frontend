@@ -40,11 +40,11 @@
   margin-bottom: 64px;
 }
 
-.news-card-list__load-articles {
-  max-width: 240px;
+.news-card-list__button_load-articles {
+  max-width: 288px;
   height: 56px;
-  padding: 16px 74px;
-  background-color: #fff;
+  padding: 17px 90px;
+  background-color: #e8e8e8;
   border: none;
   border-radius: 25px;
   font-family: Roboto;

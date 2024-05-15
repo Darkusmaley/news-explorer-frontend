@@ -7,8 +7,8 @@ import { useContext, useEffect, useState } from "react";
 import Preloader from "../Preloader/Preloader";
 import { HasSearchedContext } from "../Context/HasSearchedContext";
 import { SearchResultContext } from "../Context/SearchResultContext";
-import NewsCardList from "../NewsCardList/NewsCardList";
 import NothingFound from "../NothingFound/NothingFound";
+import NewsCard from "../NewsCard/NewsCard";
 
 const Main = ({
   isLoggedIn,
@@ -66,8 +66,9 @@ const Main = ({
             <SearchBar isLoading={isLoading} />
             <div>
               {isLoading && <Preloader />}
-              {!isLoading && hasSearched && searchResults.length > 0 ? (
-                <NewsCardList handleRegisterModal={handleRegisterModal} />
+              {!isLoading && !hasSearched && !searchResults.length > 0 ? (
+                // <NewsCardList handleRegisterModal={handleRegisterModal} />
+                <NewsCard />
               ) : !isLoading && hasSearched && searchResults.length === 0 ? (
                 <NothingFound />
               ) : searchError === true ? (

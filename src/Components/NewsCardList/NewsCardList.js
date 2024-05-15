@@ -1,17 +1,25 @@
-import NewsCard from "../NewsCard/NewsCard";
-import React, { useState } from "react";
-import { saveArticle, isArticleSaved } from "../../Utils/Constants";
 import "./NewsCardList.css";
+import NewsCard from "../NewsCard/NewsCard";
+import React, { useContext, useState } from "react";
 
-const NewsCardList = ({ isLoggedIn }) => {
-  const [visibleArticles, setVisibleArticles] = useState(3);
-  const [articles] = useState([]);
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
-  const onSave = (article) => {
-    if (!isArticleSaved(article)) {
-      saveArticle(article);
-    }
-  };
+import { CurrentUserContext } from "../Context/CurrentUserContext";
+import { SavedArticleContext } from "../Context/SavedArticleContext";
+import { CurrentPageContext } from "../Context/CurrentPageContext";
+
+const NewsCardList = ({}) => {
+  const { currentUser } = useContext(CurrentUserContext);
+  const { savedArticles } = useContext(SavedArticleContext);
+  const { currentPage, setCurrentPage } = useContext(CurrentPageContext);
+  const location = useLocation();
+
+  const [visibleArticles, setVisibleArticles] = useState(-3);
+
+  useEffect(() => {
+    setCurrentPage(location.pathname);
+  }, [location.pathname, setCurrentPage]);
 
   const loadAdditionalArticles = () => {
     setVisibleArticles((visible) => visible + 3);
@@ -19,21 +27,22 @@ const NewsCardList = ({ isLoggedIn }) => {
 
   return (
     <div className="news-card__list">
-      <h2 className="news-card__list-title">Search results</h2>
+      {currentPage === "/" ? (
+        <h2 className=" news-card__list-title">Search results</h2>
+      ) : (
+        ""
+      )}
       <div className="news-card__list-grid">
-        {articles.slice(0, visibleArticles).map((article) => (
-          <NewsCard
-            key={article.url}
-            article={article}
-            onSave={onSave}
-            isLoggedIn={isLoggedIn}
-          />
-        ))}
+        {savedArticles
+          .filter((article) => article.owner === currentUser._id)
+          .map((article) => {
+            <NewsCard newsData={article} key={article.link} />;
+          })}
       </div>
-      {visibleArticles < articles.length && (
+      {visibleArticles < savedArticles.length && (
         <button
           onClick={loadAdditionalArticles}
-          className="news-card-list__load-articles"
+          className="news-card-list__button_load-articles"
         >
           Show more
         </button>

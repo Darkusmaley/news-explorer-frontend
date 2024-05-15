@@ -9,7 +9,7 @@ const useNavigation = () => {
   const navigateToSavedArticles = () => {
     navigate("/saved-news");
   };
-  return navigateToHome, navigateToSavedArticles;
+  return { navigateToHome, navigateToSavedArticles };
 };
 
 export default useNavigation;

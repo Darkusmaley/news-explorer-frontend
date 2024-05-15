@@ -1,52 +1,80 @@
 import "./SavedNews.css";
 import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader";
-import { CurrentUserContext } from "../Context/CurrentUserContext";
 import React, { useContext, useEffect, useState } from "react";
-import { deleteArticle, getSavedArticles } from "../../Utils/Constants";
 import MobileView from "../MobileView/MobileView";
-import Preloader from "../Preloader/Preloader";
-import NewsCard from "../NewsCard/NewsCard";
-import NothingFound from "../NothingFound/NothingFound";
+import NewsCardList from "../NewsCardList/NewsCardList";
+import { CurrentUserContext } from "../Context/CurrentUserContext";
+import { SavedArticleContext } from "../Context/SavedArticleContext";
 
 function SavedNews({ isLoggedIn, handleRegisterModal, handleMobileModal }) {
-  const [isLoading, setIsLoading] = useState(true);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-  const [savedArticles, setSavedArticles] = useState([]);
-  const currentUser = useContext(CurrentUserContext);
+
+  const { currentUser } = useContext(CurrentUserContext);
+  const { savedArticles } = useContext(SavedArticleContext);
 
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 767);
     };
 
-    const articles = getSavedArticles();
-    setSavedArticles(articles);
-    setIsLoading(false);
-
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const handleUnsavedArticle = (articleToDelete) => {
-    deleteArticle(articleToDelete);
-    setSavedArticles((currentArticles) => {
-      currentArticles.filter((article) => {
-        return article.title !== articleToDelete.title;
+  const userArticles = savedArticles.filter(
+    (article) => article.owner === currentUser._id
+  );
+
+  const keywordArr = userArticles.map((article) => article.keyword);
+  const capatalizeFirstLetter = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+
+  const getKeywordString = (keywords) => {
+    if (keywordArr.length === 0) {
+      return "";
+    }
+    if (keywordArr.length === 1) {
+      return `${capatalizeFirstLetter(keywordArr[0])}`;
+    }
+    if (keywordArr.length > 1) {
+      const count = {};
+      for (let keyword of keywords) {
+        if (count[keyword]) {
+          count[keyword]++;
+        } else {
+          count[keyword] = 1;
+        }
+      }
+
+      const sortKeywordArr = [];
+      for (const item in count) {
+        sortKeywordArr.push([item, count[item]]);
+      }
+      sortKeywordArr.sort((a, b) => {
+        return b[1] - a[1];
       });
-    });
+
+      if (sortKeywordArr.length === 1) {
+        return `${capatalizeFirstLetter(sortKeywordArr[0][0])}`;
+      } else if (sortKeywordArr.length === 2) {
+        return `${capatalizeFirstLetter(
+          sortKeywordArr[0][0]
+        )} and ${capatalizeFirstLetter(sortKeywordArr[1][0])}`;
+      } else {
+        const firstKeyword = sortKeywordArr
+          .slice(0, 2)
+          .map((keyword) => capatalizeFirstLetter(keyword[0]))
+          .join(", ");
+        const moreCount = sortKeywordArr.length - 2;
+        return `${firstKeyword}, and ${moreCount} more`;
+      }
+    } else {
+      return null;
+    }
   };
 
-  const extractKeywords = (article) => {
-    const Keywords = article.flatMap((article) => {
-      return article.searchKeyword ? [article.searchKeyword] : [];
-    });
-    return Array.from(new Set(Keywords));
-  };
-
-  const keywords = extractKeywords(savedArticles);
-
-  const firstKeywords = keywords.slice(0, 2).join(",");
-  const otherKeywords = keywords.length > 2 ? keywords.length - 2 : 0;
+  const keywordString = getKeywordString(keywordArr);
 
   return (
     <section className="saved-news ">
@@ -66,40 +94,25 @@ function SavedNews({ isLoggedIn, handleRegisterModal, handleMobileModal }) {
         <div className="saved-news__text_group">
           <h1 className="saved-news__title">Saved articles </h1>
           <h2 className="saved-news__subtext">
-            {currentUser.name}, you have {savedArticles.length} saved articles
+            {currentUser.name}, you have {userArticles.length} saved article
+            {userArticles.length !== 1 ? "s" : ""}
           </h2>
           <div className="saved-news__search-grouping">
             <p className="saved-news__search-text">
               By keywords:{" "}
               <span className="saved-news__search-text_keywords-primary">
-                {firstKeywords}
-              </span>
-              <span className="saved-news__search-text_keywords-secondary">
-                , and {otherKeywords} other
+                {keywordString}
               </span>
             </p>
           </div>
         </div>
       </div>
-      {isLoading ? (
-        <Preloader />
-      ) : savedArticles.length > 0 ? (
-        <div className="saved-news__cards">
-          <div className="saved-news__card_container">
-            {savedArticles.map((article) => (
-              <NewsCard
-                key={article.title}
-                // article={article}
-                onArticleDelete={handleUnsavedArticle}
-                keywords={keywords}
-                isInSavedNewsRoute={true}
-              />
-            ))}
-          </div>
+
+      <div className="saved-news__cards">
+        <div className="saved-news__card_container">
+          <NewsCardList />
         </div>
-      ) : (
-        <NothingFound />
-      )}
+      </div>
     </section>
   );
 }

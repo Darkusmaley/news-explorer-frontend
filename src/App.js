@@ -3,23 +3,25 @@ import React from "react";
 import { Route } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Routes } from "react-router";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import Main from "./Components/Main/Main";
 import Footer from "./Components/Footer/Footer";
 import RegisterModal from "./Components/Modals/RegisterModal";
 import LoginModal from "./Components/Modals/LoginModal";
 import SavedNews from "./Components/SavedNews/SavedNews";
+import MobileModal from "./Components/MobileModal/MobileModal";
+import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
+
 import { CurrentUserContext } from "./Components/Context/CurrentUserContext";
 import { SavedArticleContext } from "./Components/Context/SavedArticleContext";
 import { CurrentPageContext } from "./Components/Context/CurrentPageContext";
 import { HasSearchedContext } from "./Components/Context/HasSearchedContext";
 import { SearchResultContext } from "./Components/Context/SearchResultContext";
-import MobileModal from "./Components/MobileModal/MobileModal";
-import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
-import { useNavigate } from "react-router-dom";
 
 function App() {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [activeModal, setActiveModal] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -30,6 +32,10 @@ function App() {
   const [hasSearched, setHasSearched] = useState("");
   const [searchResults, setSearchResultst] = useState([]);
   const [searchError, setSearchError] = useState(false);
+
+  useEffect(() => {
+    setCurrentPage(location.pathname);
+  }, [location.pathname]);
 
   const handleLoginModal = () => {
     setActiveModal("login");
@@ -63,13 +69,19 @@ function App() {
     navigate("/");
   };
 
+  const handleSaveArticle = (article) => {};
+
+  const handleDeleteArticle = (article) => {
+    console.log(article);
+  };
+
   return (
     <div className="App ">
-      <CurrentUserContext.Provider value={(isLoggedIn, currentUser)}>
-        <SavedArticleContext.Provider value={savedArticles}>
-          <CurrentPageContext.Provider value={{ currentPage, setCurrentPage }}>
-            <HasSearchedContext.Provider value={hasSearched}>
-              <SearchResultContext.Provider value={searchResults}>
+      <CurrentPageContext.Provider value={{ currentPage, setCurrentPage }}>
+        <CurrentUserContext.Provider value={{ isLoggedIn, currentUser }}>
+          <SavedArticleContext.Provider value={{ savedArticles }}>
+            <HasSearchedContext.Provider value={{ hasSearched }}>
+              <SearchResultContext.Provider value={{ searchResults }}>
                 <Routes>
                   <Route
                     exact
@@ -90,7 +102,10 @@ function App() {
                     path="/saved-news"
                     element={
                       // <ProtectedRoute>
-                      <SavedNews handleMobileModal={handleMobileModal} />
+                      <SavedNews
+                        handleMobileModal={handleMobileModal}
+                        handleDeleteArticle={handleDeleteArticle}
+                      />
                     }
                   ></Route>
                 </Routes>
@@ -128,9 +143,9 @@ function App() {
                 )}
               </SearchResultContext.Provider>
             </HasSearchedContext.Provider>
-          </CurrentPageContext.Provider>
-        </SavedArticleContext.Provider>
-      </CurrentUserContext.Provider>
+          </SavedArticleContext.Provider>
+        </CurrentUserContext.Provider>
+      </CurrentPageContext.Provider>
     </div>
   );
 }

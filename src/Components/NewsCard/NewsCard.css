@@ -162,6 +162,31 @@
   text-align: center;
 }
 
+.card__remove_card {
+  max-width: 182px;
+  padding: 0 20px;
+  height: 40px;
+  position: absolute;
+  top: 24px;
+  right: 68px;
+  background-color: #fff;
+  align-content: center;
+  border-radius: 10px;
+}
+
+.card__remove_card-text {
+  max-width: 142px;
+  height: 18px;
+  position: relative;
+  bottom: -2px;
+  margin: 0;
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 14.06px;
+  text-align: center;
+}
+
 @media screen and (min-width: 768px) and (max-width: 1279px) {
   .card {
     max-width: 224px;

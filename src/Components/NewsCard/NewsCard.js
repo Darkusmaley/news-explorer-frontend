@@ -1,51 +1,23 @@
 import "./NewsCard.css";
 // import { CurrentUserContext } from "../Context/CurrentUserContext";
-// import { useContext } from "react";
+import { useContext } from "react";
 import marcus from "../../Images/MarcusAley.png";
 import React, { useState, useEffect } from "react";
-import {
-  isArticleSaved,
-  deleteArticle,
-  saveArticle,
-} from "../../Utils/Constants";
+import { isArticleSaved } from "../../Utils/Constants";
 import trashCan from "../../Images/trash.svg";
 import trashCanHover from "../../Images/trash-hover.svg";
 import bookmark from "../../Images/Bookmark.svg";
 import bookmarkClicked from "../../Images/Bookmark-marked.svg";
 import bookmarkHover from "../../Images/Bookmark-hover.svg";
-
-const NewsCard = ({
-  isLoggedIn,
-  isInSavedNewsRoute,
-  onArticleSave,
-  onArticleDelete,
-}) => {
-  // const currentUser = useContext(CurrentUserContext);
-  //   const id = item._id; for user identification later
+import { SavedArticleContext } from "../Context/SavedArticleContext";
+// import { KeywordContext } from "../../Components/Context/KeywordContext";
+const NewsCard = ({ newsData, isLoggedIn, isInSavedNewsRoute }) => {
+  const { savedArticles } = useContext(SavedArticleContext);
 
   console.log(marcus);
 
-  const [article] = useState([]);
-  const [isSaved, setIsSaved] = useState(isArticleSaved(article));
+  const [isSaved, setIsSaved] = useState(isArticleSaved(newsData));
   const [hovered, setHovered] = useState(false);
-
-  useEffect(() => {
-    setIsSaved(isArticleSaved(article));
-  }, [article]);
-
-  const handleSaveClick = () => {
-    if (!isLoggedIn && !isInSavedNewsRoute) return;
-    if (isInSavedNewsRoute) {
-      deleteArticle(article);
-      onArticleDelete && onArticleDelete(article);
-    } else {
-      if (!isSaved) {
-        saveArticle(article);
-        setIsSaved(true);
-        onArticleSave && onArticleSave(article);
-      }
-    }
-  };
 
   const icon = isInSavedNewsRoute
     ? hovered
@@ -66,14 +38,14 @@ const NewsCard = ({
       <div className="card__image">
         <div className="card__container">
           <img
-            src={marcus}
-            alt={article.title}
+            src={newsData.link}
+            alt={savedArticles.title}
             className="card__image"
           />
           <div className="card__card-container">
-            {isInSavedNewsRoute && article.searchKeyword && (
+            {isInSavedNewsRoute && savedArticles.searchKeyword && (
               <div className="card__tag-container">
-                <h2 className="card__tag">{"article.searchKeyword"}</h2>
+                <h2 className="card__tag">{savedArticles.keyword}</h2>
               </div>
             )}
             {hovered && !isLoggedIn && !isInSavedNewsRoute && (
@@ -94,7 +66,7 @@ const NewsCard = ({
           <button
             type="button"
             className={buttonClass}
-            onClick={handleSaveClick}
+            onClick={console.log("cheese")}
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
           >
@@ -108,15 +80,15 @@ const NewsCard = ({
       </div>
       <div className="card__content">
         <h3 className="card__publish_date">
-          {new Date(article.publishedAt).toLocaleDateString("en-US", {
+          {new Date(savedArticles.publishedAt).toLocaleDateString("en-US", {
             year: "numeric",
             month: "long",
             day: "numeric",
           })}
         </h3>
-        <h3 className="card__title">{article.title}</h3>
-        <p className="card__description">{article.description}</p>
-        <p className="card__publisher">{article.source}</p>
+        <h3 className="card__title">{savedArticles.title}</h3>
+        <p className="card__description">{savedArticles.description}</p>
+        <p className="card__publisher">{savedArticles.source}</p>
       </div>
     </div>
   );
