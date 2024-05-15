@@ -13,8 +13,6 @@ const NewsCard = ({ newsData, isLoggedIn, isInSavedNewsRoute }) => {
   const [isSaved, setIsSaved] = useState(isArticleSaved(newsData));
   const [hovered, setHovered] = useState(false);
 
-  const savedArticles = useContext(SavedArticleContext);
-
   const icon = isInSavedNewsRoute
     ? hovered
       ? trashCanHover
@@ -34,14 +32,14 @@ const NewsCard = ({ newsData, isLoggedIn, isInSavedNewsRoute }) => {
       <div className="card__image">
         <div className="card__container">
           <img
-            src={savedArticles.link}
-            alt={savedArticles.title}
+            src={newsData.link}
+            alt={newsData.title}
             className="card__image"
           />
           <div className="card__card-container">
-            {isInSavedNewsRoute && savedArticles.searchKeyword && (
+            {isInSavedNewsRoute && newsData.keyword && (
               <div className="card__tag-container">
-                <h2 className="card__tag">{savedArticles.keyword}</h2>
+                <h2 className="card__tag">{newsData.keyword}</h2>
               </div>
             )}
             {hovered && !isLoggedIn && !isInSavedNewsRoute && (
@@ -76,15 +74,15 @@ const NewsCard = ({ newsData, isLoggedIn, isInSavedNewsRoute }) => {
       </div>
       <div className="card__content">
         <h3 className="card__publish_date">
-          {new Date(savedArticles.publishedAt).toLocaleDateString("en-US", {
+          {new Date(newsData.publishedAt).toLocaleDateString("en-US", {
             year: "numeric",
             month: "long",
             day: "numeric",
           })}
         </h3>
-        <h3 className="card__title">{savedArticles.title}</h3>
-        <p className="card__description">{savedArticles.description}</p>
-        <p className="card__publisher">{savedArticles.source}</p>
+        <h3 className="card__title">{newsData.title}</h3>
+        <p className="card__description">{newsData.description}</p>
+        <p className="card__publisher">{newsData.source}</p>
       </div>
     </div>
   );

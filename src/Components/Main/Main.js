@@ -9,7 +9,6 @@ import { HasSearchedContext } from "../Context/HasSearchedContext";
 import { SearchResultContext } from "../Context/SearchResultContext";
 import NothingFound from "../NothingFound/NothingFound";
 import NewsCardList from "../NewsCardList/NewsCardList";
-import NewsCard from "../NewsCard/NewsCard";
 
 const Main = ({
   isLoggedIn,
