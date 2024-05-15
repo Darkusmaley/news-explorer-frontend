@@ -1,8 +1,6 @@
+import React, { useContext, useState } from "react";
+
 import "./NewsCard.css";
-// import { CurrentUserContext } from "../Context/CurrentUserContext";
-import { useContext } from "react";
-import marcus from "../../Images/MarcusAley.png";
-import React, { useState, useEffect } from "react";
 import { isArticleSaved } from "../../Utils/Constants";
 import trashCan from "../../Images/trash.svg";
 import trashCanHover from "../../Images/trash-hover.svg";
@@ -10,14 +8,12 @@ import bookmark from "../../Images/Bookmark.svg";
 import bookmarkClicked from "../../Images/Bookmark-marked.svg";
 import bookmarkHover from "../../Images/Bookmark-hover.svg";
 import { SavedArticleContext } from "../Context/SavedArticleContext";
-// import { KeywordContext } from "../../Components/Context/KeywordContext";
+
 const NewsCard = ({ newsData, isLoggedIn, isInSavedNewsRoute }) => {
-  const { savedArticles } = useContext(SavedArticleContext);
-
-  console.log(marcus);
-
   const [isSaved, setIsSaved] = useState(isArticleSaved(newsData));
   const [hovered, setHovered] = useState(false);
+
+  const savedArticles = useContext(SavedArticleContext);
 
   const icon = isInSavedNewsRoute
     ? hovered
@@ -38,7 +34,7 @@ const NewsCard = ({ newsData, isLoggedIn, isInSavedNewsRoute }) => {
       <div className="card__image">
         <div className="card__container">
           <img
-            src={newsData.link}
+            src={savedArticles.link}
             alt={savedArticles.title}
             className="card__image"
           />

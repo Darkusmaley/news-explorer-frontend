@@ -23,7 +23,7 @@ const SavedNewsHeader = ({ handleRegisterModal }) => {
           </button>
         </Link>
         <div className="saved-articles__grouping">
-          <Link to="/saved-articles">
+          <Link to="/saved-news">
             <button
               type="text"
               className="news-header__link-saved-articles"

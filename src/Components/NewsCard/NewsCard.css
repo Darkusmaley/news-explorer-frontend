@@ -292,4 +292,30 @@
     max-width: 256px;
     height: 20px;
   }
+
+  .card__login_prompt {
+    top: 16px;
+    right: 63px;
+  }
+
+  .card__login_prompt-text {
+    font-family: Roboto;
+    font-weight: 500;
+    line-height: 24px;
+    text-align: center;
+    bottom: 2px;
+  }
+
+  .card__remove_card {
+    top: 16px;
+    right: 63px;
+  }
+
+  .card__remove_card-text {
+    font-family: Roboto;
+    font-weight: 500;
+    line-height: 24px;
+    text-align: center;
+    bottom: 2px;
+  }
 }

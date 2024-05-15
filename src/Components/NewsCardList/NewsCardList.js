@@ -9,13 +9,13 @@ import { CurrentUserContext } from "../Context/CurrentUserContext";
 import { SavedArticleContext } from "../Context/SavedArticleContext";
 import { CurrentPageContext } from "../Context/CurrentPageContext";
 
-const NewsCardList = ({}) => {
+const NewsCardList = () => {
   const { currentUser } = useContext(CurrentUserContext);
   const { savedArticles } = useContext(SavedArticleContext);
   const { currentPage, setCurrentPage } = useContext(CurrentPageContext);
   const location = useLocation();
 
-  const [visibleArticles, setVisibleArticles] = useState(-3);
+  const [visibleArticles, setVisibleArticles] = useState(3);
 
   useEffect(() => {
     setCurrentPage(location.pathname);
@@ -36,7 +36,7 @@ const NewsCardList = ({}) => {
         {savedArticles
           .filter((article) => article.owner === currentUser._id)
           .map((article) => {
-            <NewsCard newsData={article} key={article.link} />;
+            return <NewsCard newsData={article} key={article.link} />;
           })}
       </div>
       {visibleArticles < savedArticles.length && (

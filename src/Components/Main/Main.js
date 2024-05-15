@@ -8,6 +8,7 @@ import Preloader from "../Preloader/Preloader";
 import { HasSearchedContext } from "../Context/HasSearchedContext";
 import { SearchResultContext } from "../Context/SearchResultContext";
 import NothingFound from "../NothingFound/NothingFound";
+import NewsCardList from "../NewsCardList/NewsCardList";
 import NewsCard from "../NewsCard/NewsCard";
 
 const Main = ({
@@ -49,6 +50,21 @@ const Main = ({
             </p>
 
             <SearchBar isLoading={isLoading} />
+            <div>
+              {isLoading && <Preloader />}
+              {!isLoading && hasSearched && searchResults.length > 0 ? (
+                <NewsCardList handleRegisterModal={handleRegisterModal} />
+              ) : !isLoading && hasSearched && searchResults.length === 0 ? (
+                <NothingFound />
+              ) : searchError === true ? (
+                <p className="main__search-error">
+                  Something went wrong during your request. The server may be
+                  down or there are connection issues, please try again later
+                </p>
+              ) : (
+                ""
+              )}
+            </div>
           </>
         ) : (
           <>
@@ -66,9 +82,9 @@ const Main = ({
             <SearchBar isLoading={isLoading} />
             <div>
               {isLoading && <Preloader />}
-              {!isLoading && !hasSearched && !searchResults.length > 0 ? (
-                // <NewsCardList handleRegisterModal={handleRegisterModal} />
-                <NewsCard />
+              {!isLoading && hasSearched && searchResults.length > 0 ? (
+                // <NewsCard />
+                <NewsCardList handleRegisterModal={handleRegisterModal} />
               ) : !isLoading && hasSearched && searchResults.length === 0 ? (
                 <NothingFound />
               ) : searchError === true ? (
