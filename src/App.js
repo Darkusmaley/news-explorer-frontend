@@ -12,12 +12,15 @@ import LoginModal from "./Components/Modals/LoginModal";
 import SavedNews from "./Components/SavedNews/SavedNews";
 import MobileModal from "./Components/MobileModal/MobileModal";
 import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
+import ConfirmationModal from "./Components/ConfirmationModal/ConfirmationModal";
 
 import { CurrentUserContext } from "./Components/Context/CurrentUserContext";
 import { SavedArticleContext } from "./Components/Context/SavedArticleContext";
 import { CurrentPageContext } from "./Components/Context/CurrentPageContext";
 import { HasSearchedContext } from "./Components/Context/HasSearchedContext";
 import { SearchResultContext } from "./Components/Context/SearchResultContext";
+import { checkToken, registration } from "./Utils/Auth";
+import { getSavedArticles } from "./Utils/Api";
 
 function App() {
   const navigate = useNavigate();
@@ -34,8 +37,52 @@ function App() {
   const [searchError, setSearchError] = useState(false);
 
   useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === "Escape") {
+        handleCloseModal();
+      }
+    };
+
+    document.addEventListener("keydown", handleEscape);
+
+    return () => document.removeEventListener("keydown", handleEscape);
+  }, []);
+
+  useEffect(() => {
+    const handleOverlay = (e) => {
+      if (e.target === e.currentTarget) {
+        handleCloseModal();
+      }
+    };
+    document.addEventListener("keydown", handleOverlay);
+
+    return () => document.removeEventListener("keydown", handleOverlay);
+  }, []);
+
+  useEffect(() => {
     setCurrentPage(location.pathname);
   }, [location.pathname]);
+
+  useEffect(() => {
+    const jwt = localStorage.getItem("jwt");
+    if (jwt) {
+      checkToken
+        .then((res) => {
+          if (res) {
+            setCurrentUser(res);
+            setLoggedIn(true);
+          }
+        })
+        .then(() => {
+          getSavedArticles(jwt).then((articles) => {
+            setSavedArticles(articles);
+          });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [isLoggedIn]);
 
   const handleLoginModal = () => {
     setActiveModal("login");
@@ -47,7 +94,10 @@ function App() {
 
   const handleMobileModal = () => {
     setActiveModal("mobile");
-    console.log("cheese");
+  };
+
+  const handleConfirmationModal = () => {
+    setActiveModal("confirm");
   };
 
   const handleCloseModal = () => {
@@ -62,6 +112,17 @@ function App() {
       .finally(() => setIsLoading(false));
   };
 
+  const handleRegisterUser = (data) => {
+    const makeRequest = () => {
+      return registration(data).then((user) => {
+        if (user) {
+          handleConfirmationModal();
+        }
+      });
+    };
+    handleSubmit(makeRequest);
+  };
+
   const logoutUser = () => {
     localStorage.removeItem("jwt");
     setCurrentUser({});
@@ -71,9 +132,7 @@ function App() {
 
   const handleSaveArticle = (article) => {};
 
-  const handleDeleteArticle = (article) => {
-    console.log(article);
-  };
+  const handleDeleteArticle = (article) => {};
 
   return (
     <div className="App ">
@@ -135,10 +194,17 @@ function App() {
                     handleCloseModal={handleCloseModal}
                     isOpen={activeModal === "mobile"}
                     isLoggedIn={isLoggedIn}
-                    // loginUser={loginUser}
                     logoutUser={logoutUser}
                     openMobileModal={handleMobileModal}
                     handleRegisterModal={handleRegisterModal}
+                  />
+                )}
+
+                {activeModal === "confirm" && (
+                  <ConfirmationModal
+                    handleCloseModal={handleCloseModal}
+                    isOpen={activeModal === "confirm"}
+                    handleLoginModal={handleLoginModal}
                   />
                 )}
               </SearchResultContext.Provider>

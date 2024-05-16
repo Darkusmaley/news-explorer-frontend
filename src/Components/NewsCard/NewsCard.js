@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 
 import "./NewsCard.css";
 import { isArticleSaved } from "../../Utils/Constants";
@@ -7,10 +7,10 @@ import trashCanHover from "../../Images/trash-hover.svg";
 import bookmark from "../../Images/Bookmark.svg";
 import bookmarkClicked from "../../Images/Bookmark-marked.svg";
 import bookmarkHover from "../../Images/Bookmark-hover.svg";
-import { SavedArticleContext } from "../Context/SavedArticleContext";
+//import { SavedArticleContext } from "../Context/SavedArticleContext";
 
 const NewsCard = ({ newsData, isLoggedIn, isInSavedNewsRoute }) => {
-  const [isSaved, setIsSaved] = useState(isArticleSaved(newsData));
+  const [isSaved] = useState(true); // change
   const [hovered, setHovered] = useState(false);
 
   const icon = isInSavedNewsRoute
@@ -32,7 +32,7 @@ const NewsCard = ({ newsData, isLoggedIn, isInSavedNewsRoute }) => {
       <div className="card__image">
         <div className="card__container">
           <img
-            src={newsData.link}
+            src={newsData.urlToImage}
             alt={newsData.title}
             className="card__image"
           />
@@ -82,7 +82,7 @@ const NewsCard = ({ newsData, isLoggedIn, isInSavedNewsRoute }) => {
         </h3>
         <h3 className="card__title">{newsData.title}</h3>
         <p className="card__description">{newsData.description}</p>
-        <p className="card__publisher">{newsData.source}</p>
+        <p className="card__publisher">{newsData.source.name}</p>
       </div>
     </div>
   );

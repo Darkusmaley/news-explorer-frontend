@@ -1,0 +1,73 @@
+.confirmation-modal {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.confirmation-modal__container {
+  max-width: 358px;
+  max-height: 380px;
+}
+
+.confirmation-modal__content {
+  position: relative;
+  background-color: #fff;
+  max-height: 610px;
+  max-width: 430px;
+  width: 100%;
+  border-radius: 10px;
+  padding: 34px 36px 34px 36px;
+}
+
+.confirmation-modal__close-button {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  position: absolute;
+  right: -43px;
+  top: -40px;
+  background-color: transparent;
+  background-image: url("../../Images/close.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: none;
+  cursor: pointer;
+}
+
+.confirmation-modal__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.confirmation-modal__text {
+  font-family: "Roboto", Arial, sans-serif;
+  font-size: 24px;
+  line-height: 28.13px;
+  font-weight: 900;
+  color: black;
+}
+
+.confirmation-modal__submit-button {
+  width: 236px;
+  height: 64px;
+  padding: 19px 90px;
+  border-radius: 33px;
+  border-color: #000;
+  background: #000000;
+  color: #fff;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+  text-align: center;
+  cursor: pointer;
+}

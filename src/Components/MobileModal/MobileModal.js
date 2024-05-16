@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 
 const MobileModal = ({
-  isLoggedIn,
   onClose,
+  isLoggedIn,
   handleRegisterModal,
   handleCloseModal,
 }) => {
@@ -35,7 +35,7 @@ const MobileModal = ({
           <button
             className="mobile-modal__close-button"
             onClick={handleCloseModal}
-          ></button>
+          />
         </div>
         <div className="mobile-modal__redirects">
           <Link to={"/"}>

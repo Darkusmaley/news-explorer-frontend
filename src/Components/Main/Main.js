@@ -13,7 +13,7 @@ import NewsCardList from "../NewsCardList/NewsCardList";
 const Main = ({
   isLoggedIn,
   isLoading,
-  handleRegisterModal,
+handleRegisterModal,
   handleLoginModal,
   handleMobileModal,
   searchError,
@@ -82,7 +82,6 @@ const Main = ({
             <div>
               {isLoading && <Preloader />}
               {!isLoading && hasSearched && searchResults.length > 0 ? (
-                // <NewsCard />
                 <NewsCardList handleRegisterModal={handleRegisterModal} />
               ) : !isLoading && hasSearched && searchResults.length === 0 ? (
                 <NothingFound />
