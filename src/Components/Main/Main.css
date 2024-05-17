@@ -49,6 +49,25 @@
   padding: 0;
 }
 
+.main__search-error_container {
+  max-width: 1440px;
+
+  background-color: #fff;
+  border: none;
+}
+
+.main__search-error {
+  max-width: 600px;
+  align-items: center;
+  margin: 0 auto;
+  padding: 5px;
+  font-family: Roboto Slab;
+  font-size: 25px;
+  font-weight: 400;
+  line-height: 46px;
+  text-align: left;
+}
+
 @media screen and (min-width: 768px) and (max-width: 1279px) {
   .main {
     max-width: 1279px;

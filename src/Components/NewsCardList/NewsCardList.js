@@ -5,13 +5,11 @@ import React, { useContext, useState } from "react";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
-import { CurrentUserContext } from "../Context/CurrentUserContext";
-import { SavedArticleContext } from "../Context/SavedArticleContext";
 import { CurrentPageContext } from "../Context/CurrentPageContext";
+import { SearchResultContext } from "../Context/SearchResultContext";
 
-const NewsCardList = () => {
-  const { currentUser } = useContext(CurrentUserContext);
-  const { savedArticles } = useContext(SavedArticleContext);
+const NewsCardList = ({ handleDeleteArticle, handleSaveArticle }) => {
+  const { searchResults } = useContext(SearchResultContext);
   const { currentPage, setCurrentPage } = useContext(CurrentPageContext);
   const location = useLocation();
 
@@ -33,13 +31,18 @@ const NewsCardList = () => {
         ""
       )}
       <div className="news-card__list-grid">
-        {savedArticles
-          .filter((article) => article.owner === currentUser._id)
-          .map((article) => {
-            return <NewsCard newsData={article} key={article.link} />;
-          })}
+        {searchResults.slice(0, visibleArticles).map((articles) => {
+          return (
+            <NewsCard
+              newsData={articles}
+              key={articles.link}
+              handleDeleteArticle={handleDeleteArticle}
+              handleSaveArticle={handleSaveArticle}
+            />
+          );
+        })}
       </div>
-      {visibleArticles < savedArticles.length && (
+      {visibleArticles < searchResults.length && (
         <button
           onClick={loadAdditionalArticles}
           className="news-card-list__button_load-articles"

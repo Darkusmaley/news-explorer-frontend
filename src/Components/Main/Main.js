@@ -3,12 +3,13 @@ import Header from "../Header/Header";
 import MobileView from "../MobileView/MobileView";
 import SearchBar from "../SearchForm/SearchForm";
 import About from "../About/About";
-import { useContext, useEffect, useState } from "react";
 import Preloader from "../Preloader/Preloader";
-import { HasSearchedContext } from "../Context/HasSearchedContext";
-import { SearchResultContext } from "../Context/SearchResultContext";
 import NothingFound from "../NothingFound/NothingFound";
 import NewsCardList from "../NewsCardList/NewsCardList";
+
+import { useContext, useEffect, useState } from "react";
+import { HasSearchedContext } from "../Context/HasSearchedContext";
+import { SearchResultContext } from "../Context/SearchResultContext";
 
 const Main = ({
   isLoggedIn,
@@ -16,6 +17,8 @@ const Main = ({
   handleRegisterModal,
   handleLoginModal,
   handleMobileModal,
+  handleDeleteArticle,
+  handleSaveArticle,
   handleSearch,
   searchError,
   logoutUser,
@@ -49,11 +52,18 @@ const Main = ({
               account.
             </p>
 
-            <SearchBar isLoading={isLoading} handleSearch={handleSearch} />
+            <SearchBar
+              isLoading={isLoading}
+              handleSearch={handleSearch}
+              handleSaveArticle={handleSaveArticle}
+            />
             <div>
               {isLoading && <Preloader />}
               {!isLoading && hasSearched && searchResults.length > 0 ? (
-                <NewsCardList handleRegisterModal={handleRegisterModal} />
+                <NewsCardList
+                  handleRegisterModal={handleRegisterModal}
+                  hnaldhandleDeleteArticle={handleDeleteArticle}
+                />
               ) : !isLoading && hasSearched && searchResults.length === 0 ? (
                 <NothingFound />
               ) : searchError === true ? (
@@ -79,7 +89,7 @@ const Main = ({
               Find the latest news on any topic and save them in your personal
               account.
             </p>
-            <SearchBar isLoading={isLoading} />
+            <SearchBar isLoading={isLoading} handleSearch={handleSearch} />
             <div>
               {isLoading && <Preloader />}
               {!isLoading && hasSearched && searchResults.length > 0 ? (
@@ -87,10 +97,12 @@ const Main = ({
               ) : !isLoading && hasSearched && searchResults.length === 0 ? (
                 <NothingFound />
               ) : searchError === true ? (
-                <p className="main__search-error">
-                  Something went wrong during your request. The server may be
-                  down or there are connection issues, please try again later
-                </p>
+                <div className="main__search-error_container">
+                  <p className="main__search-error">
+                    Something went wrong during your request. The server may be
+                    down or there are connection issues, please try again later
+                  </p>
+                </div>
               ) : (
                 ""
               )}

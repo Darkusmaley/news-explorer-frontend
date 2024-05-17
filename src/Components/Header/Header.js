@@ -1,9 +1,12 @@
 import "./Header.css";
+import logout from "../../Images/logout-white.svg";
+import underline from "../../Images/underline.svg";
+
 import React from "react";
 import { Link } from "react-router-dom";
-import { CurrentUserContext } from "../Context/CurrentUserContext";
 import { useContext } from "react";
-import logout from "../../Images/logout-white.svg";
+
+import { CurrentUserContext } from "../Context/CurrentUserContext";
 
 const Header = ({ isLoggedIn, handleRegisterModal, logoutUser }) => {
   const currentUser = useContext(CurrentUserContext);
@@ -64,7 +67,11 @@ const Header = ({ isLoggedIn, handleRegisterModal, logoutUser }) => {
                   Home
                 </button>
               </Link>
-              <img className="header__home-underline" alt="underline"></img>
+              <img
+                src={underline}
+                className="header__home-underline"
+                alt="underline"
+              />
             </div>
 
             <div>

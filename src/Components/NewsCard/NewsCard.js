@@ -1,17 +1,32 @@
 import React, { useState } from "react";
 
 import "./NewsCard.css";
-import { isArticleSaved } from "../../Utils/Constants";
 import trashCan from "../../Images/trash.svg";
 import trashCanHover from "../../Images/trash-hover.svg";
 import bookmark from "../../Images/Bookmark.svg";
 import bookmarkClicked from "../../Images/Bookmark-marked.svg";
 import bookmarkHover from "../../Images/Bookmark-hover.svg";
-//import { SavedArticleContext } from "../Context/SavedArticleContext";
+import { keyboard } from "@testing-library/user-event/dist/keyboard";
 
-const NewsCard = ({ newsData, isLoggedIn, isInSavedNewsRoute }) => {
-  const [isSaved] = useState(true); // change
+const NewsCard = ({
+  newsData,
+  isLoggedIn,
+  isInSavedNewsRoute,
+  handleDeleteArticle,
+  handleSaveArticle,
+}) => {
+  const [isSaved] = useState(true);
   const [hovered, setHovered] = useState(false);
+
+  const handleBookmark = () => {
+    const token = localStorage.getItem("jwt");
+    handleSaveArticle({ newsData, keyword, token });
+  };
+
+  const handleRemoveBookmark = () => {
+    const token = localStorage.getItem("jwt");
+    handleDeleteArticle({ newsData, token });
+  };
 
   const icon = isInSavedNewsRoute
     ? hovered
@@ -60,7 +75,7 @@ const NewsCard = ({ newsData, isLoggedIn, isInSavedNewsRoute }) => {
           <button
             type="button"
             className={buttonClass}
-            onClick={console.log("cheese")}
+            onClick={!isSaved ? handleBookmark : handleRemoveBookmark}
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
           >

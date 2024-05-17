@@ -20,7 +20,11 @@ import { CurrentPageContext } from "./Components/Context/CurrentPageContext";
 import { HasSearchedContext } from "./Components/Context/HasSearchedContext";
 import { SearchResultContext } from "./Components/Context/SearchResultContext";
 import { authorization, checkToken, registration } from "./Utils/Auth";
-import { getSavedArticles } from "./Utils/Api";
+import {
+  addSavedArticles,
+  getSavedArticles,
+  removeSavedArticles,
+} from "./Utils/Api";
 import { getSearchResults } from "./Utils/NewsApi";
 
 function App() {
@@ -165,9 +169,61 @@ function App() {
       });
   };
 
-  const handleSaveArticle = (article) => {};
+  const handleSaveArticle = ({ newsData, keyword, token }) => {
+    if (
+      !savedArticles.some((article) => {
+        return article.link === newsData.url;
+      })
+    ) {
+      addSavedArticles(newsData, keyword, token)
+        .then((data) => {
+          setSavedArticles([data.data, ...savedArticles]);
+          const savedArticleId = data.data._id;
+          const newArticle = { ...newsData, _id: savedArticleId };
+          const newSearchResults = searchResults.map((article) => {
+            return article.url === newsData.url ? newArticle : article;
+          });
+          getSearchResults(newSearchResults);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else if (
+      savedArticles.some((article) => {
+        return article.link === newsData.url;
+      })
+    ) {
+      removeSavedArticles(newsData, token)
+        .then(() => {
+          const unsaveNewsArticles = savedArticles.filter((article) => {
+            return article._id !== newsData._id;
+          });
+          setSavedArticles(unsaveNewsArticles);
 
-  const handleDeleteArticle = (article) => {};
+          const newArticle = { ...newsData, _id: "" };
+          const newSearchResults = searchResults.map((article) => {
+            return article.url === newsData.url ? newArticle : article;
+          });
+          setSearchResults(newSearchResults);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  };
+
+  const handleDeleteArticle = ({ newsData, token }) => {
+    removeSavedArticles(newsData, token)
+      .then(() => {
+        const unsaveNewsArticles = savedArticles.filter((article) => {
+          return article._id !== newsData._id;
+        });
+        setSavedArticles(unsaveNewsArticles);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <div className="App ">
@@ -190,6 +246,8 @@ function App() {
                         searchError={searchError}
                         logoutUser={logoutUser}
                         handleSearch={handleSearch}
+                        handleDeleteArticle={handleDeleteArticle}
+                        handleSaveArticle={handleSaveArticle}
                       />
                     }
                   ></Route>
