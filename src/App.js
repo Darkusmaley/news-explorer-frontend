@@ -19,8 +19,9 @@ import { SavedArticleContext } from "./Components/Context/SavedArticleContext";
 import { CurrentPageContext } from "./Components/Context/CurrentPageContext";
 import { HasSearchedContext } from "./Components/Context/HasSearchedContext";
 import { SearchResultContext } from "./Components/Context/SearchResultContext";
-import { checkToken, registration } from "./Utils/Auth";
+import { authorization, checkToken, registration } from "./Utils/Auth";
 import { getSavedArticles } from "./Utils/Api";
+import { getSearchResults } from "./Utils/NewsApi";
 
 function App() {
   const navigate = useNavigate();
@@ -33,8 +34,10 @@ function App() {
   const [savedArticles, setSavedArticles] = useState([]);
   const [currentPage, setCurrentPage] = useState("");
   const [hasSearched, setHasSearched] = useState("");
-  const [searchResults, setSearchResultst] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
   const [searchError, setSearchError] = useState(false);
+  const [isSearching, setIsSearching] = useState(false);
+  const [keyword, setKeyword] = useState("");
 
   useEffect(() => {
     const handleEscape = (e) => {
@@ -123,11 +126,43 @@ function App() {
     handleSubmit(makeRequest);
   };
 
+  const handleLogin = (user) => {
+    const makeRequest = () => {
+      setIsLoading(true);
+      return authorization(user).then((res) => {
+        if (res) {
+          localStorage.setItem("jwt", res.token);
+          checkToken(res.token).then((data) => {
+            setCurrentUser(data);
+            setLoggedIn(true);
+          });
+        }
+      });
+    };
+    handleSubmit(makeRequest);
+  };
+
   const logoutUser = () => {
     localStorage.removeItem("jwt");
     setCurrentUser({});
     setLoggedIn(false);
     navigate("/");
+  };
+
+  const handleSearch = ({ keyword }) => {
+    setKeyword(keyword);
+    setIsSearching(true);
+    getSearchResults(keyword)
+      .then((res) => {
+        setSearchResults(res.articles);
+        setHasSearched(true);
+        setIsSearching(false);
+        setSearchError(false);
+      })
+      .catch((err) => {
+        console.log(err);
+        setSearchError(true);
+      });
   };
 
   const handleSaveArticle = (article) => {};
@@ -154,6 +189,7 @@ function App() {
                         isLoading={isLoading}
                         searchError={searchError}
                         logoutUser={logoutUser}
+                        handleSearch={handleSearch}
                       />
                     }
                   ></Route>
@@ -175,7 +211,7 @@ function App() {
                   <RegisterModal
                     handleCloseModal={handleCloseModal}
                     isOpen={activeModal === "register"}
-                    // registerUser={registerUser}
+                    registerUser={handleRegisterUser}
                     openLoginModal={handleLoginModal}
                     isLoading={isLoading}
                   />
@@ -184,7 +220,7 @@ function App() {
                   <LoginModal
                     handleCloseModal={handleCloseModal}
                     isOpen={activeModal === "login"}
-                    // loginUser={loginUser}
+                    loginUser={handleLogin}
                     openRegisterModal={handleRegisterModal}
                     isLoading={isLoading}
                   />

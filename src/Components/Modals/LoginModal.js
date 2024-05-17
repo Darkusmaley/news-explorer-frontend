@@ -1,5 +1,6 @@
 import ModalWithForm from "./ModalWithForm";
 import React, { useState } from "react";
+import { useFormValidation } from "../Hooks/useForm";
 
 const LoginModal = ({
   handleCloseModal,
@@ -9,24 +10,14 @@ const LoginModal = ({
   openRegisterModal,
   buttontext = isLoading ? "Signing in..." : "Sign in",
 }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [username, setUsername] = useState("");
-
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
-  const handleUsernameChange = (e) => {
-    setUsername(e.target.value);
-  };
+  const { values, errors, isValid, handleChange } = useFormValidation({
+    email: "",
+    password: "",
+  });
 
   const onLogin = (e) => {
     e.preventDefault();
-    loginUser({ email, password });
+    loginUser(values);
   };
 
   return (
@@ -35,6 +26,7 @@ const LoginModal = ({
       onClose={handleCloseModal}
       isOpen={isOpen}
       onSubmit={onLogin}
+      isDisabled={!isValid}
     >
       <div className="form__info">
         <div className="form__label-email">
@@ -46,9 +38,10 @@ const LoginModal = ({
             maxLength="30"
             className="form__input"
             placeholder="Enter email"
-            value={email}
-            onChange={handleEmailChange}
+            value={values.email}
+            onChange={handleChange}
           />
+          <span className="form__error">{errors.email}</span>
         </div>
         <div className="form__label-password">
           <label className="form__label">Password</label>
@@ -58,9 +51,10 @@ const LoginModal = ({
             minLength="1"
             className="form__input"
             placeholder="Enter password"
-            value={password}
-            onChange={handlePasswordChange}
+            value={values.password}
+            onChange={handleChange}
           />
+          <span className="form__error">{errors.password}</span>
         </div>
         <div className="form__label-password">
           <label className="form__label">Username</label>
@@ -70,9 +64,10 @@ const LoginModal = ({
             minLength="1"
             className="form__input"
             placeholder="Enter your username"
-            value={username}
-            onChange={handleUsernameChange}
+            value={values.username}
+            onChange={handleChange}
           />
+          <span className="form__error">{errors.username}</span>
         </div>
       </div>
 

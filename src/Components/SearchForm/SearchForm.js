@@ -1,49 +1,26 @@
 import "./SearchForm.css";
-import NewsCardList from "../NewsCardList/NewsCardList";
-import NothingFound from "../NothingFound/NothingFound";
-import Preloader from "../Preloader/Preloader";
-import React, { useState } from "react";
-import { getSearchResults } from "../../Utils/NewsApi";
+import { useForm } from "react-hook-form";
 
-const SearchBar = ({ isLoggedIn }) => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [searchPerformed, setSearchPerformed] = useState(false);
-  const [articles, setArticles] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+const SearchBar = ({ handleSearch }) => {
+  const { register, handleSubmit, formState: errors } = useForm();
 
-  const handleInputChange = (event) => {
-    setSearchTerm(event.target.value);
-  };
-
-  const handleKeyPress = (event) => {
-    if (event.key === "Enter") {
-      handleSearch();
-    }
-  };
-
-  const handleSearch = async () => {
-    setSearchPerformed(true);
-    setIsLoading(true);
-    try {
-      const fetchedArticles = await getSearchResults(searchTerm);
-      setArticles(fetchedArticles);
-    } catch (error) {
-      console.error("Error fetching articles:", error);
-    } finally {
-      setIsLoading(false);
-    }
+  const handleSearchSubmit = ({ keyword }) => {
+    handleSearch({ keyword });
   };
 
   return (
     <div className="searchbar">
-      <form className="searchbar__form">
+      <form
+        className="searchbar__form"
+        onSubmit={handleSubmit(handleSearchSubmit)}
+      >
         <input
           type="search"
           className="searchbar__input"
           placeholder="Enter topic"
-          onChange={handleInputChange}
-          onKeyDown={handleKeyPress}
+          {...register("keyword", { required: "Please enter keyword" })}
         />
+        {errors?.keyword && <p>{errors.keyword.message}</p>}
         <button className="searchbar__button" onClick={handleSearch}>
           Search
         </button>

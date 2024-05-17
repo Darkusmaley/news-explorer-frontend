@@ -1,5 +1,5 @@
-import React, { useState } from "react";
 import ModalWithForm from "../Modals/ModalWithForm";
+import { useFormValidation } from "../Hooks/useForm";
 
 const RegisterModal = ({
   handleCloseModal,
@@ -9,30 +9,14 @@ const RegisterModal = ({
   openLoginModal,
   buttontext = isLoading ? "Signing up..." : "Sign up",
 }) => {
-  const [name, setName] = useState("");
-  const [avatar, setUrl] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const handleNameChange = (e) => {
-    setName(e.target.value);
-  };
-
-  const handleUrlChange = (e) => {
-    setUrl(e.target.value);
-  };
-
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
+  const { values, errors, isValid, handleChange } = useFormValidation({
+    email: "",
+    password: "",
+  });
 
   const onRegister = (e) => {
     e.preventDefault();
-    registerUser({ email, password, name, avatar });
+    registerUser(values);
   };
 
   return (
@@ -41,6 +25,7 @@ const RegisterModal = ({
       onClose={handleCloseModal}
       isOpen={isOpen}
       onSubmit={onRegister}
+      isDisabled={!isValid}
     >
       <div className="form__info">
         <div className="form__label-email">
@@ -52,9 +37,11 @@ const RegisterModal = ({
             maxLength="30"
             className="form__input"
             placeholder="Enter email"
-            value={email}
-            onChange={handleEmailChange}
+            value={values.email}
+            onChange={handleChange}
+            required
           />
+          <span className="form__error">{errors.email}</span>
         </div>
         <div className="form__label-password">
           <label className="form__label">Password</label>
@@ -64,9 +51,10 @@ const RegisterModal = ({
             minLength="1"
             className="form__input"
             placeholder="Enter password"
-            value={password}
-            onChange={handlePasswordChange}
+            value={values.password}
+            onChange={handleChange}
           />
+          <span className="form__error">{errors.password}</span>
         </div>
       </div>
       <div className="form__buttons">

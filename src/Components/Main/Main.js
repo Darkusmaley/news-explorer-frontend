@@ -13,9 +13,10 @@ import NewsCardList from "../NewsCardList/NewsCardList";
 const Main = ({
   isLoggedIn,
   isLoading,
-handleRegisterModal,
+  handleRegisterModal,
   handleLoginModal,
   handleMobileModal,
+  handleSearch,
   searchError,
   logoutUser,
 }) => {
@@ -48,7 +49,7 @@ handleRegisterModal,
               account.
             </p>
 
-            <SearchBar isLoading={isLoading} />
+            <SearchBar isLoading={isLoading} handleSearch={handleSearch} />
             <div>
               {isLoading && <Preloader />}
               {!isLoading && hasSearched && searchResults.length > 0 ? (
