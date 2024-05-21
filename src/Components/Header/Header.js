@@ -8,8 +8,8 @@ import { useContext } from "react";
 
 import { CurrentUserContext } from "../Context/CurrentUserContext";
 
-const Header = ({ isLoggedIn, handleRegisterModal, logoutUser }) => {
-  const currentUser = useContext(CurrentUserContext);
+const Header = ({ handleLoginModal, logoutUser }) => {
+  const { currentUser, isLoggedIn } = useContext(CurrentUserContext);
 
   return (
     <header className="header ">
@@ -32,7 +32,11 @@ const Header = ({ isLoggedIn, handleRegisterModal, logoutUser }) => {
                   Home
                 </button>
               </Link>
-              <img className="header__home-underline" alt="underline"></img>
+              <img
+                className="header__home-underline"
+                alt="underline"
+                src={underline}
+              ></img>
             </div>
             <Link to="/saved-news">
               <button
@@ -50,7 +54,7 @@ const Header = ({ isLoggedIn, handleRegisterModal, logoutUser }) => {
                 id="link-logout"
                 onClick={logoutUser}
               >
-                {currentUser.name}
+                <p> {currentUser.name}</p>
                 <img src={logout} alt="logout button" />
               </button>
             </div>
@@ -79,7 +83,7 @@ const Header = ({ isLoggedIn, handleRegisterModal, logoutUser }) => {
                 type="text"
                 className="header__link-signin"
                 id="link-signin"
-                onClick={handleRegisterModal}
+                onClick={handleLoginModal}
               >
                 Sign in
               </button>

@@ -1,26 +1,18 @@
-import "./NewsCardList.css";
 import NewsCard from "../NewsCard/NewsCard";
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
-
-import { CurrentPageContext } from "../Context/CurrentPageContext";
-import { SearchResultContext } from "../Context/SearchResultContext";
 import { SavedArticleContext } from "../Context/SavedArticleContext";
 import { CurrentUserContext } from "../Context/CurrentUserContext";
+import { CurrentPageContext } from "../Context/CurrentPageContext";
+import { SearchResultContext } from "../Context/SearchResultContext";
 
-const NewsCardList = ({ handleDeleteArticle, handleSaveArticle }) => {
+const SavedNewsCardList = ({ handleDeleteArticle, handleSaveArticle }) => {
+  const { savedArticles } = useContext(SavedArticleContext);
+  const { currentUser } = useContext(CurrentUserContext);
+  const { currentPage } = useContext(CurrentPageContext);
   const { searchResults } = useContext(SearchResultContext);
-  const { currentPage, setCurrentPage } = useContext(CurrentPageContext);
-
-  const location = useLocation();
 
   const [visibleArticles, setVisibleArticles] = useState(3);
-
-  useEffect(() => {
-    setCurrentPage(location.pathname);
-  }, [location.pathname, setCurrentPage]);
 
   const loadAdditionalArticles = () => {
     setVisibleArticles((visible) => visible + 3);
@@ -34,16 +26,16 @@ const NewsCardList = ({ handleDeleteArticle, handleSaveArticle }) => {
         ""
       )}
       <div className="news-card__list-grid">
-        {searchResults.slice(0, visibleArticles).map((articles) => {
-          return (
+        {savedArticles
+          .filter((article) => article.owner === currentUser._id)
+          .map((articles) => (
             <NewsCard
               newsData={articles}
-              key={articles.url}
+              key={articles.link}
               handleDeleteArticle={handleDeleteArticle}
               handleSaveArticle={handleSaveArticle}
             />
-          );
-        })}
+          ))}
       </div>
       {visibleArticles < searchResults.length && (
         <button
@@ -57,4 +49,4 @@ const NewsCardList = ({ handleDeleteArticle, handleSaveArticle }) => {
   );
 };
 
-export default NewsCardList;
+export default SavedNewsCardList;

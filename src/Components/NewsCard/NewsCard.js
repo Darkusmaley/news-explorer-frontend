@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 import "./NewsCard.css";
 import trashCan from "../../Images/trash.svg";
@@ -6,17 +7,29 @@ import trashCanHover from "../../Images/trash-hover.svg";
 import bookmark from "../../Images/Bookmark.svg";
 import bookmarkClicked from "../../Images/Bookmark-marked.svg";
 import bookmarkHover from "../../Images/Bookmark-hover.svg";
-import { keyboard } from "@testing-library/user-event/dist/keyboard";
+import { KeywordContext } from "../Context/KeywordContext";
+import { CurrentPageContext } from "../Context/CurrentPageContext";
+import { CurrentUserContext } from "../Context/CurrentUserContext";
+import { SavedArticleContext } from "../Context/SavedArticleContext";
 
 const NewsCard = ({
   newsData,
-  isLoggedIn,
   isInSavedNewsRoute,
   handleDeleteArticle,
   handleSaveArticle,
 }) => {
-  const [isSaved] = useState(true);
+  const [isSaved] = useState(false);
   const [hovered, setHovered] = useState(false);
+
+  const { keyword } = useContext(KeywordContext);
+  const { currentPage, setCurrentPage } = useContext(CurrentPageContext);
+  const { isLoggedIn } = useContext(CurrentUserContext);
+  const { savedArticles } = useContext(SavedArticleContext);
+  const location = useLocation();
+
+  useEffect(() => {
+    setCurrentPage(location.pathname);
+  }, [location.pathname, setCurrentPage]);
 
   const handleBookmark = () => {
     const token = localStorage.getItem("jwt");
@@ -64,6 +77,19 @@ const NewsCard = ({
                 </p>
               </div>
             )}
+
+            {/* {isLoggedIn && currentPage === "/" && (
+              <button
+                className={`card__button-bookmark ${
+                  savedArticles.some((savedArticle) => {
+                    return savedArticle.link === newsData.url;
+                  })
+                    ? "card__button-bookmark_marked"
+                    : ""
+                }`}
+              />
+            )} */}
+
             {hovered && isInSavedNewsRoute && (
               <div className="card__remove_card">
                 <p className="card__remove_card-text">

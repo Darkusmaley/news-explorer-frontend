@@ -18,16 +18,21 @@ function Footer() {
               href="https://tripleten.com/"
               target="_blank"
               className="footer__link"
+              rel="noreferrer"
             >
               TripleTen
             </a>
           </div>
           <div className="footer__links-social">
-            <a href="https://github.com/" target="_blank">
-              <img src={GitHubLogo} className="footer__link-github" />
+            <a href="https://github.com/" target="_blank" rel="noreferrer">
+              <img src={GitHubLogo} className="footer__link-github"  alt="github logo"/>
             </a>
-            <a href="https://www.facebook.com/" target="_blank">
-              <img src={FacebookLogo} className="footer__link-facebook" />
+            <a
+              href="https://www.facebook.com/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <img src={FacebookLogo} className="footer__link-facebook" alt="facebook logo" />
             </a>
           </div>
         </div>

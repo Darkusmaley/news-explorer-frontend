@@ -2,7 +2,7 @@ import "./SavedNews.css";
 import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader";
 import React, { useContext, useEffect, useState } from "react";
 import MobileView from "../MobileView/MobileView";
-import NewsCardList from "../NewsCardList/NewsCardList";
+import SavedNewsCardList from "../SavedNewsCardList/SavedNewsCardList";
 import { CurrentUserContext } from "../Context/CurrentUserContext";
 import { SavedArticleContext } from "../Context/SavedArticleContext";
 
@@ -76,6 +76,8 @@ function SavedNews({ isLoggedIn, handleRegisterModal, handleMobileModal }) {
 
   const keywordString = getKeywordString(keywordArr);
 
+  console.log({currentUser});
+
   return (
     <section className="saved-news ">
       <div>
@@ -110,7 +112,7 @@ function SavedNews({ isLoggedIn, handleRegisterModal, handleMobileModal }) {
 
       <div className="saved-news__cards">
         <div className="saved-news__card_container">
-          <NewsCardList />
+          <SavedNewsCardList />
         </div>
       </div>
     </section>

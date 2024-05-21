@@ -21,7 +21,7 @@ const RegisterModal = ({
 
   return (
     <ModalWithForm
-      title="Sign in"
+      title="Sign up"
       onClose={handleCloseModal}
       isOpen={isOpen}
       onSubmit={onRegister}
@@ -55,6 +55,20 @@ const RegisterModal = ({
             onChange={handleChange}
           />
           <span className="form__error">{errors.password}</span>
+        </div>
+        <div className="form__label-username">
+          <label className="form__label">Username</label>
+          <input
+            type="text"
+            name="name"
+            minLength="1"
+            maxLength="30"
+            className="form__input"
+            placeholder="Enter your username"
+            value={values.name}
+            onChange={handleChange}
+          />
+          <span className="form__error">{errors.username}</span>
         </div>
       </div>
       <div className="form__buttons">

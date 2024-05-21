@@ -72,8 +72,9 @@ function App() {
 
   useEffect(() => {
     const jwt = localStorage.getItem("jwt");
+
     if (jwt) {
-      checkToken
+      checkToken(jwt)
         .then((res) => {
           if (res) {
             setCurrentUser(res);
@@ -81,9 +82,11 @@ function App() {
           }
         })
         .then(() => {
-          getSavedArticles(jwt).then((articles) => {
-            setSavedArticles(articles);
-          });
+          if (currentPage === "/saved-news") {
+            getSavedArticles(jwt).then((articles) => {
+              setSavedArticles(articles);
+            });
+          }
         })
         .catch((error) => {
           console.log(error);
@@ -172,6 +175,7 @@ function App() {
   const handleSaveArticle = ({ newsData, keyword, token }) => {
     if (
       !savedArticles.some((article) => {
+        console.log(article);
         return article.link === newsData.url;
       })
     ) {

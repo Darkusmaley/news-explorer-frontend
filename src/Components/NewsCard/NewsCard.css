@@ -68,6 +68,10 @@
   border-radius: 8px;
 }
 
+.card__content {
+  height: 240px;
+}
+
 .card__image {
   position: relative;
   max-width: 400px;
@@ -94,7 +98,7 @@
 
 .card__title {
   max-width: 352px;
-  height: 60px;
+  height: 40px;
   margin: 0;
   margin-bottom: 16px;
   padding-left: 24px;
@@ -105,13 +109,15 @@
   text-align: left;
   color: #1a1b22;
   text-transform: capitalize;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .card__description {
   max-width: 352px;
   height: 110px;
   margin: 0;
-  margin-bottom: 18px;
   padding-left: 24px;
   font-family: Roboto;
   font-size: 16px;
@@ -120,12 +126,17 @@
   text-align: left;
   color: #1a1b22;
   text-transform: capitalize;
+  overflow: hidden;
+  /*text-overflow: ellipsis;
+  white-space: nowrap; */
+  hyphens: auto;
 }
 
 .card__publisher {
   max-width: 352px;
   height: 20px;
   margin: 0;
+  margin-top: 18px;
   padding-left: 24px;
   font-family: Roboto Slab;
   font-size: 16px;

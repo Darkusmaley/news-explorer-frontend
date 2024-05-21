@@ -56,19 +56,6 @@ const LoginModal = ({
           />
           <span className="form__error">{errors.password}</span>
         </div>
-        <div className="form__label-password">
-          <label className="form__label">Username</label>
-          <input
-            type="text"
-            name="username"
-            minLength="1"
-            className="form__input"
-            placeholder="Enter your username"
-            value={values.username}
-            onChange={handleChange}
-          />
-          <span className="form__error">{errors.username}</span>
-        </div>
       </div>
 
       <div className="form__buttons">
