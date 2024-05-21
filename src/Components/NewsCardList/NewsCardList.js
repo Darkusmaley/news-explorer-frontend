@@ -38,7 +38,7 @@ const NewsCardList = ({ handleDeleteArticle, handleSaveArticle }) => {
           return (
             <NewsCard
               newsData={articles}
-              key={articles.url}
+              key={articles.link}
               handleDeleteArticle={handleDeleteArticle}
               handleSaveArticle={handleSaveArticle}
             />

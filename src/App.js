@@ -77,7 +77,7 @@ function App() {
       checkToken(jwt)
         .then((res) => {
           if (res) {
-            setCurrentUser(res);
+            setCurrentUser(res.user);
             setLoggedIn(true);
           }
         })
@@ -140,7 +140,7 @@ function App() {
         if (res) {
           localStorage.setItem("jwt", res.token);
           checkToken(res.token).then((data) => {
-            setCurrentUser(data);
+            setCurrentUser(data.user);
             setLoggedIn(true);
           });
         }

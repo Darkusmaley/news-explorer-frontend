@@ -76,7 +76,7 @@ function SavedNews({ isLoggedIn, handleRegisterModal, handleMobileModal }) {
 
   const keywordString = getKeywordString(keywordArr);
 
-  console.log({currentUser});
+  console.log(currentUser);
 
   return (
     <section className="saved-news ">
