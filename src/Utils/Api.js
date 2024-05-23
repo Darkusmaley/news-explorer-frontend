@@ -31,7 +31,7 @@ export const addSavedArticles = (newsData, keyword) => {
       authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
-      name: newsData.title,
+      title: newsData.title,
       text: newsData.description,
       date: newsData.publishedAt,
       source: newsData.source.name,
