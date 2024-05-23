@@ -6,7 +6,11 @@ import { CurrentUserContext } from "../Context/CurrentUserContext";
 import { CurrentPageContext } from "../Context/CurrentPageContext";
 import { SearchResultContext } from "../Context/SearchResultContext";
 
-const SavedNewsCardList = ({ handleDeleteArticle, handleSaveArticle }) => {
+const SavedNewsCardList = ({
+  handleDeleteArticle,
+  handleSaveArticle,
+  isSaved,
+}) => {
   const { savedArticles } = useContext(SavedArticleContext);
   const { currentUser } = useContext(CurrentUserContext);
   const { currentPage } = useContext(CurrentPageContext);
@@ -34,6 +38,7 @@ const SavedNewsCardList = ({ handleDeleteArticle, handleSaveArticle }) => {
               key={articles.link}
               handleDeleteArticle={handleDeleteArticle}
               handleSaveArticle={handleSaveArticle}
+              isSaved={isSaved}
             />
           ))}
       </div>

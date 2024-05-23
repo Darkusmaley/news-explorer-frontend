@@ -6,7 +6,14 @@ import SavedNewsCardList from "../SavedNewsCardList/SavedNewsCardList";
 import { CurrentUserContext } from "../Context/CurrentUserContext";
 import { SavedArticleContext } from "../Context/SavedArticleContext";
 
-function SavedNews({ isLoggedIn, handleRegisterModal, handleMobileModal }) {
+function SavedNews({
+  isLoggedIn,
+  handleRegisterModal,
+  handleMobileModal,
+  handleDeleteArticle,
+  handleSaveArticle,
+  isSaved,
+}) {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   const { currentUser } = useContext(CurrentUserContext);
@@ -76,8 +83,6 @@ function SavedNews({ isLoggedIn, handleRegisterModal, handleMobileModal }) {
 
   const keywordString = getKeywordString(keywordArr);
 
-  console.log(currentUser);
-
   return (
     <section className="saved-news ">
       <div>
@@ -112,7 +117,11 @@ function SavedNews({ isLoggedIn, handleRegisterModal, handleMobileModal }) {
 
       <div className="saved-news__cards">
         <div className="saved-news__card_container">
-          <SavedNewsCardList />
+          <SavedNewsCardList
+            handleDeleteArticle={handleDeleteArticle}
+            handleSaveArticle={handleSaveArticle}
+            isSaved={isSaved}
+          />
         </div>
       </div>
     </section>

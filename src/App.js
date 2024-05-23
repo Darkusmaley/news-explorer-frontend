@@ -25,6 +25,7 @@ import {
   removeSavedArticles,
 } from "./Utils/Api";
 import { getSearchResults } from "./Utils/NewsApi";
+import { KeywordContext } from "./Components/Context/KeywordContext";
 
 function App() {
   const navigate = useNavigate();
@@ -41,6 +42,7 @@ function App() {
   const [searchError, setSearchError] = useState(false);
   const [isSearching, setIsSearching] = useState(false);
   const [keyword, setKeyword] = useState("");
+  const [isSaved, setIsSaved] = useState(false);
 
   useEffect(() => {
     const handleEscape = (e) => {
@@ -83,6 +85,7 @@ function App() {
         .then(() => {
           if (currentPage === "/saved-news") {
             getSavedArticles(jwt).then((articles) => {
+              console.log(articles);
               setSavedArticles(articles);
             });
           }
@@ -160,7 +163,9 @@ function App() {
     setIsSearching(true);
     getSearchResults(keyword)
       .then((res) => {
+        console.log(res);
         setSearchResults(res.articles);
+        setIsSaved(true);
         setHasSearched(true);
         setIsSearching(false);
         setSearchError(false);
@@ -174,18 +179,23 @@ function App() {
   const handleSaveArticle = ({ newsData, keyword, token }) => {
     if (
       !savedArticles.some((article) => {
-        console.log(article);
         return article.link === newsData.url;
       })
     ) {
       addSavedArticles(newsData, keyword, token)
         .then((data) => {
+          console.log(data.data._id);
           setSavedArticles([data.data, ...savedArticles]);
           const savedArticleId = data.data._id;
+
           const newArticle = { ...newsData, _id: savedArticleId };
+          console.log(newArticle);
+
           const newSearchResults = searchResults.map((article) => {
-            return article.url === newsData.url ? newArticle : article;
+            console.log(article);
+            return article._id === newsData._id ? newArticle : article;
           });
+          console.log(newSearchResults);
           getSearchResults(newSearchResults);
         })
         .catch((err) => {
@@ -216,9 +226,11 @@ function App() {
   };
 
   const handleDeleteArticle = ({ newsData, token }) => {
+    console.log(savedArticles);
     removeSavedArticles(newsData, token)
       .then(() => {
         const unsaveNewsArticles = savedArticles.filter((article) => {
+          console.log(article);
           return article._id !== newsData._id;
         });
         setSavedArticles(unsaveNewsArticles);
@@ -235,75 +247,83 @@ function App() {
           <SavedArticleContext.Provider value={{ savedArticles }}>
             <HasSearchedContext.Provider value={{ hasSearched }}>
               <SearchResultContext.Provider value={{ searchResults }}>
-                <Routes>
-                  <Route
-                    exact
-                    path="/"
-                    element={
-                      <Main
-                        isLoggedIn={isLoggedIn}
-                        handleRegisterModal={handleRegisterModal}
-                        handleLoginModal={handleLoginModal}
-                        handleMobileModal={handleMobileModal}
-                        isLoading={isLoading}
-                        searchError={searchError}
-                        logoutUser={logoutUser}
-                        handleSearch={handleSearch}
-                        handleDeleteArticle={handleDeleteArticle}
-                        handleSaveArticle={handleSaveArticle}
-                      />
-                    }
-                  ></Route>
-                  <Route
-                    path="/saved-news"
-                    element={
-                      // <ProtectedRoute>
-                      <SavedNews
-                        handleMobileModal={handleMobileModal}
-                        handleDeleteArticle={handleDeleteArticle}
-                      />
-                    }
-                  ></Route>
-                </Routes>
+                <KeywordContext.Provider value={{ keyword, setKeyword }}>
+                  <Routes>
+                    <Route
+                      exact
+                      path="/"
+                      element={
+                        <Main
+                          isLoggedIn={isLoggedIn}
+                          handleRegisterModal={handleRegisterModal}
+                          handleLoginModal={handleLoginModal}
+                          handleMobileModal={handleMobileModal}
+                          isLoading={isLoading}
+                          searchError={searchError}
+                          logoutUser={logoutUser}
+                          handleSearch={handleSearch}
+                          handleDeleteArticle={handleDeleteArticle}
+                          handleSaveArticle={handleSaveArticle}
+                        />
+                      }
+                    ></Route>
+                    <Route
+                      path="/saved-news"
+                      element={
+                        <ProtectedRoute
+                          path={"/saved-news"}
+                          isLoggedIn={isLoggedIn}
+                        >
+                          <SavedNews
+                            handleMobileModal={handleMobileModal}
+                            handleDeleteArticle={handleDeleteArticle}
+                            handleSaveArticle={handleSaveArticle}
+                            isSaved={isSaved}
+                          />
+                        </ProtectedRoute>
+                      }
+                    ></Route>
+                  </Routes>
 
-                <Footer />
+                  <Footer />
 
-                {activeModal === "register" && (
-                  <RegisterModal
-                    handleCloseModal={handleCloseModal}
-                    isOpen={activeModal === "register"}
-                    registerUser={handleRegisterUser}
-                    openLoginModal={handleLoginModal}
-                    isLoading={isLoading}
-                  />
-                )}
-                {activeModal === "login" && (
-                  <LoginModal
-                    handleCloseModal={handleCloseModal}
-                    isOpen={activeModal === "login"}
-                    loginUser={handleLogin}
-                    openRegisterModal={handleRegisterModal}
-                    isLoading={isLoading}
-                  />
-                )}
-                {activeModal === "mobile" && (
-                  <MobileModal
-                    handleCloseModal={handleCloseModal}
-                    isOpen={activeModal === "mobile"}
-                    isLoggedIn={isLoggedIn}
-                    logoutUser={logoutUser}
-                    openMobileModal={handleMobileModal}
-                    handleRegisterModal={handleRegisterModal}
-                  />
-                )}
+                  {activeModal === "register" && (
+                    <RegisterModal
+                      handleCloseModal={handleCloseModal}
+                      isOpen={activeModal === "register"}
+                      registerUser={handleRegisterUser}
+                      openLoginModal={handleLoginModal}
+                      isLoading={isLoading}
+                    />
+                  )}
+                  {activeModal === "login" && (
+                    <LoginModal
+                      handleCloseModal={handleCloseModal}
+                      isOpen={activeModal === "login"}
+                      loginUser={handleLogin}
+                      openRegisterModal={handleRegisterModal}
+                      isLoading={isLoading}
+                    />
+                  )}
+                  {activeModal === "mobile" && (
+                    <MobileModal
+                      handleCloseModal={handleCloseModal}
+                      isOpen={activeModal === "mobile"}
+                      isLoggedIn={isLoggedIn}
+                      logoutUser={logoutUser}
+                      openMobileModal={handleMobileModal}
+                      handleRegisterModal={handleRegisterModal}
+                    />
+                  )}
 
-                {activeModal === "confirm" && (
-                  <ConfirmationModal
-                    handleCloseModal={handleCloseModal}
-                    isOpen={activeModal === "confirm"}
-                    handleLoginModal={handleLoginModal}
-                  />
-                )}
+                  {activeModal === "confirm" && (
+                    <ConfirmationModal
+                      handleCloseModal={handleCloseModal}
+                      isOpen={activeModal === "confirm"}
+                      handleLoginModal={handleLoginModal}
+                    />
+                  )}
+                </KeywordContext.Provider>
               </SearchResultContext.Provider>
             </HasSearchedContext.Provider>
           </SavedArticleContext.Provider>
