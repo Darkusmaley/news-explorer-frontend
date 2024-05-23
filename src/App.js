@@ -192,11 +192,10 @@ function App() {
           console.log(newArticle);
 
           const newSearchResults = searchResults.map((article) => {
-            console.log(article);
-            return article._id === newsData._id ? newArticle : article;
+            return article.url === newsData.url ? newArticle : article;
           });
           console.log(newSearchResults);
-          getSearchResults(newSearchResults);
+          setSearchResults(newSearchResults);
         })
         .catch((err) => {
           console.log(err);
