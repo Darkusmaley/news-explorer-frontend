@@ -1,7 +1,6 @@
 import "./SavedNewsHeader.css";
-import React from "react";
 import { CurrentUserContext } from "../Context/CurrentUserContext";
-import { Link } from "react-router-dom";
+import React, { Link } from "react-router-dom";
 import { useContext } from "react";
 import logout from "../../Images/logout.svg";
 import underline from "../../Images/Black-Vector (Stroke).svg";

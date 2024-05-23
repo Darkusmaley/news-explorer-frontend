@@ -1,6 +1,7 @@
 import "./SavedNews.css";
 import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader";
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import React from "react-router-dom";
 import MobileView from "../MobileView/MobileView";
 import SavedNewsCardList from "../SavedNewsCardList/SavedNewsCardList";
 import { CurrentUserContext } from "../Context/CurrentUserContext";

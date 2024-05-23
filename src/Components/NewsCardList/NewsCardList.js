@@ -1,14 +1,11 @@
 import "./NewsCardList.css";
 import NewsCard from "../NewsCard/NewsCard";
-import React, { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import React, { useLocation } from "react-router-dom";
 
 import { CurrentPageContext } from "../Context/CurrentPageContext";
 import { SearchResultContext } from "../Context/SearchResultContext";
-import { SavedArticleContext } from "../Context/SavedArticleContext";
-import { CurrentUserContext } from "../Context/CurrentUserContext";
 
 const NewsCardList = ({ handleDeleteArticle, handleSaveArticle }) => {
   const { searchResults } = useContext(SearchResultContext);

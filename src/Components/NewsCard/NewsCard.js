@@ -1,5 +1,5 @@
-import React, { useContext, useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useContext, useState, useEffect } from "react";
+import React, { useLocation } from "react-router-dom";
 
 import "./NewsCard.css";
 import trashCan from "../../Images/trash.svg";
@@ -10,7 +10,6 @@ import bookmarkHover from "../../Images/Bookmark-hover.svg";
 import { KeywordContext } from "../Context/KeywordContext";
 import { CurrentPageContext } from "../Context/CurrentPageContext";
 import { CurrentUserContext } from "../Context/CurrentUserContext";
-import { SavedArticleContext } from "../Context/SavedArticleContext";
 
 const NewsCard = ({
   newsData,
@@ -18,13 +17,12 @@ const NewsCard = ({
   handleSaveArticle,
   isSaved,
 }) => {
-  // const [isSaved] = useState(false);
   const [hovered, setHovered] = useState(false);
 
   const { keyword } = useContext(KeywordContext);
   const { currentPage, setCurrentPage } = useContext(CurrentPageContext);
   const { isLoggedIn } = useContext(CurrentUserContext);
-  const { savedArticles } = useContext(SavedArticleContext);
+
   const location = useLocation();
 
   useEffect(() => {
