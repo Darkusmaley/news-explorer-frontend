@@ -184,44 +184,43 @@ function App() {
     ) {
       addSavedArticles(newsData, keyword, token)
         .then((data) => {
-          console.log(data.data._id);
           setSavedArticles([data.data, ...savedArticles]);
           const savedArticleId = data.data._id;
 
           const newArticle = { ...newsData, _id: savedArticleId };
-          console.log(newArticle);
 
           const newSearchResults = searchResults.map((article) => {
             return article.url === newsData.url ? newArticle : article;
           });
-          console.log(newSearchResults);
-          setSearchResults(newSearchResults);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    } else if (
-      savedArticles.some((article) => {
-        return article.link === newsData.url;
-      })
-    ) {
-      removeSavedArticles(newsData, token)
-        .then(() => {
-          const unsaveNewsArticles = savedArticles.filter((article) => {
-            return article._id !== newsData._id;
-          });
-          setSavedArticles(unsaveNewsArticles);
 
-          const newArticle = { ...newsData, _id: "" };
-          const newSearchResults = searchResults.map((article) => {
-            return article.url === newsData.url ? newArticle : article;
-          });
           setSearchResults(newSearchResults);
         })
         .catch((err) => {
           console.log(err);
         });
     }
+    // else if (
+    //   savedArticles.some((article) => {
+    //     return article.link === newsData.url;
+    //   })
+    // ) {
+    //   removeSavedArticles(newsData, token)
+    //     .then(() => {
+    //       const unsaveNewsArticles = savedArticles.filter((article) => {
+    //         return article._id !== newsData._id;
+    //       });
+    //       setSavedArticles(unsaveNewsArticles);
+
+    //       const newArticle = { ...newsData, _id: "" };
+    //       const newSearchResults = searchResults.map((article) => {
+    //         return article.url === newsData.url ? newArticle : article;
+    //       });
+    //       setSearchResults(newSearchResults);
+    //     })
+    //     .catch((err) => {
+    //       console.log(err);
+    //     });
+    // }
   };
 
   const handleDeleteArticle = ({ newsData, token }) => {
