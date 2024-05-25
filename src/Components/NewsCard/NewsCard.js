@@ -78,18 +78,6 @@ const NewsCard = ({
               </div>
             )}
 
-            {/* {isLoggedIn && currentPage === "/" && (
-              <button
-                className={`card__button-bookmark ${
-                  savedArticles.some((savedArticle) => {
-                    return savedArticle.link === newsData.url;
-                  })
-                    ? "card__button-bookmark_marked"
-                    : ""
-                }`}
-              />
-            )} */}
-
             {hovered && currentPage === "/saved-news" && (
               <div className="card__remove_card">
                 <p className="card__remove_card-text">

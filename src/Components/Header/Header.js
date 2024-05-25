@@ -21,8 +21,8 @@ const Header = ({ handleLoginModal, logoutUser }) => {
         </Link>
 
         {isLoggedIn ? (
-          <div className="header__link-group">
-            <div className="home__grouping">
+          <div className="header__links">
+            <div className="header__link_grouping">
               <Link to="/">
                 <button
                   type="text"
@@ -60,8 +60,8 @@ const Header = ({ handleLoginModal, logoutUser }) => {
             </div>
           </div>
         ) : (
-          <div className="header__link-group">
-            <div className="home__grouping">
+          <div className="header__links">
+            <div className="header__link_grouping">
               <Link to="/">
                 <button
                   type="text"

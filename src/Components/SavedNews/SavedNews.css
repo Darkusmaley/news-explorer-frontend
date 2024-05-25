@@ -1,13 +1,3 @@
-@font-face {
-  font-family: "Roboto";
-  src: url("../../Fonts/roboto-400-regular.woff") format("woff"),
-    url("../../Fonts/roboto-400-regular.woff2") format("woff2"),
-    url("../../Fonts/roboto-slab-400-regular.woff") format("woff"),
-    url("../../Fonts/roboto-slab-400-regular.woff2") format("woff2"),
-    url("../../Fonts/roboto-700.woff") format("woff"),
-    url("../../Fonts/roboto-700.woff2") format("woff2");
-}
-
 .saved-news {
   background-color: #fff;
 }
@@ -24,7 +14,7 @@
   max-width: 712px;
   height: 24px;
   margin: 0;
-  font-family: Roboto;
+  font-family: Roboto, Inter;
   font-size: 18px;
   font-weight: 400;
   line-height: 24px;
@@ -35,7 +25,7 @@
   max-width: 530px;
   height: 92px;
   margin: 28px 0 30px;
-  font-family: Roboto Slab;
+  font-family: Roboto Slab, Inter;
   font-size: 40px;
   font-weight: 400;
   line-height: 46px;
@@ -49,7 +39,7 @@
 }
 
 .saved-news__search-text {
-  font-family: Roboto;
+  font-family: Roboto, Inter;
   font-size: 18px;
   font-weight: 400;
   line-height: 24px;
@@ -57,7 +47,7 @@
 }
 
 .saved-news__search-text_keywords-primary {
-  font-family: Roboto;
+  font-family: Roboto, Inter;
   font-size: 18px;
   font-weight: 700;
   line-height: 24px;
@@ -65,7 +55,7 @@
 }
 
 .saved-news__search-text_keywords-secondary {
-  font-family: Roboto;
+  font-family: Roboto, Inter;
   font-size: 18px;
   font-weight: 700;
   line-height: 24px;
@@ -84,7 +74,7 @@
   .saved-news__title {
     max-width: 712px;
     max-height: 24px;
-    font-family: Roboto;
+    font-family: Roboto, Inter;
     font-size: 14px;
     font-weight: 400;
     line-height: 24px;
@@ -95,7 +85,7 @@
     max-width: 336px;
     max-height: 68px;
     margin: 16px 0 16px;
-    font-family: Roboto Slab;
+    font-family: Roboto Slab, Inter;
     font-size: 30px;
     font-weight: 400;
     line-height: 34px;
@@ -111,7 +101,7 @@
     max-width: 712px;
     max-height: 24px;
     margin: 0 0 32px;
-    font-family: Roboto;
+    font-family: Roboto, Inter;
     font-size: 18px;
     font-weight: 400;
     line-height: 24px;
@@ -119,7 +109,7 @@
   }
 
   .saved-news__search-text_keywords-primary {
-    font-family: Roboto;
+    font-family: Roboto, Inter;
     font-size: 18px;
     font-weight: 700;
     line-height: 24px;
@@ -127,7 +117,7 @@
   }
 
   .saved-news__search-text_keywords-secondary {
-    font-family: Roboto;
+    font-family: Roboto, Inter;
     font-size: 18px;
     font-weight: 700;
     line-height: 24px;

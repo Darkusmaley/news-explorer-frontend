@@ -83,12 +83,10 @@ function App() {
           }
         })
         .then(() => {
-          if (currentPage === "/saved-news") {
-            getSavedArticles(jwt).then((articles) => {
-              console.log(articles);
-              setSavedArticles(articles);
-            });
-          }
+          getSavedArticles(jwt).then((articles) => {
+            console.log(articles);
+            setSavedArticles(articles);
+          });
         })
         .catch((error) => {
           console.log(error);
@@ -256,7 +254,7 @@ function App() {
                           handleRegisterModal={handleRegisterModal}
                           handleLoginModal={handleLoginModal}
                           handleMobileModal={handleMobileModal}
-                          isLoading={isLoading}
+                          isLoading={isSearching}
                           searchError={searchError}
                           logoutUser={logoutUser}
                           handleSearch={handleSearch}
@@ -282,7 +280,6 @@ function App() {
                       }
                     ></Route>
                   </Routes>
-
                   <Footer />
 
                   {activeModal === "register" && (

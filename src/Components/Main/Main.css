@@ -1,42 +1,32 @@
-@font-face {
-  font-family: "Roboto";
-  src: url("../../Fonts/roboto-slab-400-regular.woff") format("woff"),
-    url("../../Fonts/roboto-slab-400-regular.woff2") format("woff2"),
-    url("../../Fonts/roboto-400-regular.woff") format("woff"),
-    url("../../Fonts/roboto-400-regular.woff2") format("woff2"),
-    url("../../Fonts/roboto-500.woff") format("woff"),
-    url("../../Fonts/roboto-500.woff2") format("woff2");
-}
-
 .main {
   max-width: 1440px;
-  background-image: url("../../Images/georgia-de-lotz--UsJoNxLaNo-unsplash.jpg");
+  background-image: url("../../Images/georgia-de-lotz--UsJoNxLaNo-unsplash.png");
   background-repeat: no-repeat;
-  background-position: 0 -188px;
-  background-size: contain;
+  background-position: top;
+  background-size: inherit;
 }
 
 .main__title {
-  font-family: Roboto Slab;
+  font-family: " Roboto Slab ", "Inter";
   font-size: 60px;
   font-weight: 400;
   line-height: 64px;
   text-align: left;
   color: #fff;
-  margin: 0;
-  padding: 80px 416px 0;
+  margin: 80px auto 0;
+
   max-width: 608px;
   max-height: 128px;
 }
 
 .main__subtext {
-  font-family: Roboto;
+  font-family: "Roboto"," Inter";
   font-size: 18px;
   font-weight: 400;
   line-height: 24px;
   text-align: left;
-  margin: 0;
-  padding: 32px 416px 0;
+  margin: 32px auto 0;
+
   color: #fff;
   max-width: 608px;
   max-height: 24px;
@@ -61,7 +51,7 @@
   align-items: center;
   margin: 0 auto;
   padding: 5px;
-  font-family: Roboto Slab;
+  font-family: "Roboto Slab"," Inter";
   font-size: 25px;
   font-weight: 400;
   line-height: 46px;
@@ -71,8 +61,9 @@
 @media screen and (min-width: 768px) and (max-width: 1279px) {
   .main {
     max-width: 1279px;
-    background-size: contain;
-    background-position: 0 -48px;
+    background-position: top;
+    background-size: inherit;
+    margin-bottom: 96px;
   }
 
   .main__overlay {
@@ -80,11 +71,11 @@
   }
 
   .main__title {
-    max-width: 358px;
+    max-width: 385px;
     max-height: 80px;
-    margin: 0;
+    margin: 0 auto;
     padding: 38px 220px 0 160px;
-    font-family: Roboto Slab;
+    font-family: "Roboto Slab"," Inter";
     font-size: 36px;
     font-weight: 400;
     line-height: 40px;
@@ -94,8 +85,9 @@
   .main__subtext {
     max-width: 452px;
     max-height: 48px;
+    margin: 0 auto;
     padding: 16px 156px 0 160px;
-    font-family: Roboto;
+    font-family: "Roboto"," Inter";
     font-size: 18px;
     font-weight: 400;
     line-height: 24px;
@@ -106,9 +98,10 @@
 @media screen and (min-width: 320px) and (max-width: 767px) {
   .main {
     max-width: 767px;
-    background-size: cover;
-    background-position: center;
+    background-size: inherit;
+    background-position: top;
     background-repeat: no-repeat;
+    margin-bottom: 228px;
   }
 
   .main__overlay {
@@ -118,9 +111,9 @@
   .main__title {
     max-width: 285px;
     max-height: 80px;
-    margin: 0;
+    margin: 0 auto;
     padding: 30px 15px 0 19px;
-    font-family: Roboto Slab;
+    font-family: "Roboto Slab"," Inter";
     font-size: 36px;
     font-weight: 400;
     line-height: 40px;
@@ -129,9 +122,9 @@
   .main__subtext {
     max-width: 288px;
     max-height: 72px;
-    margin: 0;
+    margin: 0 auto;
     padding: 16px 16px 0;
-    font-family: Roboto;
+    font-family: "Roboto"," Inter";
     font-size: 18px;
     font-weight: 400;
     line-height: 24px;

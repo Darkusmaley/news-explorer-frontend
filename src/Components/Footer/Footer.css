@@ -12,7 +12,7 @@
 }
 
 .footer__trademark {
-  font-family: Roboto;
+  font-family: Roboto, Inter;
   font-size: 16px;
   font-weight: 400;
   line-height: 22px;
@@ -32,7 +32,7 @@
 }
 
 .footer__link {
-  font-family: Roboto;
+  font-family: Roboto, Inter;
   font-size: 18px;
   font-weight: 400;
   line-height: 24px;
@@ -51,11 +51,13 @@
 .footer__links-social {
   display: flex;
   gap: 24px;
+  
 }
 
 .footer__link-github {
   width: 20.21px;
   height: 19.71px;
+  cursor: pointer;
 }
 
 .footer__link-github:hover {
@@ -65,6 +67,7 @@
 .footer__link-facebook {
   width: 20.21px;
   height: 19.71px;
+  cursor: pointer;
 }
 
 .footer__link-facebook:hover {
