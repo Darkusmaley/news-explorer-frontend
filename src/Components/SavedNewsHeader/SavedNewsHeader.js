@@ -5,7 +5,7 @@ import { useContext } from "react";
 import logout from "../../Images/logout.svg";
 import underline from "../../Images/Black-Vector (Stroke).svg";
 const SavedNewsHeader = ({ handleRegisterModal }) => {
-  const currentUser = useContext(CurrentUserContext);
+  const { currentUser } = useContext(CurrentUserContext);
 
   return (
     <section className="news-header ">
@@ -21,7 +21,7 @@ const SavedNewsHeader = ({ handleRegisterModal }) => {
             Home
           </button>
         </Link>
-        <div className="saved-articles__grouping">
+        <div className="news-header__grouping">
           <Link to="/saved-news">
             <button
               type="text"

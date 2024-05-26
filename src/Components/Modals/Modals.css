@@ -30,7 +30,7 @@
   max-width: 81px;
   max-height: 32px;
   margin: 0px 0 22px 0;
-  font-family: Roboto, Inter;
+  font-family: Roboto, Inter, Arial, Helvetica, sans-serif;
   font-size: 24px;
   font-weight: 900;
   line-height: 28.13px;
@@ -65,7 +65,7 @@
 
 .form__label {
   color: #2f71e5;
-  font-family: Inter, Roboto;
+  font-family: Inter, Roboto, Arial, Helvetica, sans-serif;
   font-size: 12px;
   font-weight: 400;
   line-height: 14.52px;
@@ -101,7 +101,7 @@
   padding: 0;
   border: none;
   border-bottom: 1px solid #000000;
-  font-family: Inter, Roboto;
+  font-family: Inter, Roboto, Arial, Helvetica, sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 16.94px;
@@ -127,7 +127,7 @@
   box-shadow: 0px 5px 15px 0px #0e1a3933;
   background: #2f71e5;
   color: #fff;
-  font-family: Roboto, Inter;
+  font-family: Roboto, Inter, Arial, Helvetica, sans-serif;
   font-size: 18px;
   font-weight: 500;
   line-height: 24px;
@@ -145,7 +145,7 @@
   border: none;
   background: #fff;
   color: #00000080;
-  font-family: Inter, Roboto;
+  font-family: Inter, Roboto, Arial, Helvetica, sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 16.94px;
@@ -168,7 +168,8 @@
   }
   .modal__container {
     max-width: 320px;
-    height: 560px;
+    max-height: 560px;
+    margin: 0 auto;
   }
 
   .modal__content {
@@ -177,7 +178,8 @@
   }
 
   .modal__title {
-    font-family: Roboto, Inter;
+    max-width: 158px;
+    font-family: Roboto, Inter, Arial, Helvetica, sans-serif;
     font-size: 24px;
     font-weight: 900;
     line-height: 28.13px;
@@ -189,7 +191,7 @@
   }
 
   .form__label {
-    font-family: Inter, Roboto;
+    font-family: Inter, Roboto, Arial, Helvetica, sans-serif;
     font-size: 12px;
     font-weight: 400;
     line-height: 14.52px;
@@ -206,6 +208,11 @@
     height: 46px;
   }
 
+  .form__label-username {
+    width: 288px;
+    height: 46px;
+  }
+
   .form__buttons {
     width: 290px;
   }
@@ -217,7 +224,7 @@
   }
 
   .form__input {
-    font-family: Inter, Roboto;
+    font-family: Inter, Roboto, Arial, Helvetica, sans-serif;
     font-size: 14px;
     font-weight: 400;
     line-height: 16.94px;

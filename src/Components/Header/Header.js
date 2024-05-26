@@ -22,7 +22,7 @@ const Header = ({ handleLoginModal, logoutUser }) => {
 
         {isLoggedIn ? (
           <div className="header__links">
-            <div className="header__link_grouping">
+            <div className="header__link-grouping">
               <Link to="/">
                 <button
                   type="text"
@@ -61,7 +61,7 @@ const Header = ({ handleLoginModal, logoutUser }) => {
           </div>
         ) : (
           <div className="header__links">
-            <div className="header__link_grouping">
+            <div className="header__link-grouping">
               <Link to="/">
                 <button
                   type="text"

@@ -10,17 +10,17 @@ const MobileView = ({ currentRoute, handleMobileModal }) => {
   const menuIcon = isSavedNews ? menuDark : menu;
   return (
     <header
-      className={`mobile__header ${
-        isSavedNews ? "mobile__header_saved-news" : ""
+      className={`mobile-header ${
+        isSavedNews ? "mobile-header__saved-news" : ""
       }`}
     >
       <div
-        className={`mobile__header_container ${
-          isSavedNews ? "mobile__header_container-saved-news" : ""
+        className={`mobile-header__container ${
+          isSavedNews ? "mobile-header__container-saved-news" : ""
         }`}
       >
         <button
-          className={` mobile__header_button-news-explorer ${
+          className={` mobile-header__button-news-explorer ${
             isSavedNews ? "mobile-header__button_news-explorer-saved-news" : ""
           }`}
           onClick={navigateToHome}

@@ -1,25 +1,7 @@
 import "./MobileModal.css";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
 
-const MobileModal = ({
-  onClose,
-  isLoggedIn,
-  handleRegisterModal,
-  handleCloseModal,
-}) => {
-  useEffect(() => {
-    const handleEscape = (e) => {
-      if (e.key === "Escape") {
-        handleCloseModal();
-      }
-    };
-
-    document.addEventListener("keydown", handleEscape);
-
-    return () => document.removeEventListener("keydown", handleEscape);
-  }, [onClose]);
-
+const MobileModal = ({ isLoggedIn, handleRegisterModal, handleCloseModal }) => {
   const handleOverlay = (e) => {
     if (e.target === e.currentTarget) {
       handleCloseModal();
@@ -44,7 +26,7 @@ const MobileModal = ({
 
           {!isLoggedIn ? (
             <button
-              className="mobile-modal__signIn-button"
+              className="mobile-modal__signin-button"
               onClick={handleRegisterModal}
             >
               Sign in

@@ -56,7 +56,7 @@ const NewsCard = ({
     currentPage === "/saved-news" ? "card__delete-button" : "card__save-button";
 
   return (
-    <div className="card">
+    <section className="card">
       <div className="card__image">
         <div className="card__container">
           <img
@@ -126,7 +126,7 @@ const NewsCard = ({
           </p>
         )}
       </div>
-    </div>
+    </section>
   );
 };
 

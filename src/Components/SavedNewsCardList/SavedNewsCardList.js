@@ -23,13 +23,13 @@ const SavedNewsCardList = ({
   };
 
   return (
-    <div className="news-card__list">
+    <section className="card__list">
       {currentPage === "/" ? (
-        <h2 className=" news-card__list-title">Search results</h2>
+        <h2 className=" card__list-title">Search results</h2>
       ) : (
         ""
       )}
-      <div className="news-card__list-grid">
+      <div className="card__list-grid">
         {savedArticles
           .filter((article) => article.owner === currentUser._id)
           .map((articles) => (
@@ -45,12 +45,12 @@ const SavedNewsCardList = ({
       {visibleArticles < searchResults.length && (
         <button
           onClick={loadAdditionalArticles}
-          className="news-card-list__button_load-articles"
+          className="card-list__button_load-articles"
         >
           Show more
         </button>
       )}
-    </div>
+    </section>
   );
 };
 

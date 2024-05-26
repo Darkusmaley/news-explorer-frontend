@@ -13,7 +13,7 @@
 }
 
 .header__link-main {
-  font-family: Roboto Slab, Inter;
+  font-family: Roboto Slab, Inter, Arial, Helvetica, sans-serif;
   font-size: 20px;
   font-weight: 700;
   line-height: 24px;
@@ -33,7 +33,7 @@
 }
 
 .header__link-home {
-  font-family: Roboto, Inter;
+  font-family: Roboto, Inter, Arial, Helvetica, sans-serif;
   font-size: 18px;
   font-weight: 500;
   line-height: 24px;
@@ -46,7 +46,7 @@
 }
 
 .header__link-saved-articles {
-  font-family: Roboto, Inter;
+  font-family: Roboto, Inter, Arial, Helvetica, sans-serif;
   font-size: 18px;
   font-weight: 500;
   line-height: 24px;
@@ -58,7 +58,7 @@
 }
 
 .header__link-signin {
-  font-family: Roboto, Inter;
+  font-family: Roboto, Inter, Arial, Helvetica, sans-serif;
   font-size: 18px;
   font-weight: 500;
   line-height: 24px;
@@ -76,7 +76,7 @@
   display: flex;
   gap: 15px;
   align-items: center;
-  font-family: Roboto, Inter;
+  font-family: Roboto, Inter, Arial, Helvetica, sans-serif;
   font-size: 18px;
   font-weight: 500;
   line-height: 24px;
@@ -98,17 +98,23 @@
   right: -7px;
 }
 
-.header__link_grouping {
+.header__link-grouping {
   position: relative;
 }
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
   .header {
     max-width: 1279px;
+    height: 66px;
   }
 
   .header__overlay {
     max-width: 1279px;
+    height: 66px;
+  }
+
+  .header__links {
+    padding-right: 46px;
   }
 
   .header__link-group {
@@ -117,7 +123,7 @@
 
   .header__link-main {
     padding-left: 40px;
-    font-family: Roboto Slab, Inter;
+    font-family: Roboto Slab, Inter, Arial, Helvetica, sans-serif;
     font-size: 20px;
     font-weight: 700;
     line-height: 24px;
@@ -125,7 +131,7 @@
   }
 
   .header__link-home {
-    font-family: Roboto, Inter;
+    font-family: Roboto, Inter, Arial, Helvetica, sans-serif;
     font-size: 16px;
     font-weight: 500;
     line-height: 24px;
@@ -135,10 +141,14 @@
   .header__link-signin {
     width: 152px;
     height: 40px;
-    font-family: Roboto, Inter;
+    font-family: Roboto, Inter, Arial, Helvetica, sans-serif;
     font-size: 16px;
     font-weight: 500;
     line-height: 24px;
     text-align: center;
+  }
+
+  .header__home-underline {
+    bottom: -21px;
   }
 }
