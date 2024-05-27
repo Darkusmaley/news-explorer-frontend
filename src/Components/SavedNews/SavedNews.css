@@ -137,6 +137,8 @@
   .saved-news__title {
     max-width: 288px;
     max-height: 24px;
+    margin: 0 auto;
+    color: #1a1b2280;
     font-family: Roboto, Inter, Arial, Helvetica, sans-serif;
     font-size: 12px;
     font-weight: 400;
@@ -147,7 +149,8 @@
   .saved-news__subtext {
     max-width: 288px;
     max-height: 68px;
-    margin: 16px 0 50px;
+
+    margin: 16px auto 50px;
     font-family: Roboto-Slab, Roboto, Inter, Arial, Helvetica, sans-serif;
     font-size: 30px;
     font-weight: 400;
@@ -158,6 +161,7 @@
   .saved-news__search-grouping {
     max-width: 288px;
     max-height: 48px;
+    margin: 0 auto;
   }
 
   .saved-news__search-text {
