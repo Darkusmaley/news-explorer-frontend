@@ -1,12 +1,6 @@
 @import url(../src/vender/fonts.css);
 
-.App {
+.app {
   margin: 0 auto;
   max-width: 1440px;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
 }

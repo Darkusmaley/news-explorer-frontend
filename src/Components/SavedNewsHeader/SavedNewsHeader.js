@@ -4,7 +4,7 @@ import React, { Link } from "react-router-dom";
 import { useContext } from "react";
 import logout from "../../Images/logout.svg";
 import underline from "../../Images/Black-Vector (Stroke).svg";
-const SavedNewsHeader = ({ handleRegisterModal }) => {
+const SavedNewsHeader = ({ handleLogout }) => {
   const { currentUser } = useContext(CurrentUserContext);
 
   return (
@@ -43,7 +43,7 @@ const SavedNewsHeader = ({ handleRegisterModal }) => {
             type="text"
             className="news-header__button-logout"
             id="link-signin"
-            onClick={handleRegisterModal}
+            onClick={handleLogout}
           >
             <p className="news-header__button-logout_text">
               {currentUser.name}

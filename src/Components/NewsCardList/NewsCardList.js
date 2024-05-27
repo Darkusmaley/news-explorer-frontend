@@ -24,13 +24,13 @@ const NewsCardList = ({ handleDeleteArticle, handleSaveArticle }) => {
   };
 
   return (
-    <section className="card__list">
+    <section className="news-grid">
       {currentPage === "/" ? (
-        <h2 className=" card__list-title">Search results</h2>
+        <h2 className=" news-grid__title">Search results</h2>
       ) : (
         ""
       )}
-      <div className="card__list-grid">
+      <div className="news-grid__list">
         {searchResults.slice(0, visibleArticles).map((articles) => {
           return (
             <NewsCard
@@ -45,7 +45,7 @@ const NewsCardList = ({ handleDeleteArticle, handleSaveArticle }) => {
       {visibleArticles < searchResults.length && (
         <button
           onClick={loadAdditionalArticles}
-          className="card-list__button_load-articles"
+          className="news-grid__button_load-articles"
         >
           Show more
         </button>

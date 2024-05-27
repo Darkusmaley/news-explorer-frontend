@@ -1,19 +1,6 @@
 import "./ConfirmationModal.css";
-import { useEffect } from "react";
 
-const ConfirmationModal = ({ onClose, handleCloseModal, handleLoginModal }) => {
-  useEffect(() => {
-    const handleEscape = (e) => {
-      if (e.key === "Escape") {
-        handleCloseModal();
-      }
-    };
-
-    document.addEventListener("keydown", handleEscape);
-
-    return () => document.removeEventListener("keydown", handleEscape);
-  }, [onClose]);
-
+const ConfirmationModal = ({ handleCloseModal, handleLoginModal }) => {
   const handleOverlay = (e) => {
     if (e.target === e.currentTarget) {
       handleCloseModal();

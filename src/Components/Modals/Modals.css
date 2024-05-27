@@ -27,7 +27,7 @@
 }
 
 .modal__title {
-  max-width: 81px;
+  max-width: 76px;
   max-height: 32px;
   margin: 0px 0 22px 0;
   font-family: Roboto, Inter, Arial, Helvetica, sans-serif;
@@ -170,11 +170,13 @@
     max-width: 320px;
     max-height: 560px;
     margin: 0 auto;
+    width: 100%;
   }
 
   .modal__content {
     height: 560px;
     padding: 16px 0 16px 16px;
+    width: auto;
   }
 
   .modal__title {

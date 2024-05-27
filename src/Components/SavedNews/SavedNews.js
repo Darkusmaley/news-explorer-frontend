@@ -13,6 +13,7 @@ function SavedNews({
   handleMobileModal,
   handleDeleteArticle,
   handleSaveArticle,
+  handleLogout,
   isSaved,
 }) {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
@@ -94,7 +95,7 @@ function SavedNews({
           />
         ) : (
           <SavedNewsHeader
-            handleRegisterModal={handleRegisterModal}
+            handleLogout={handleLogout}
             isLoggedIn={isLoggedIn}
           />
         )}

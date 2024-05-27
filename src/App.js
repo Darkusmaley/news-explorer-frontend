@@ -196,29 +196,28 @@ function App() {
         .catch((err) => {
           console.log(err);
         });
-    }
-    // else if (
-    //   savedArticles.some((article) => {
-    //     return article.link === newsData.url;
-    //   })
-    // ) {
-    //   removeSavedArticles(newsData, token)
-    //     .then(() => {
-    //       const unsaveNewsArticles = savedArticles.filter((article) => {
-    //         return article._id !== newsData._id;
-    //       });
-    //       setSavedArticles(unsaveNewsArticles);
+    } else if (
+      savedArticles.some((article) => {
+        return article.link === newsData.url;
+      })
+    ) {
+      removeSavedArticles(newsData, token)
+        .then(() => {
+          const unsaveNewsArticles = savedArticles.filter((article) => {
+            return article._id !== newsData._id;
+          });
+          setSavedArticles(unsaveNewsArticles);
 
-    //       const newArticle = { ...newsData, _id: "" };
-    //       const newSearchResults = searchResults.map((article) => {
-    //         return article.url === newsData.url ? newArticle : article;
-    //       });
-    //       setSearchResults(newSearchResults);
-    //     })
-    //     .catch((err) => {
-    //       console.log(err);
-    //     });
-    // }
+          const newArticle = { ...newsData, _id: "" };
+          const newSearchResults = searchResults.map((article) => {
+            return article.url === newsData.url ? newArticle : article;
+          });
+          setSearchResults(newSearchResults);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   };
 
   const handleDeleteArticle = ({ newsData, token }) => {
@@ -237,7 +236,7 @@ function App() {
   };
 
   return (
-    <div className="App ">
+    <div className="app ">
       <CurrentPageContext.Provider value={{ currentPage, setCurrentPage }}>
         <CurrentUserContext.Provider value={{ isLoggedIn, currentUser }}>
           <SavedArticleContext.Provider value={{ savedArticles }}>
@@ -274,6 +273,7 @@ function App() {
                             handleMobileModal={handleMobileModal}
                             handleDeleteArticle={handleDeleteArticle}
                             handleSaveArticle={handleSaveArticle}
+                            handleLogout={logoutUser}
                             isSaved={isSaved}
                           />
                         </ProtectedRoute>
@@ -305,9 +305,9 @@ function App() {
                       handleCloseModal={handleCloseModal}
                       isOpen={activeModal === "mobile"}
                       isLoggedIn={isLoggedIn}
-                      logoutUser={logoutUser}
+                      handleLogout={logoutUser}
                       openMobileModal={handleMobileModal}
-                      handleRegisterModal={handleRegisterModal}
+                      handleLoginModal={handleLoginModal}
                     />
                   )}
 
