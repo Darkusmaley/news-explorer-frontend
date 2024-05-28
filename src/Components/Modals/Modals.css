@@ -56,14 +56,14 @@
   opacity: 0.5;
 }
 
-.modal-form__info {
+.modal-with-form__info {
   display: flex;
   flex-direction: column;
   gap: 31px;
   width: 358px;
 }
 
-.modal-form__label {
+.modal-with-form__label {
   color: #2f71e5;
   font-family: Inter, Roboto, Arial, Helvetica, sans-serif;
   font-size: 12px;
@@ -72,7 +72,7 @@
   text-align: left;
 }
 
-.modal-form__label-email {
+.modal-with-form__label-email {
   width: 358px;
   height: 47px;
   display: flex;
@@ -80,7 +80,7 @@
   gap: 8px;
 }
 
-.modal-form__label-password {
+.modal-with-form__label-password {
   width: 358px;
   height: 47px;
   display: flex;
@@ -88,7 +88,7 @@
   gap: 8px;
 }
 
-.modal-form__label-username {
+.modal-with-form__label-username {
   width: 358px;
   height: 47px;
   display: flex;
@@ -96,7 +96,7 @@
   gap: 8px;
 }
 
-.modal-form__input {
+.modal-with-form__input {
   width: 100%;
   padding: 0;
   border: none;
@@ -109,7 +109,7 @@
   color: #000000;
 }
 
-.modal-form__buttons {
+.modal-with-form__buttons {
   max-width: 358px;
   margin-top: 39px;
   display: flex;
@@ -118,7 +118,7 @@
   gap: 16px;
 }
 
-.modal-form__submit-button {
+.modal-with-form__submit-button {
   width: 358px;
   height: 64px;
   padding: 20px 114px;
@@ -135,12 +135,12 @@
   cursor: pointer;
 }
 
-.modal-form__submit-button:hover {
+.modal-with-form__submit-button:hover {
   background: #0000004d;
   border-color: #0000004d;
 }
 
-.modal-form__login-button {
+.modal-with-form__login-button {
   max-width: 226px;
   border: none;
   background: #fff;
@@ -154,11 +154,11 @@
   cursor: pointer;
 }
 
-.modal-form__login-button_text {
+.modal-with-form__login-button_text {
   color: #2f71e5;
 }
 
-.modal-form__error {
+.modal-with-form__error {
   color: #ff0000;
 }
 
@@ -188,11 +188,11 @@
     text-align: left;
   }
 
-  .modal-form__info {
+  .modal-with-form__info {
     max-width: 288px;
   }
 
-  .modal-form__label {
+  .modal-with-form__label {
     font-family: Inter, Roboto, Arial, Helvetica, sans-serif;
     font-size: 12px;
     font-weight: 400;
@@ -200,32 +200,32 @@
     text-align: left;
   }
 
-  .modal-form__label-email {
+  .modal-with-form__label-email {
     width: 288px;
     height: 46px;
   }
 
-  .modal-form__label-password {
+  .modal-with-form__label-password {
     width: 288px;
     height: 46px;
   }
 
-  .modal-form__label-username {
+  .modal-with-form__label-username {
     width: 288px;
     height: 46px;
   }
 
-  .modal-form__buttons {
+  .modal-with-form__buttons {
     width: 290px;
   }
 
-  .modal-form__submit-button {
+  .modal-with-form__submit-button {
     max-width: 288px;
     max-height: 64px;
     padding: 0;
   }
 
-  .modal-form__input {
+  .modal-with-form__input {
     font-family: Inter, Roboto, Arial, Helvetica, sans-serif;
     font-size: 14px;
     font-weight: 400;

@@ -55,7 +55,7 @@
 
   .news-grid__list {
     gap: 8px;
-    margin-bottom: 32px;
+    margin: 0 auto 32px;
   }
 
   .news-grid__title {

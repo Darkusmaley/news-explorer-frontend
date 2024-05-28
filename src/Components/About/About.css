@@ -63,6 +63,10 @@
     text-align: left;
   }
 
+  .about__text {
+    margin: 0 auto 0 0;
+  }
+
   .about__subtext {
     max-width: 424px;
     max-height: 168px;
@@ -78,6 +82,7 @@
     max-width: 232px;
     max-height: 232px;
     margin-left: 40px;
+    margin: 0 0 0 auto;
   }
 }
 

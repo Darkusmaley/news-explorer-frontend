@@ -60,12 +60,3 @@
   src: url("./Fonts/roboto-slab-400-regular.woff") format("woff"),
     url("./Fonts/roboto-slab-400-regular.woff2") format("woff2");
 }
-
-@font-face {
-  font-family: "Roboto-Slab";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("./Fonts/roboto-slab-700.woff2") format("woff2"),
-    url("./Fonts/roboto-slab-700.woff") format("woff");
-}
