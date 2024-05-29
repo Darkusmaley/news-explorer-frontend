@@ -52,17 +52,14 @@ const Main = ({
               account.
             </p>
 
-            <SearchBar
-              isLoading={isLoading}
-              handleSearch={handleSearch}
-              handleSaveArticle={handleSaveArticle}
-            />
+            <SearchBar isLoading={isLoading} handleSearch={handleSearch} />
             <div>
               {isLoading && <Preloader />}
               {!isLoading && hasSearched && searchResults.length > 0 ? (
                 <NewsCardList
                   handleRegisterModal={handleRegisterModal}
-                  hnaldhandleDeleteArticle={handleDeleteArticle}
+                  handlehandleDeleteArticle={handleDeleteArticle}
+                  handleSaveArticle={handleSaveArticle}
                 />
               ) : !isLoading && hasSearched && searchResults.length === 0 ? (
                 <NothingFound />
@@ -93,7 +90,11 @@ const Main = ({
             <div>
               {isLoading && <Preloader />}
               {!isLoading && hasSearched && searchResults.length > 0 ? (
-                <NewsCardList handleRegisterModal={handleRegisterModal} />
+                <NewsCardList
+                  handleRegisterModal={handleRegisterModal}
+                  handleSaveArticle={handleSaveArticle}
+                  handleLoginModal={handleLoginModal}
+                />
               ) : !isLoading && hasSearched && searchResults.length === 0 ? (
                 <NothingFound />
               ) : searchError === true ? (

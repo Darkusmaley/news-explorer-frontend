@@ -1,12 +1,11 @@
 import "./SavedNewsHeader.css";
-import React from "react";
 import { CurrentUserContext } from "../Context/CurrentUserContext";
-import { Link } from "react-router-dom";
+import React, { Link } from "react-router-dom";
 import { useContext } from "react";
 import logout from "../../Images/logout.svg";
 import underline from "../../Images/Black-Vector (Stroke).svg";
-const SavedNewsHeader = ({ handleRegisterModal }) => {
-  const currentUser = useContext(CurrentUserContext);
+const SavedNewsHeader = ({ handleLogout }) => {
+  const { currentUser } = useContext(CurrentUserContext);
 
   return (
     <section className="news-header ">
@@ -22,7 +21,7 @@ const SavedNewsHeader = ({ handleRegisterModal }) => {
             Home
           </button>
         </Link>
-        <div className="saved-articles__grouping">
+        <div className="news-header__grouping">
           <Link to="/saved-news">
             <button
               type="text"
@@ -44,7 +43,7 @@ const SavedNewsHeader = ({ handleRegisterModal }) => {
             type="text"
             className="news-header__button-logout"
             id="link-signin"
-            onClick={handleRegisterModal}
+            onClick={handleLogout}
           >
             <p className="news-header__button-logout_text">
               {currentUser.name}

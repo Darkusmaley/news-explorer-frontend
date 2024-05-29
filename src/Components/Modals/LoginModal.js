@@ -28,55 +28,45 @@ const LoginModal = ({
       onSubmit={onLogin}
       isDisabled={!isValid}
     >
-      <div className="form__info">
-        <div className="form__label-email">
-          <label className="form__label">Email</label>
+      <div className="modal-with-form__info">
+        <div className="modal-with-form__label-email">
+          <label className="modal-with-form__label">Email</label>
           <input
             type="text"
             name="email"
             minLength="1"
             maxLength="30"
-            className="form__input"
+            className="modal-with-form__input"
             placeholder="Enter email"
             value={values.email}
             onChange={handleChange}
           />
-          <span className="form__error">{errors.email}</span>
+          <span className="modal-with-form__error">{errors.email}</span>
         </div>
-        <div className="form__label-password">
-          <label className="form__label">Password</label>
+        <div className="modal-with-form__label-password">
+          <label className="modal-with-form__label">Password</label>
           <input
             type="text"
             name="password"
             minLength="1"
-            className="form__input"
+            className="modal-with-form__input"
             placeholder="Enter password"
             value={values.password}
             onChange={handleChange}
           />
-          <span className="form__error">{errors.password}</span>
-        </div>
-        <div className="form__label-password">
-          <label className="form__label">Username</label>
-          <input
-            type="text"
-            name="username"
-            minLength="1"
-            className="form__input"
-            placeholder="Enter your username"
-            value={values.username}
-            onChange={handleChange}
-          />
-          <span className="form__error">{errors.username}</span>
+          <span className="modal-with-form__error">{errors.password}</span>
         </div>
       </div>
 
-      <div className="form__buttons">
-        <button type="submit" className="form__submit-button">
+      <div className="modal-with-form__buttons">
+        <button type="submit" className="modal-with-form__submit-button">
           {buttontext}
         </button>
-        <button className="form__login-button" onClick={openRegisterModal}>
-          or <span className="form__login-button_text">Sign up</span>
+        <button
+          className="modal-with-form__login-button"
+          onClick={openRegisterModal}
+        >
+          or <span className="modal-with-form__login-button_text">Sign up</span>
         </button>
       </div>
     </ModalWithForm>

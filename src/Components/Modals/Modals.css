@@ -1,15 +1,3 @@
-@font-face {
-  font-family: "Inter", "Roboto";
-  src: url("../../Fonts/inter-400-regular.woff") format("woff"),
-    url("../../Fonts/inter-400-regular.woff2") format("woff2"),
-    url("../../Fonts/roboto-500.woff") format("woff"),
-    url("../../Fonts/roboto-500.woff2") format("woff2"),
-    url("../../Fonts/roboto-900.woff") format("woff"),
-    url("../../Fonts/roboto-900.woff2") format("woff2"),
-    url("../../Fonts/inter-400-regular.woff") format("woff"),
-    url("../../Fonts/inter-400-regular.woff2") format("woff2");
-}
-
 .modal {
   top: 0;
   left: 0;
@@ -39,10 +27,10 @@
 }
 
 .modal__title {
-  max-width: 81px;
+  max-width: 76px;
   max-height: 32px;
   margin: 0px 0 22px 0;
-  font-family: Roboto;
+  font-family: Roboto, Inter, Arial, Helvetica, sans-serif;
   font-size: 24px;
   font-weight: 900;
   line-height: 28.13px;
@@ -68,23 +56,23 @@
   opacity: 0.5;
 }
 
-.form__info {
+.modal-with-form__info {
   display: flex;
   flex-direction: column;
   gap: 31px;
   width: 358px;
 }
 
-.form__label {
+.modal-with-form__label {
   color: #2f71e5;
-  font-family: Inter;
+  font-family: Inter, Roboto, Arial, Helvetica, sans-serif;
   font-size: 12px;
   font-weight: 400;
   line-height: 14.52px;
   text-align: left;
 }
 
-.form__label-email {
+.modal-with-form__label-email {
   width: 358px;
   height: 47px;
   display: flex;
@@ -92,7 +80,7 @@
   gap: 8px;
 }
 
-.form__label-password {
+.modal-with-form__label-password {
   width: 358px;
   height: 47px;
   display: flex;
@@ -100,12 +88,20 @@
   gap: 8px;
 }
 
-.form__input {
+.modal-with-form__label-username {
+  width: 358px;
+  height: 47px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.modal-with-form__input {
   width: 100%;
   padding: 0;
   border: none;
   border-bottom: 1px solid #000000;
-  font-family: Inter;
+  font-family: Inter, Roboto, Arial, Helvetica, sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 16.94px;
@@ -113,7 +109,7 @@
   color: #000000;
 }
 
-.form__buttons {
+.modal-with-form__buttons {
   max-width: 358px;
   margin-top: 39px;
   display: flex;
@@ -122,15 +118,16 @@
   gap: 16px;
 }
 
-.form__submit-button {
+.modal-with-form__submit-button {
   width: 358px;
   height: 64px;
   padding: 20px 114px;
   border-radius: 33px;
-  border-color: #000;
-  background: #000000;
+  border: none;
+  box-shadow: 0px 5px 15px 0px #0e1a3933;
+  background: #2f71e5;
   color: #fff;
-  font-family: Roboto;
+  font-family: Roboto, Inter, Arial, Helvetica, sans-serif;
   font-size: 18px;
   font-weight: 500;
   line-height: 24px;
@@ -138,17 +135,17 @@
   cursor: pointer;
 }
 
-.form__submit-button:hover {
+.modal-with-form__submit-button:hover {
   background: #0000004d;
   border-color: #0000004d;
 }
 
-.form__login-button {
+.modal-with-form__login-button {
   max-width: 226px;
   border: none;
   background: #fff;
   color: #00000080;
-  font-family: Inter;
+  font-family: Inter, Roboto, Arial, Helvetica, sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 16.94px;
@@ -157,29 +154,11 @@
   cursor: pointer;
 }
 
-.form__login-button_text {
+.modal-with-form__login-button_text {
   color: #2f71e5;
 }
 
-.form__text {
-  font-family: Cabinet Grotesk;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 20px;
-  letter-spacing: 0em;
-  text-align: left;
-}
-
-.form__label-checkbox {
-  font-family: Cabinet Grotesk;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 20px;
-  letter-spacing: 0em;
-  text-align: left;
-}
-
-.form__error {
+.modal-with-form__error {
   color: #ff0000;
 }
 
@@ -190,54 +169,64 @@
   .modal__container {
     max-width: 320px;
     max-height: 560px;
+    margin: 0 auto;
+    width: 100%;
   }
 
   .modal__content {
+    height: 560px;
     padding: 16px 0 16px 16px;
+    width: auto;
   }
 
   .modal__title {
-    font-family: Roboto;
+    max-width: 158px;
+    font-family: Roboto, Inter, Arial, Helvetica, sans-serif;
     font-size: 24px;
     font-weight: 900;
     line-height: 28.13px;
     text-align: left;
   }
 
-  .form__info {
+  .modal-with-form__info {
     max-width: 288px;
   }
 
-  .form__label {
-    font-family: Inter;
+  .modal-with-form__label {
+    font-family: Inter, Roboto, Arial, Helvetica, sans-serif;
     font-size: 12px;
     font-weight: 400;
     line-height: 14.52px;
     text-align: left;
   }
 
-  .form__label-email {
+  .modal-with-form__label-email {
     width: 288px;
     height: 46px;
   }
 
-  .form__label-password {
+  .modal-with-form__label-password {
     width: 288px;
     height: 46px;
   }
 
-  .form__buttons {
+  .modal-with-form__label-username {
+    width: 288px;
+    height: 46px;
+  }
+
+  .modal-with-form__buttons {
     width: 290px;
   }
 
-  .form__submit-button {
+  .modal-with-form__submit-button {
     max-width: 288px;
     max-height: 64px;
     padding: 0;
   }
 
-  .form__input {
-    font-family: Inter;
+  .modal-with-form__input {
+    font-family: Inter, Roboto, Arial, Helvetica, sans-serif;
     font-size: 14px;
     font-weight: 400;
     line-height: 16.94px;

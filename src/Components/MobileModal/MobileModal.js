@@ -1,30 +1,21 @@
+import { useContext } from "react";
 import "./MobileModal.css";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { CurrentPageContext } from "../Context/CurrentPageContext";
 
 const MobileModal = ({
-  onClose,
   isLoggedIn,
-  handleRegisterModal,
+  handleLoginModal,
   handleCloseModal,
+  handleLogout,
 }) => {
-  useEffect(() => {
-    const handleEscape = (e) => {
-      if (e.key === "Escape") {
-        handleCloseModal();
-      }
-    };
-
-    document.addEventListener("keydown", handleEscape);
-
-    return () => document.removeEventListener("keydown", handleEscape);
-  }, [onClose]);
-
   const handleOverlay = (e) => {
     if (e.target === e.currentTarget) {
       handleCloseModal();
     }
   };
+
+  const { currentPage } = useContext(CurrentPageContext);
 
   return (
     <div className="mobile-modal" onClick={handleOverlay}>
@@ -38,21 +29,31 @@ const MobileModal = ({
           />
         </div>
         <div className="mobile-modal__redirects">
-          <Link to={"/"}>
-            <button className="mobile-modal__home-button">Home</button>
-          </Link>
+          {currentPage === "/saved-news" && (
+            <Link to={"/"}>
+              <button className="mobile-modal__home-button">Home</button>
+            </Link>
+          )}
+
+          {currentPage === "/" && (
+            <Link to={"/saved-news"}>
+              <button className="mobile-modal__saved-news-button">
+                Saved news
+              </button>
+            </Link>
+          )}
 
           {!isLoggedIn ? (
             <button
-              className="mobile-modal__signIn-button"
-              onClick={handleRegisterModal}
+              className="mobile-modal__signin-button"
+              onClick={handleLoginModal}
             >
               Sign in
             </button>
           ) : (
             <button
               className="mobile-modal__logout-button"
-              onClick={handleRegisterModal}
+              onClick={handleLogout}
             >
               Log out
             </button>

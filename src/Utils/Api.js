@@ -1,23 +1,30 @@
 import { checkResponse } from "./CheckResponse";
 
-export const baseUrl = "http://localHost:3001";
+export const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "http://localHost:3001"
+    : "http://localHost:3001";
+
+export function request(url, options) {
+  return fetch(url, options).then(checkResponse);
+}
 
 export const getSavedArticles = () => {
   const token = localStorage.getItem("jwt");
 
-  return fetch(`${baseUrl}/articles`, {
+  return request(`${baseUrl}/articles`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },
-  }).then(checkResponse);
+  });
 };
 
 export const addSavedArticles = (newsData, keyword) => {
   const token = localStorage.getItem("jwt");
 
-  return fetch(`${baseUrl}/articles`, {
+  return request(`${baseUrl}/articles`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -32,17 +39,17 @@ export const addSavedArticles = (newsData, keyword) => {
       image: newsData.urlToImage,
       keyword: keyword,
     }),
-  }).then(checkResponse);
+  });
 };
 
 export const removeSavedArticles = (article) => {
   const token = localStorage.getItem("jwt");
 
-  return fetch(`${baseUrl}/articles/${article._id}`, {
+  return request(`${baseUrl}/articles/${article._id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
       authorization: `Bearer ${token}`,
     },
-  }).then(checkResponse);
+  });
 };

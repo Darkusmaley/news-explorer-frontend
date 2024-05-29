@@ -1,23 +1,22 @@
-import "./NewsCardList.css";
 import NewsCard from "../NewsCard/NewsCard";
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState } from "react";
 
-import React, { useLocation } from "react-router-dom";
-
+import { SavedArticleContext } from "../Context/SavedArticleContext";
+import { CurrentUserContext } from "../Context/CurrentUserContext";
 import { CurrentPageContext } from "../Context/CurrentPageContext";
 import { SearchResultContext } from "../Context/SearchResultContext";
 
-const NewsCardList = ({ handleDeleteArticle, handleSaveArticle }) => {
+const SavedNewsCardList = ({
+  handleDeleteArticle,
+  handleSaveArticle,
+  isSaved,
+}) => {
+  const { savedArticles } = useContext(SavedArticleContext);
+  const { currentUser } = useContext(CurrentUserContext);
+  const { currentPage } = useContext(CurrentPageContext);
   const { searchResults } = useContext(SearchResultContext);
-  const { currentPage, setCurrentPage } = useContext(CurrentPageContext);
-
-  const location = useLocation();
 
   const [visibleArticles, setVisibleArticles] = useState(3);
-
-  useEffect(() => {
-    setCurrentPage(location.pathname);
-  }, [location.pathname, setCurrentPage]);
 
   const loadAdditionalArticles = () => {
     setVisibleArticles((visible) => visible + 3);
@@ -31,16 +30,17 @@ const NewsCardList = ({ handleDeleteArticle, handleSaveArticle }) => {
         ""
       )}
       <div className="news-grid__list">
-        {searchResults.slice(0, visibleArticles).map((articles) => {
-          return (
+        {savedArticles
+          .filter((article) => article.owner === currentUser._id)
+          .map((articles) => (
             <NewsCard
               newsData={articles}
               key={articles.link}
               handleDeleteArticle={handleDeleteArticle}
               handleSaveArticle={handleSaveArticle}
+              isSaved={isSaved}
             />
-          );
-        })}
+          ))}
       </div>
       {visibleArticles < searchResults.length && (
         <button
@@ -54,4 +54,4 @@ const NewsCardList = ({ handleDeleteArticle, handleSaveArticle }) => {
   );
 };
 
-export default NewsCardList;
+export default SavedNewsCardList;

@@ -1,12 +1,21 @@
 import "./SavedNews.css";
 import SavedNewsHeader from "../SavedNewsHeader/SavedNewsHeader";
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import React from "react-router-dom";
 import MobileView from "../MobileView/MobileView";
-import NewsCardList from "../NewsCardList/NewsCardList";
+import SavedNewsCardList from "../SavedNewsCardList/SavedNewsCardList";
 import { CurrentUserContext } from "../Context/CurrentUserContext";
 import { SavedArticleContext } from "../Context/SavedArticleContext";
 
-function SavedNews({ isLoggedIn, handleRegisterModal, handleMobileModal }) {
+function SavedNews({
+  isLoggedIn,
+  handleRegisterModal,
+  handleMobileModal,
+  handleDeleteArticle,
+  handleSaveArticle,
+  handleLogout,
+  isSaved,
+}) {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   const { currentUser } = useContext(CurrentUserContext);
@@ -86,7 +95,7 @@ function SavedNews({ isLoggedIn, handleRegisterModal, handleMobileModal }) {
           />
         ) : (
           <SavedNewsHeader
-            handleRegisterModal={handleRegisterModal}
+            handleLogout={handleLogout}
             isLoggedIn={isLoggedIn}
           />
         )}
@@ -110,7 +119,11 @@ function SavedNews({ isLoggedIn, handleRegisterModal, handleMobileModal }) {
 
       <div className="saved-news__cards">
         <div className="saved-news__card_container">
-          <NewsCardList />
+          <SavedNewsCardList
+            handleDeleteArticle={handleDeleteArticle}
+            handleSaveArticle={handleSaveArticle}
+            isSaved={isSaved}
+          />
         </div>
       </div>
     </section>
