@@ -51,6 +51,7 @@
   border: none;
   cursor: pointer;
 }
+
 .modal__close-button:hover {
   cursor: pointer;
   opacity: 0.5;
@@ -138,6 +139,11 @@
 .modal-with-form__submit-button:hover {
   background: #0000004d;
   border-color: #0000004d;
+}
+
+.modal-with-form__submit_button-disabled {
+  color: #b6bcbf;
+  background-color: #e6e8eb;
 }
 
 .modal-with-form__login-button {

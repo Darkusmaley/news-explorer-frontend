@@ -26,7 +26,7 @@ const LoginModal = ({
       onClose={handleCloseModal}
       isOpen={isOpen}
       onSubmit={onLogin}
-      isDisabled={!isValid}
+      isValid
     >
       <div className="modal-with-form__info">
         <div className="modal-with-form__label-email">
@@ -40,6 +40,7 @@ const LoginModal = ({
             placeholder="Enter email"
             value={values.email}
             onChange={handleChange}
+            required
           />
           <span className="modal-with-form__error">{errors.email}</span>
         </div>
@@ -53,13 +54,19 @@ const LoginModal = ({
             placeholder="Enter password"
             value={values.password}
             onChange={handleChange}
+            required
           />
           <span className="modal-with-form__error">{errors.password}</span>
         </div>
       </div>
 
       <div className="modal-with-form__buttons">
-        <button type="submit" className="modal-with-form__submit-button">
+        <button
+          type="submit"
+          className={`modal-with-form__submit-button ${
+            !isValid ? "modal-with-form__submit_button-disabled" : ""
+          }`}
+        >
           {buttontext}
         </button>
         <button
