@@ -2,7 +2,7 @@ import { checkResponse } from "./CheckResponse";
 
 export const baseUrl =
   process.env.NODE_ENV === "production"
-    ? "api.marcusnewsexplorer.jumpingcrab.com"
+    ? " https://api.marcusnewsexplorer.jumpingcrab.com"
     : "http://localHost:3001";
 
 export function request(url, options) {
