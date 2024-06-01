@@ -9,6 +9,11 @@ const RegisterModal = ({
   openLoginModal,
   buttontext = isLoading ? "Signing up..." : "Sign up",
 }) => {
+  const { values, errors, isValid, handleChange } = useFormValidation({
+    email: "",
+    password: "",
+  });
+
   const onRegister = (e) => {
     e.preventDefault();
     registerUser(values);
@@ -20,6 +25,7 @@ const RegisterModal = ({
       onClose={handleCloseModal}
       isOpen={isOpen}
       onSubmit={onRegister}
+      isDisabled={!isValid}
     >
       <div className="modal-with-form__info">
         <div className="modal-with-form__label-email">
@@ -31,8 +37,9 @@ const RegisterModal = ({
             maxLength="30"
             className="modal-with-form__input"
             placeholder="Enter email"
-            value={email}
+            value={values.email}
             onChange={handleChange}
+            required
           />
           <span className="modal-with-form__error">{errors.email}</span>
         </div>
@@ -44,7 +51,7 @@ const RegisterModal = ({
             minLength="1"
             className="modal-with-form__input"
             placeholder="Enter password"
-            value={password}
+            value={values.password}
             onChange={handleChange}
           />
           <span className="modal-with-form__error">{errors.password}</span>
@@ -67,7 +74,7 @@ const RegisterModal = ({
       <div className="modal-with-form__buttons">
         <button
           type="submit"
-          className="modal-with-form__submit-button "
+          className="modal-with-form__submit-button"
           onSubmit={onRegister}
         >
           {buttontext}
