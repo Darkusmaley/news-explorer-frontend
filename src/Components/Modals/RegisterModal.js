@@ -25,7 +25,7 @@ const RegisterModal = ({
       onClose={handleCloseModal}
       isOpen={isOpen}
       onSubmit={onRegister}
-      isDisabled={!isValid}
+      isValid
     >
       <div className="modal-with-form__info">
         <div className="modal-with-form__label-email">
@@ -53,6 +53,7 @@ const RegisterModal = ({
             placeholder="Enter password"
             value={values.password}
             onChange={handleChange}
+            required
           />
           <span className="modal-with-form__error">{errors.password}</span>
         </div>
@@ -67,6 +68,7 @@ const RegisterModal = ({
             placeholder="Enter your username"
             value={values.name}
             onChange={handleChange}
+            required
           />
           <span className="modal-with-form__error">{errors.username}</span>
         </div>
@@ -74,7 +76,9 @@ const RegisterModal = ({
       <div className="modal-with-form__buttons">
         <button
           type="submit"
-          className="modal-with-form__submit-button"
+          className={`modal-with-form__submit-button ${
+            !isValid ? "modal-with-form__submit_button-disabled" : ""
+          }`}
           onSubmit={onRegister}
         >
           {buttontext}
