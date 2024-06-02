@@ -1,0 +1,6 @@
+@import url(../src/vender/fonts.css);
+
+.app {
+  margin: 0 auto;
+  max-width: 1440px;
+}
