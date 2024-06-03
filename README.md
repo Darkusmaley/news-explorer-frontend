@@ -5,9 +5,10 @@
 - About the Project
 - Features
 - Figma Design
+- How to run
 - Links
 
-### About the project
+# About the project
 
 'News Explorer' is a full-stack application. It offers a service where users can search for news articles from various sources and save them to their profiles.
 
@@ -35,9 +36,11 @@ The Figma design was supplied by TripleTen and used to map out the UI design for
 
 - [Figma](https://www.figma.com/design/3ottwMEhlBt95Dbn8dw1NH/Your-Final-Project?node-id=0-1&t=z8j27tKTsxBN0Ut2-0)
 
+#####
+
 ###### Links
 
-- [Project]](https://marcusnewsexplorer.jumpingcrab.com/)
+- [Project](https://marcusnewsexplorer.jumpingcrab.com/)
 
 - [Backend](https://github.com/Darkusmaley/news-explorer-backend)
 
