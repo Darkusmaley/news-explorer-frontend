@@ -36,8 +36,6 @@ const NewsCard = ({
 
   const handleRemoveBookmark = () => {
     const token = localStorage.getItem("jwt");
-    console.log(newsData);
-    console.log(handleDeleteArticle);
     handleDeleteArticle({ newsData, token });
   };
 

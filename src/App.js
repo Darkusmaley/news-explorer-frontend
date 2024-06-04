@@ -82,12 +82,6 @@ function App() {
             setLoggedIn(true);
           }
         })
-        .then(() => {
-          getSavedArticles(jwt).then((articles) => {
-            console.log(articles);
-            setSavedArticles(articles);
-          });
-        })
         .catch((error) => {
           console.log(error);
         });
@@ -161,7 +155,6 @@ function App() {
     setIsSearching(true);
     getSearchResults(keyword)
       .then((res) => {
-        console.log(res);
         setSearchResults(res.articles);
         setIsSaved(true);
         setHasSearched(true);
@@ -221,11 +214,9 @@ function App() {
   };
 
   const handleDeleteArticle = ({ newsData, token }) => {
-    console.log(savedArticles);
     removeSavedArticles(newsData, token)
       .then(() => {
         const unsaveNewsArticles = savedArticles.filter((article) => {
-          console.log(article);
           return article._id !== newsData._id;
         });
         setSavedArticles(unsaveNewsArticles);
