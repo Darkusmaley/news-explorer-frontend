@@ -230,7 +230,9 @@ function App() {
     <div className="app ">
       <CurrentPageContext.Provider value={{ currentPage, setCurrentPage }}>
         <CurrentUserContext.Provider value={{ isLoggedIn, currentUser }}>
-          <SavedArticleContext.Provider value={{ savedArticles }}>
+          <SavedArticleContext.Provider
+            value={{ savedArticles, setSavedArticles }}
+          >
             <HasSearchedContext.Provider value={{ hasSearched }}>
               <SearchResultContext.Provider value={{ searchResults }}>
                 <KeywordContext.Provider value={{ keyword, setKeyword }}>
@@ -263,6 +265,7 @@ function App() {
                           <SavedNews
                             handleMobileModal={handleMobileModal}
                             handleDeleteArticle={handleDeleteArticle}
+                            handleLoginModal={handleLoginModal}
                             handleSaveArticle={handleSaveArticle}
                             handleLogout={logoutUser}
                             isSaved={isSaved}

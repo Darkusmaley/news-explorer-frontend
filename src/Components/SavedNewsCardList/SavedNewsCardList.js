@@ -1,17 +1,19 @@
 import NewsCard from "../NewsCard/NewsCard";
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 
 import { SavedArticleContext } from "../Context/SavedArticleContext";
 import { CurrentUserContext } from "../Context/CurrentUserContext";
 import { CurrentPageContext } from "../Context/CurrentPageContext";
 import { SearchResultContext } from "../Context/SearchResultContext";
+import { getSavedArticles } from "../../Utils/Api";
 
 const SavedNewsCardList = ({
   handleDeleteArticle,
+  handleLoginModal,
   handleSaveArticle,
   isSaved,
 }) => {
-  const { savedArticles } = useContext(SavedArticleContext);
+  const { savedArticles, setSavedArticles } = useContext(SavedArticleContext);
   const { currentUser } = useContext(CurrentUserContext);
   const { currentPage } = useContext(CurrentPageContext);
   const { searchResults } = useContext(SearchResultContext);
@@ -21,6 +23,11 @@ const SavedNewsCardList = ({
   const loadAdditionalArticles = () => {
     setVisibleArticles((visible) => visible + 3);
   };
+
+  useEffect(() => {
+    const jwt = localStorage.getItem("jwt");
+    getSavedArticles(jwt).then(setSavedArticles);
+  }, [getSavedArticles]);
 
   return (
     <section className="news-grid">
@@ -37,6 +44,7 @@ const SavedNewsCardList = ({
               newsData={articles}
               key={articles.link}
               handleDeleteArticle={handleDeleteArticle}
+              handleLoginModal={handleLoginModal}
               handleSaveArticle={handleSaveArticle}
               isSaved={isSaved}
             />

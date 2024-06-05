@@ -1,7 +1,7 @@
 import { checkResponse } from "./CheckResponse";
 
 export const baseUrl =
-  process.env.NODE_ENV === "production"
+  process.env.NODE_ENV !== "production"
     ? "https://api.marcusnewsexplorer.jumpingcrab.com"
     : "http://localHost:3001";
 

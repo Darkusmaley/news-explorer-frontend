@@ -10,18 +10,22 @@ import bookmarkHover from "../../Images/Bookmark-hover.svg";
 import { KeywordContext } from "../Context/KeywordContext";
 import { CurrentPageContext } from "../Context/CurrentPageContext";
 import { CurrentUserContext } from "../Context/CurrentUserContext";
+import { getSavedArticles } from "../../Utils/Api";
+import { SavedArticleContext } from "../Context/SavedArticleContext";
 
 const NewsCard = ({
   newsData,
   handleDeleteArticle,
   handleSaveArticle,
-  isSaved,
+  handleLoginModal,
 }) => {
   const [hovered, setHovered] = useState(false);
+  const [isSaved, setSaved] = useState(false);
 
   const { keyword } = useContext(KeywordContext);
   const { currentPage, setCurrentPage } = useContext(CurrentPageContext);
   const { isLoggedIn } = useContext(CurrentUserContext);
+  const { setSavedArticles } = useContext(SavedArticleContext);
 
   const location = useLocation();
 
@@ -29,14 +33,30 @@ const NewsCard = ({
     setCurrentPage(location.pathname);
   }, [location.pathname, setCurrentPage]);
 
+  useEffect(() => {
+    const jwt = localStorage.getItem("jwt");
+    getSavedArticles(jwt).then(() => {
+      if (isSaved) {
+        setSavedArticles();
+        setSaved(true);
+      }
+    });
+  }, [getSavedArticles]);
+
   const handleBookmark = () => {
     const token = localStorage.getItem("jwt");
-    handleSaveArticle({ newsData, keyword, token });
+    if (isLoggedIn) {
+      handleSaveArticle({ newsData, keyword, token });
+      setSaved(true);
+    } else {
+      handleLoginModal();
+    }
   };
 
   const handleRemoveBookmark = () => {
     const token = localStorage.getItem("jwt");
     handleDeleteArticle({ newsData, token });
+    setSaved(false);
   };
 
   const icon =

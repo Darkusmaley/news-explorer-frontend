@@ -14,8 +14,8 @@
   padding: 0 20px;
   height: 40px;
   position: absolute;
-  top: 24px;
-  left: 24px;
+  top: 10px;
+  left: 8px;
   background-color: #fff;
   border-radius: 10px;
 }
@@ -140,8 +140,8 @@
   padding: 0 20px;
   height: 40px;
   position: absolute;
-  top: 24px;
-  right: 68px;
+  top: 8px;
+  right: 57px;
   background-color: #fff;
   align-content: center;
   border-radius: 10px;
@@ -165,8 +165,8 @@
   padding: 0 20px;
   height: 40px;
   position: absolute;
-  top: 24px;
-  right: 68px;
+  top: 8px;
+  right: 51px;
   background-color: #fff;
   align-content: center;
   border-radius: 10px;

@@ -9,9 +9,9 @@ import { SavedArticleContext } from "../Context/SavedArticleContext";
 
 function SavedNews({
   isLoggedIn,
-  handleRegisterModal,
   handleMobileModal,
   handleDeleteArticle,
+  handleLoginModal,
   handleSaveArticle,
   handleLogout,
   isSaved,
@@ -121,6 +121,7 @@ function SavedNews({
         <div className="saved-news__card_container">
           <SavedNewsCardList
             handleDeleteArticle={handleDeleteArticle}
+            handleLoginModal={handleLoginModal}
             handleSaveArticle={handleSaveArticle}
             isSaved={isSaved}
           />
