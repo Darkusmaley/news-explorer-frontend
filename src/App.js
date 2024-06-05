@@ -1,7 +1,7 @@
 import "./App.css";
 import React, { Route } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Routes } from "react-router";
+import { Routes } from "react-router-dom";
 import { useNavigate, useLocation } from "react-router-dom";
 
 import Main from "./Components/Main/Main";
@@ -131,6 +131,7 @@ function App() {
     const makeRequest = () => {
       setIsLoading(true);
       return authorization(user).then((res) => {
+        console.log(res);
         if (res) {
           localStorage.setItem("jwt", res.token);
           checkToken(res.token).then((data) => {
@@ -167,7 +168,7 @@ function App() {
       });
   };
 
-  const handleSaveArticle = ({ newsData, keyword, token }) => {
+  const handleSaveArticle = ({ newsData, keyword, token }, isSaved) => {
     if (
       !savedArticles.some((article) => {
         return article.link === newsData.url;

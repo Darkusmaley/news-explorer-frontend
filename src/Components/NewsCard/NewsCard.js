@@ -20,12 +20,14 @@ const NewsCard = ({
   handleLoginModal,
 }) => {
   const [hovered, setHovered] = useState(false);
-  const [isSaved, setSaved] = useState(false);
+  const [isMarked] = useState(false);
 
   const { keyword } = useContext(KeywordContext);
   const { currentPage, setCurrentPage } = useContext(CurrentPageContext);
   const { isLoggedIn } = useContext(CurrentUserContext);
-  const { setSavedArticles } = useContext(SavedArticleContext);
+  const { savedArticles, setSavedArticles } = useContext(SavedArticleContext);
+
+  const isSaved = savedArticles.find((article) => article.link == newsData.url);
 
   const location = useLocation();
 
@@ -36,10 +38,7 @@ const NewsCard = ({
   useEffect(() => {
     const jwt = localStorage.getItem("jwt");
     getSavedArticles(jwt).then(() => {
-      if (isSaved) {
-        setSavedArticles();
-        setSaved(true);
-      }
+      setSavedArticles();
     });
   }, [getSavedArticles]);
 
@@ -47,7 +46,6 @@ const NewsCard = ({
     const token = localStorage.getItem("jwt");
     if (isLoggedIn) {
       handleSaveArticle({ newsData, keyword, token });
-      setSaved(true);
     } else {
       handleLoginModal();
     }
@@ -56,7 +54,6 @@ const NewsCard = ({
   const handleRemoveBookmark = () => {
     const token = localStorage.getItem("jwt");
     handleDeleteArticle({ newsData, token });
-    setSaved(false);
   };
 
   const icon =
@@ -107,7 +104,7 @@ const NewsCard = ({
           <button
             type="button"
             className={buttonClass}
-            onClick={!isSaved ? handleBookmark : handleRemoveBookmark}
+            onClick={!isMarked ? handleBookmark : handleRemoveBookmark}
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
           >

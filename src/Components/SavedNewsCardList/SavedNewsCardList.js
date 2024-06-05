@@ -47,6 +47,7 @@ const SavedNewsCardList = ({
               handleLoginModal={handleLoginModal}
               handleSaveArticle={handleSaveArticle}
               isSaved={isSaved}
+              
             />
           ))}
       </div>
