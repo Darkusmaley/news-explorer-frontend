@@ -1,0 +1,132 @@
+.about {
+  max-width: 1440px;
+  background-color: #fff;
+  margin: 0;
+}
+
+.about__info {
+  display: flex;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  gap: 56px;
+}
+
+.about__title {
+  font-family: "Roboto-Slab", "Inter", Arial, Helvetica, sans-serif;
+  font-size: 40px;
+  font-weight: 400;
+  line-height: 46px;
+  text-align: left;
+  margin: 0;
+}
+
+.about__text {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.about__subtext {
+  font-family: "Roboto", "Inter", Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
+  width: 600px;
+}
+
+.about__image {
+  width: 464px;
+  height: 464px;
+  margin-left: 104px;
+  border-radius: 152px;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .about {
+    max-width: 1279px;
+  }
+
+  .about__info {
+    max-width: 1279px;
+    gap: 32px;
+    padding-top: 40px;
+  }
+
+  .about__title {
+    max-width: 424px;
+    max-height: 34px;
+    font-family: "Roboto-Slab", "Inter", Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 40px;
+    text-align: left;
+  }
+
+  .about__text {
+    margin: 0 auto 0 0;
+  }
+
+  .about__subtext {
+    max-width: 424px;
+    max-height: 168px;
+    font-family: "Roboto", "Inter", Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    margin: 0;
+  }
+
+  .about__image {
+    max-width: 232px;
+    max-height: 232px;
+    margin-left: 40px;
+    margin: 0 0 0 auto;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .about {
+    max-width: 767px;
+  }
+
+  .about__info {
+    max-width: 767px;
+    padding-top: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .about__text {
+    max-height: 240px;
+    gap: 16px;
+  }
+
+  .about__title {
+    max-width: 288px;
+    font-family: "Roboto-Slab", "Inter", Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 40px;
+    text-align: left;
+  }
+
+  .about__subtext {
+    max-width: 288px;
+    font-family: "Roboto", "Inter", Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    margin: 0 auto;
+  }
+
+  .about__image {
+    max-width: 272px;
+    max-height: 272px;
+    margin: 0;
+  }
+}

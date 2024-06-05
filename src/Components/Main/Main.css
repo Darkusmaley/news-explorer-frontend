@@ -1,0 +1,134 @@
+.main {
+  max-width: 1440px;
+  background-image: url("../../Images/georgia-de-lotz--UsJoNxLaNo-unsplash.png");
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: inherit;
+}
+
+.main__title {
+  font-family: Roboto-Slab, Inter, Arial, Helvetica, sans-serif;
+  font-size: 60px;
+  font-weight: 400;
+  line-height: 64px;
+  text-align: left;
+  color: #fff;
+  margin: 80px auto 0;
+
+  max-width: 608px;
+  max-height: 128px;
+}
+
+.main__subtext {
+  font-family: Roboto, Inter, Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: left;
+  margin: 32px auto 0;
+
+  color: #fff;
+  max-width: 608px;
+  max-height: 24px;
+}
+
+.main__overlay {
+  max-width: 1440px;
+  margin: 0;
+  padding: 0;
+}
+
+.main__search-error_container {
+  max-width: 1440px;
+
+  background-color: #fff;
+  border: none;
+}
+
+.main__search-error {
+  max-width: 600px;
+  align-items: center;
+  margin: 0 auto;
+  padding: 5px;
+  font-family: Roboto-Slab, Inter, Arial, Helvetica, sans-serif;
+  font-size: 25px;
+  font-weight: 400;
+  line-height: 46px;
+  text-align: left;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+  .main {
+    max-width: 1279px;
+    background-position: top;
+    background-size: inherit;
+    margin-bottom: 160px;
+  }
+
+  .main__overlay {
+    max-width: 1279px;
+  }
+
+  .main__title {
+    max-width: 385px;
+    max-height: 80px;
+    margin: 0 auto;
+    padding: 38px 220px 0 160px;
+    font-family: Roboto-Slab, Inter, Arial, Helvetica, sans-serif;
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 40px;
+    text-align: left;
+  }
+
+  .main__subtext {
+    max-width: 452px;
+    max-height: 48px;
+    margin: 0 auto;
+    padding: 16px 156px 0 160px;
+    font-family: Roboto-Slab, Inter, Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+
+    text-align: left;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+  .main {
+    max-width: 767px;
+    background-size: inherit;
+    background-position: top;
+    background-repeat: no-repeat;
+    margin-bottom: 328px;
+  }
+
+  .main__overlay {
+    max-width: 767px;
+  }
+
+  .main__title {
+    max-width: 285px;
+    max-height: 80px;
+    margin: 0 auto;
+    padding: 30px 15px 0 19px;
+    font-family: Roboto-Slab, Inter, Arial, Helvetica, sans-serif;
+    font-size: 36px;
+    font-weight: 400;
+    line-height: 40px;
+    text-align: left;
+  }
+  .main__subtext {
+    max-width: 288px;
+    max-height: 72px;
+    margin: 0 auto;
+    padding: 16px 16px 0;
+    font-family: Roboto, Inter, Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+  }
+}
