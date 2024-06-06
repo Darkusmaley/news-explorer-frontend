@@ -170,6 +170,7 @@ function App() {
 
   const handleSaveArticle = ({ newsData, keyword, token }, isSaved) => {
     if (
+      currentPage === "/" &&
       !savedArticles.some((article) => {
         return article.link === newsData.url;
       })
@@ -191,7 +192,8 @@ function App() {
           console.log(err);
         });
     } else if (
-      savedArticles.some((article) => {
+      currentPage === "/saved-news" &&
+      !savedArticles.some((article) => {
         return article.link === newsData.url;
       })
     ) {

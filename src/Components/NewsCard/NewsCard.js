@@ -27,7 +27,9 @@ const NewsCard = ({
   const { isLoggedIn } = useContext(CurrentUserContext);
   const { savedArticles, setSavedArticles } = useContext(SavedArticleContext);
 
-  const isSaved = savedArticles.find((article) => article.link == newsData.url);
+  const isSaved = savedArticles.find(
+    (article) => article.link === newsData.url
+  );
 
   const location = useLocation();
 
@@ -38,7 +40,7 @@ const NewsCard = ({
   useEffect(() => {
     const jwt = localStorage.getItem("jwt");
     getSavedArticles(jwt).then(() => {
-      setSavedArticles();
+      setSavedArticles(savedArticles);
     });
   }, [getSavedArticles]);
 
