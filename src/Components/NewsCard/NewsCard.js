@@ -17,7 +17,7 @@ const NewsCard = ({
   newsData,
   handleDeleteArticle,
   handleSaveArticle,
-  handleLoginModal,
+  handleRegisterModal,
 }) => {
   const [hovered, setHovered] = useState(false);
   const [isSaved, setSaved] = useState(false);
@@ -49,7 +49,7 @@ const NewsCard = ({
       handleSaveArticle({ newsData, keyword, token });
       setSaved(true);
     } else {
-      handleLoginModal();
+      handleRegisterModal();
     }
   };
 

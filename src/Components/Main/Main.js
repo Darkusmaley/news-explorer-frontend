@@ -59,7 +59,6 @@ const Main = ({
                 <NewsCardList
                   handleRegisterModal={handleRegisterModal}
                   handlehandleDeleteArticle={handleDeleteArticle}
-                  handleLoginModal={handleLoginModal}
                   handleSaveArticle={handleSaveArticle}
                 />
               ) : !isLoading && hasSearched && searchResults.length === 0 ? (
@@ -95,7 +94,6 @@ const Main = ({
                   handleRegisterModal={handleRegisterModal}
                   handleDeleteArticle={handleDeleteArticle}
                   handleSaveArticle={handleSaveArticle}
-                  handleLoginModal={handleLoginModal}
                 />
               ) : !isLoading && hasSearched && searchResults.length === 0 ? (
                 <NothingFound />
