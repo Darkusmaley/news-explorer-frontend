@@ -192,6 +192,28 @@ function App() {
           console.log(err);
         });
     } else if (
+      currentPage === "/" &&
+      savedArticles.some((article) => {
+        return article.link === newsData.url;
+      })
+    ) {
+      removeSavedArticles(newsData, token)
+        .then(() => {
+          const unsaveNewsArticles = savedArticles.filter((article) => {
+            return article._id !== newsData._id;
+          });
+          setSavedArticles(unsaveNewsArticles);
+
+          const newArticle = { ...newsData, _id: "" };
+          const newSearchResults = searchResults.map((article) => {
+            return article.url === newsData.url ? newArticle : article;
+          });
+          setSearchResults(newSearchResults);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else if (
       currentPage === "/saved-news" &&
       !savedArticles.some((article) => {
         return article.link === newsData.url;
